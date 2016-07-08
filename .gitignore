@@ -1,0 +1,21 @@
+# build
+dist
+
+# config
+config/config.json
+config/config-dev.json
+
+# IntelliJ resources
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# mac
+.DS_Store
+
+# node
+node_modules/
+npm-debug.log
+.env
+.npmrc

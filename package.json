@@ -1,0 +1,45 @@
+{
+  "name": "mudash",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "description": "Lodash wrapper providing immutable JS support",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianneisler/mudash.git"
+  },
+  "author": "Brian Neisler <me@brianneisler.com>",
+  "bugs": {
+    "url": "https://github.com/brianneisler/mudash/issues"
+  },
+  "homepage": "https://github.com/brianneisler/mudash#readme",
+  "scripts": {
+    "clean": "gulp clean",
+    "dev": "gulp dev",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "es6-symbol": "^3.1.0",
+    "immutable": "^3.7.6",
+    "immutable-devtools": "^0.0.7",
+    "lodash": "^4.13.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.0.4",
+    "babel-polyfill": "6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "bluebird": "^3.4.0",
+    "chai": "^3.5.0",
+    "del": "^2.2.0",
+    "eslint": "^2.10.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-recipe": "0.0.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7"
+  }
+}
