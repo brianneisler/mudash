@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import property from '../property';
+import { property } from '../composers';
 
 export default function map(data, iteratee) {
   if (!_.isFunction(iteratee)) {

@@ -1,4 +1,4 @@
-import _ from './lodash';
+import _ from 'lodash';
 import mutable from '../mutable';
 
 export default function _muArgs(mu) {

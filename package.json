@@ -41,5 +41,10 @@
     "gulp-recipe": "0.0.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7"
-  }
+  },
+  "license": "MIT",
+  "keywords": [
+    "immutable",
+    "lodash"
+  ]
 }

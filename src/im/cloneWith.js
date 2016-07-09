@@ -1,10 +1,9 @@
-import isFunction from '../isFunction';
-import isUndefined from '../isUndefined';
+import _ from 'lodash';
 
 export default function cloneWith(data, customizer) {
-  if (isFunction(customizer)) {
+  if (_.isFunction(customizer)) {
     const result = customizer(data);
-    if (!isUndefined(result)) {
+    if (!_.isUndefined(result)) {
       return result;
     }
   }

@@ -1,19 +1,16 @@
 import _ from 'lodash';
-import each from './each';
-import isFunction from './isFunction';
-import isImmutable from './isImmutable';
-import isUndefined from './isUndefined';
+import { isImmutable } from '../core';
 
 export default function deepClone(customizer) {
   const cloner = (data, key, object) => {
-    if (isFunction(customizer)) {
+    if (_.isFunction(customizer)) {
       const result = customizer(data, key, object);
-      if (!isUndefined(result)) {
+      if (!_.isUndefined(result)) {
         return result;
       }
     }
     if (isImmutable(data)) {
-      each(data, (value, _key) => {
+      data.forEach((value, _key) => {
         data = data.set(_key, _.cloneDeepWith(value, cloner));
       });
       return data;

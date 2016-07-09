@@ -1,7 +1,7 @@
-import toSet from '../toSet';
+import Immutable from 'immutable';
 
 export function keyIn(keys) {
-  const keySet = toSet(keys);
+  const keySet = Immutable.Set(keys);
   return (value, key) => {
     return keySet.has(key);
   };

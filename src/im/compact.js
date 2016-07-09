@@ -1,4 +1,4 @@
-import filter from '../filter';
+import filter from './filter';
 import { truthy } from '../predicates';
 
 export default function compact(data) {

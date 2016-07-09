@@ -1,11 +1,12 @@
 import _ from 'lodash';
 import _imArgs from './_imArgs';
 import _muArgs from './_muArgs';
-import isImmutable from '../isImmutable';
-import * as ims from './im';
-import * as mus from './mu';
+import { isImmutable } from '../core';
+import * as ims from '../im';
+import * as mus from '../mu';
 
-const _mus = _.mixin(mus);
+const lodash = _.runInContext();
+const _mus = lodash.mixin(mus);
 
 export default function _hint(funcName, convert = false) {
   let im = ims[funcName];

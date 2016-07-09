@@ -1,9 +1,8 @@
 import _ from 'lodash';
-import isIterateeCall from '../isIterateeCall';
+import { isIterateeCall, toList } from '../core';
 import push from './push';
 import slice from './slice';
 import size from './size';
-import toList from '../toList';
 
 export default function chunk(data, _size, guard) {
   if ((guard ? isIterateeCall(data, _size, guard) : size === undefined)) {

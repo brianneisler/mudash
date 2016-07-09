@@ -36,6 +36,7 @@ export { default as isEqual } from './isEqual';
 export { default as isEqualWith } from './isEqualWith';
 export { default as isImmutable } from './isImmutable';
 export { default as isIndex } from './isIndex';
+export { default as isIterateeCall } from './isIterateeCall';
 export { default as isKey } from './isKey';
 export { default as isMutable } from './isMutable';
 export { default as iterable } from './iterable';

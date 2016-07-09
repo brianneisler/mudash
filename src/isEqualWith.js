@@ -1,2 +1,1 @@
-import { _hint } from './util';
-export default _hint('isEqualWith');
+export { isEqualWith as default } from './core';

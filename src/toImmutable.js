@@ -1,5 +1,1 @@
-import Immutable from 'immutable';
-
-export default function toImmutable(data) {
-  return Immutable.fromJS(data);
-}
+export { toImmutable as default } from './core';

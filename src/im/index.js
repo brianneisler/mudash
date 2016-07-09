@@ -18,8 +18,6 @@ export { default as groupBy } from './groupBy';
 export { default as includes } from './includes';
 export { default as indexOf } from './indexOf';
 export { default as isEmpty } from './isEmpty';
-export { default as isEqual } from './isEqual';
-export { default as isEqualWith } from './isEqualWith';
 export { default as join } from './join';
 export { default as keys } from './keys';
 export { default as last } from './last';
