@@ -1,1 +1,1 @@
-export default /^\w*$/;
+export default /^\w*$/

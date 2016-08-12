@@ -1,6 +1,6 @@
-import _ from 'lodash';
-import { deepClone } from './customizers';
+import _ from 'lodash'
+import { deepClone } from './customizers'
 
 export default function cloneDeep(data) {
-  return _.cloneDeepWith(data, deepClone);
+  return _.cloneDeepWith(data, deepClone)
 }

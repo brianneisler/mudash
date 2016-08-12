@@ -1,1 +1,1 @@
-export { unset as default } from 'lodash';
+export { unset as default } from 'lodash'

@@ -1,1 +1,1 @@
-export { isIterateeCall as default } from './core';
+export { isIterateeCall as default } from './core'

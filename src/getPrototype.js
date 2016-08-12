@@ -1,1 +1,1 @@
-export { getPrototype as default } from './core';
+export { getPrototype as default } from './core'

@@ -1,1 +1,1 @@
-export { toImmutable as default } from './core';
+export { toImmutable as default } from './core'

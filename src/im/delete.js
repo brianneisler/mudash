@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from 'lodash'
 export default function _delete(data, path) {
-  return data.delete(_.toPath(path));
+  return data.delete(_.toPath(path))
 }

@@ -1,5 +1,5 @@
-import toIterable from './toIterable';
+import toIterable from './toIterable'
 
 export default function iterable(data) {
-  return toIterable(data);
+  return toIterable(data)
 }

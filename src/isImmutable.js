@@ -1,1 +1,1 @@
-export { isImmutable as default } from './core';
+export { isImmutable as default } from './core'

@@ -1,5 +1,5 @@
-import slice from './slice';
+import slice from './slice'
 
 export default function indexOf(data, value, fromIndex) {
-  return slice(data, fromIndex).indexOf(value);
+  return slice(data, fromIndex).indexOf(value)
 }

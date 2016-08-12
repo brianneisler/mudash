@@ -1,1 +1,1 @@
-export { size as default } from 'lodash';
+export { size as default } from 'lodash'

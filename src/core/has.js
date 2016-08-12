@@ -1,6 +1,6 @@
-import baseHas from './baseHas';
-import hasKey from './hasKey';
+import baseHas from './baseHas'
+import hasKey from './hasKey'
 
 export default function has(object, path) {
-  return object != null && baseHas(object, path, hasKey);
+  return object != null && baseHas(object, path, hasKey)
 }

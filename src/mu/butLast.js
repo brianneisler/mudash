@@ -1,1 +1,1 @@
-export { dropRight as default } from 'lodash';
+export { dropRight as default } from 'lodash'

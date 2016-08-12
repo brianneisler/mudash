@@ -1,1 +1,1 @@
-export { toMutable as default } from './core';
+export { toMutable as default } from './core'

@@ -1,1 +1,1 @@
-export { baseGet as default } from './core';
+export { baseGet as default } from './core'

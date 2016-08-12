@@ -1,3 +1,3 @@
 export default function some(data, predicate) {
-  return data.some(predicate);
+  return data.some(predicate)
 }

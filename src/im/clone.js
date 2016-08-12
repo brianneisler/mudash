@@ -1,3 +1,3 @@
 export default function clone(data) {
-  return data;
+  return data
 }

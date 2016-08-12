@@ -1,1 +1,1 @@
-export { isIndex as default } from './core';
+export { isIndex as default } from './core'

@@ -1,5 +1,5 @@
-import getPrototype from './getPrototype';
-import isImmutable from './isImmutable';
+import getPrototype from './getPrototype'
+import isImmutable from './isImmutable'
 
 export default function hasKey(object, key) {
   // Avoid a bug in IE 10-11 where objects with a [[Prototype]] of `null`,
@@ -10,5 +10,5 @@ export default function hasKey(object, key) {
   ) || (
     (hasOwnProperty.call(object, key) ||
       (typeof object == 'object' && key in object && getPrototype(object) === null))
-  ));
+  ))
 }

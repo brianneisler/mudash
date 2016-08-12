@@ -1,1 +1,1 @@
-export { toKey as default } from './core';
+export { toKey as default } from './core'

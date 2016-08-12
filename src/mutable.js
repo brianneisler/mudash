@@ -1,5 +1,5 @@
-import toMutable from './toMutable';
+import toMutable from './toMutable'
 
 export default function mutable(data) {
-  return toMutable(data);
+  return toMutable(data)
 }

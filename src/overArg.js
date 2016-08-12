@@ -1,1 +1,1 @@
-export { overArg as default } from './core';
+export { overArg as default } from './core'

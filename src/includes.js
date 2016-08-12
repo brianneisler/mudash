@@ -1,2 +1,2 @@
-import { _hint } from './util';
-export default _hint('includes');
+import { _hint } from './util'
+export default _hint('includes')

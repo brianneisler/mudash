@@ -1,2 +1,2 @@
-export { default as falsy } from './falsy';
-export { default as truthy } from './truthy';
+export { default as falsy } from './falsy'
+export { default as truthy } from './truthy'

@@ -1,1 +1,1 @@
-export { setKey as default } from './core';
+export { setKey as default } from './core'

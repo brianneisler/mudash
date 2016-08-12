@@ -1,1 +1,1 @@
-export { default } from './butLast';
+export { default } from './butLast'

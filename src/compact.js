@@ -1,3 +1,3 @@
-import { _hint } from './util';
+import { _hint } from './util'
 
-export default _hint('compact');
+export default _hint('compact')

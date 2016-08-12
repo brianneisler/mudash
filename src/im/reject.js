@@ -1,1 +1,1 @@
-export { default } from './filterNot';
+export { default } from './filterNot'

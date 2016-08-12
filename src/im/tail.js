@@ -1,3 +1,3 @@
 export default function tail(data) {
-  return data.rest();
+  return data.rest()
 }

@@ -1,1 +1,1 @@
-export { default } from './composers/property';
+export { default } from './composers/property'

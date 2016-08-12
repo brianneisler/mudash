@@ -1,3 +1,3 @@
 export default function keys(data) {
-  return data.keySeq();
+  return data.keySeq()
 }

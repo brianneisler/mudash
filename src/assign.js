@@ -1,2 +1,2 @@
-import { _hint } from './util';
-export default _hint('assign', true);
+import { _hint } from './util'
+export default _hint('assign', true)

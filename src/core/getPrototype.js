@@ -1,3 +1,3 @@
-import overArg from './overArg';
+import overArg from './overArg'
 
-export default overArg(Object.getPrototypeOf, Object);
+export default overArg(Object.getPrototypeOf, Object)

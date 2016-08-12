@@ -1,2 +1,2 @@
-import { _hint } from './util';
-export default _hint('pick');
+import { _hint } from './util'
+export default _hint('pick')

@@ -1,3 +1,3 @@
 export default function falsy(value) {
-  return !value;
+  return !value
 }

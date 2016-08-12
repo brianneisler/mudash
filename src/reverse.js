@@ -1,2 +1,2 @@
-import { _hint } from './util';
-export default _hint('reverse');
+import { _hint } from './util'
+export default _hint('reverse')

@@ -1,5 +1,5 @@
-import isImmutable from './isImmutable';
+import isImmutable from './isImmutable'
 
 export default function toObject(data) {
-  return isImmutable(data) ? data.toObject() : data;
+  return isImmutable(data) ? data.toObject() : data
 }

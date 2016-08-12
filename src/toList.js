@@ -1,1 +1,1 @@
-export { toList as default } from './core';
+export { toList as default } from './core'

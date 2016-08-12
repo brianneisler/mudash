@@ -1,2 +1,2 @@
-import _ from 'lodash';
-export default _.toPath;
+import _ from 'lodash'
+export default _.toPath

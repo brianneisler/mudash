@@ -1,1 +1,1 @@
-export { baseSet as default } from './core';
+export { baseSet as default } from './core'

@@ -1,1 +1,1 @@
-export { reject as default } from 'lodash';
+export { reject as default } from 'lodash'

@@ -1,3 +1,3 @@
 export default function reverse(data) {
-  return data.reverse();
+  return data.reverse()
 }

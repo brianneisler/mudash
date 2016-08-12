@@ -1,6 +1,6 @@
-import { get } from '../core';
+import { get } from '../core'
 export default function property(path) {
   return (data) => {
-    return get(data, path);
-  };
+    return get(data, path)
+  }
 }

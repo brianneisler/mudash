@@ -1,1 +1,1 @@
-export { isEqualWith as default } from './core';
+export { isEqualWith as default } from './core'

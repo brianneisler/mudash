@@ -1,5 +1,5 @@
-import apply from './apply';
+import apply from './apply'
 
 export default function call(method, ...args) {
-  return apply(method, args);
+  return apply(method, args)
 }
