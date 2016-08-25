@@ -3,8 +3,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true,
-    "jest": true
+    "mocha": true,
+    "node": true
   },
   "ecmaFeatures": {
     "experimentalObjectRestSpread": true,
@@ -17,7 +17,6 @@
     "comma-dangle": [2, "never"],
     "curly": 2,
     "eol-last": 2,
-    "generator-star-spacing": [2, "after"],
     "id-length": [2, {"min": 2, "max": 50, "properties": "never", "exceptions": ["e", "i", "x", "_"]}],
     "indent": [2, 2, {"SwitchCase": 1}],
     "no-alert": 2,
@@ -27,6 +26,7 @@
     "no-var": 2,
     "prefer-const": 2,
     "quotes": [2, "single"],
+    "require-yield": 0,
     "semi": [2, "never"],
     "spaced-comment": 0,
     "strict": [2, "never"]

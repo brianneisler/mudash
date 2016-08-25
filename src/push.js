@@ -1,2 +1,1 @@
-import { _hint } from './util'
-export default _hint('push')
+export { push as default } from './core'
