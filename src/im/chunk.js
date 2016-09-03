@@ -1,6 +1,5 @@
 import _ from 'lodash'
-import { isIterateeCall, toList } from '../core'
-import push from './push'
+import { isIterateeCall, push, toList } from '../core'
 import slice from './slice'
 import size from './size'
 
