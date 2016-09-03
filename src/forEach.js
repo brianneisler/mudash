@@ -1,3 +1,1 @@
-import { _hint } from './util'
-
-export default _hint('forEach')
+export { forEach as default } from './core'

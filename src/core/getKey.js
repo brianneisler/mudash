@@ -5,9 +5,6 @@ export default function getKey(object, key) {
     if (isImmutable(object)) {
       return object.get(key)
     }
-    if (key === '') {
-      return object
-    }
     return object[key]
   }
 }

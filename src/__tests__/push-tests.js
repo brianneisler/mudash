@@ -5,7 +5,7 @@ import Immutable from 'immutable'
 
 describe('push', function() {
 
-  it('pushes to mutable array', async function() {
+  it('pushes to mutable array', function() {
     const array = []
     const result = push(array, 'test1')
     expect(result).to.deep.equal([
@@ -13,7 +13,7 @@ describe('push', function() {
     ])
   })
 
-  it('returns array if data is empty', async function() {
+  it('returns array if data is empty', function() {
     const data = null
     const result = push(data, 'test1')
     expect(result).to.deep.equal([
@@ -21,7 +21,7 @@ describe('push', function() {
     ])
   })
 
-  it('pushes to immutable List', async function() {
+  it('pushes to immutable List', function() {
     const data = Immutable.fromJS([])
     const result = push(data, 'test1')
     expect(Immutable.List.isList(result)).to.be.true

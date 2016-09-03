@@ -1,3 +1,1 @@
-import { _hint } from './util'
-
-export default _hint('cloneWith')
+export { cloneWith as default } from './core'

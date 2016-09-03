@@ -10,9 +10,6 @@ export default function setKey(object, key, value) {
     if (isImmutable(object)) {
       object = object.set(key, value)
     } else {
-      if (key === '') {
-        return value
-      }
       object[key] = value
     }
   }

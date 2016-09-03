@@ -4,12 +4,14 @@ import pushIn from '../pushIn'
 
 describe('pushIn', function() {
 
-  it('pushes at empty path of a mutable array', function() {
-    const array = []
-    const result = pushIn(array, '', 'test1')
-    expect(result).to.deep.equal([
-      'test1'
-    ])
+  it('treats empty string as a path of a mutable array', function() {
+    const data = {}
+    const result = pushIn(data, '', 'test1')
+    expect(result).to.deep.equal({
+      '': [
+        'test1'
+      ]
+    })
   })
 
   it('pushes deep in mutable value', function() {
