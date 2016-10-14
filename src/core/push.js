@@ -1,16 +1,14 @@
 import _ from 'lodash'
+import concat from './concat'
 import isImmutable from './isImmutable'
 
 export default function push(data, value) {
   if (_.isNil(data)) {
     data = []
   }
-  if (data && _.isFunction(data.push)) {
-    if (isImmutable(data)) {
-      data = data.push(value)
-    } else {
-      data.push(value)
-    }
+
+  if (isImmutable(data)) {
+    return data.push(value)
   }
-  return data
+  return concat(data, [value])
 }

@@ -1,3 +1,1 @@
-import { _hint } from './util'
-
-export default _hint('concat')
+export { concat as default } from './core'
