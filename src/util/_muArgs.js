@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import mutable from '../mutable'
+import { mutable } from '../core'
 
 export default function _muArgs(mu) {
   return (data, ...args) => {

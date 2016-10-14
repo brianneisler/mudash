@@ -1,6 +1,6 @@
 import 'babel-polyfill'
 import { expect } from 'chai'
-import concat from '../concat'
+import { concat } from '../'
 import Immutable from 'immutable'
 
 describe('concat', function() {

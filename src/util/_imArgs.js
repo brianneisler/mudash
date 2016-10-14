@@ -1,4 +1,4 @@
-import immutable from '../immutable'
+import { immutable } from '../core'
 import _ from 'lodash'
 
 export default function _imArgs(im) {

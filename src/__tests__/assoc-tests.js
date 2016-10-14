@@ -1,6 +1,6 @@
 import 'babel-polyfill'
 import { expect } from 'chai'
-import assoc from '../assoc'
+import { assoc } from '../'
 import Immutable from 'immutable'
 
 describe('assoc', function() {

@@ -1,6 +1,6 @@
 import 'babel-polyfill'
 import { expect } from 'chai'
-import pushIn from '../pushIn'
+import { pushIn } from '../'
 
 describe('pushIn', function() {
 
