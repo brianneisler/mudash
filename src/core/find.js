@@ -1,4 +1,6 @@
+import filter from './filter'
 import slice from './slice'
+
 export default function find(data, predicate, fromIndex = 0) {
-  return slice(data, fromIndex).filter(predicate)
+  return filter(slice(data, fromIndex), predicate)
 }
