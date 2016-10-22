@@ -1,6 +1,6 @@
 {
   "name": "mudash",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "./index.js",
   "description": "Lodash wrapper providing immutable JS support",
   "repository": {
@@ -22,7 +22,7 @@
     "es6-symbol": "^3.1.0",
     "immutable": "^3.8.1",
     "is-generator": "^1.0.3",
-    "lodash": "^4.15.0"
+    "lodash": "^4.16.4"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
