@@ -11,9 +11,6 @@ const each = forEach
 const findIndex = _hint('findIndex')
 const first = _hint('first')
 const groupBy = _hint('groupBy')
-const includes = _hint('includes')
-const indexOf = _hint('indexOf')
-const isEmpty = _hint('isEmpty')
 const join = _hint('join')
 const keys = _hint('keys')
 const last = _hint('last')
@@ -42,9 +39,6 @@ export {
   findIndex,
   first,
   groupBy,
-  includes,
-  indexOf,
-  isEmpty,
   join,
   keys,
   last,
