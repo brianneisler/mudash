@@ -8,7 +8,7 @@ export default function assoc(data, path, value) {
     data = baseSet(data, path, value, assocKey)
   } else {
     forEach(path, (pathValue, pathKey) => {
-      data = assoc(data, pathKey, pathValue)
+      data = baseSet(data, pathKey, pathValue, assocKey)
     })
   }
   return data

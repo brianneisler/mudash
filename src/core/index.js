@@ -1,6 +1,7 @@
 export { default as apply } from './apply'
 export { default as assoc } from './assoc'
 export { default as assocKey } from './assocKey'
+export { default as assocWith } from './assocWith'
 export { default as baseGet } from './baseGet'
 export { default as baseHas } from './baseHas'
 export { default as baseSet } from './baseSet'
