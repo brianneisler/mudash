@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
 import _ from '../'
 import fp from '../fp'
-const Immutable = require('immutable')
+import Immutable from 'immutable'
+
 const set = _.compose(
   fp.set('a', 1),
   fp.set('b', 2),
