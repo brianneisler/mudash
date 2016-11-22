@@ -39,6 +39,6 @@ fp.set('c.d', 3)(map)   // returns Map { "a": 1, "b": 2, "c": Map { "d": 3 } }
 
 // Mutable example
 const obj = { a:1, b:2 }
-_.set(map, 'c.d', 3)    // returns { "a": 1, "b": 2, "c": { "d": 3 } }
-fp.set('c.d', 3)(map)   // returns { "a": 1, "b": 2, "c": { "d": 3 } }
+_.set(obj, 'c.d', 3)    // returns { "a": 1, "b": 2, "c": { "d": 3 } }
+fp.set('c.d', 3)(obj)   // returns { "a": 1, "b": 2, "c": { "d": 3 } }
 ```
