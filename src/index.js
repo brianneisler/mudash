@@ -8,9 +8,7 @@ const compact = _hint('compact')
 const _delete = _hint('delete')
 const dropRight = _hint('dropRight')
 const findIndex = _hint('findIndex')
-const groupBy = _hint('groupBy')
 const join = _hint('join')
-const map = _hint('map')
 const merge = _hint('merge', true)
 const mergeIn = _hint('mergeIn', true)
 const reduce = _hint('reduce')
@@ -31,9 +29,7 @@ export {
   _delete as delete,
   dropRight,
   findIndex,
-  groupBy,
   join,
-  map,
   merge,
   mergeIn,
   reduce,
