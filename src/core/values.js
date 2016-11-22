@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import isImmutable from './isImmutable'
 
-export default function count(data) {
+export default function values(data) {
   return isImmutable(data)
-    ? data.count()
-    : _.size(data)
+    ? data.valueSeq()
+    : _.values(data)
 }
