@@ -42,3 +42,12 @@ const obj = { a:1, b:2 }
 _.set(obj, 'c.d', 3)    // returns { "a": 1, "b": 2, "c": { "d": 3 } }
 fp.set('c.d', 3)(obj)   // returns { "a": 1, "b": 2, "c": { "d": 3 } }
 ```
+
+## Gotchas
+
+#### immutable merge vs lodash merge
+immutable's `merge` is the equivalent of lodash's `assign` and lodash's `merge` is the equivalent of immutable's `mergeDeep`. In order to reconcile this we have opted for lodash's signature over immutable's. Therefore use `assign` for a shallow merge and `merge` when deep merging.
+
+#### lodash has methods that mutate values
+In many cases lodash mutates values. In the case of immutable values that are passed to these methods in mudash the method will no longer mutate the value. If a mutable value is passed to the method it WILL continue to mutate the value.
+*In the future we may opt for an entirely immutable approach for both forms of data, similar to the approach for lodash-fp*

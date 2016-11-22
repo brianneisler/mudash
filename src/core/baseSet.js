@@ -6,13 +6,13 @@ import isKey from './isKey'
 import toImmutable from './toImmutable'
 import toKey from './toKey'
 
-export default function baseSet(data, path, value, setFunc, customizer) {
+export default function baseSet(data, path, value, setFunc, options = {}) {
   path = isKey(path, data) ? [path] : _.toPath(path)
   const index = 0
-  return composeRecurPathSet(path, setFunc, customizer)(data, index, value)
+  return composeRecurPathSet(path, setFunc, options)(data, index, value)
 }
 
-function composeRecurPathSet(path, setFunc, customizer) {
+function composeRecurPathSet(path, setFunc, { customizer }) {
   const length = path.length
   const lastIndex = length - 1
 
