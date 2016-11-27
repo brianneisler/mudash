@@ -1,5 +1,6 @@
 import _ from 'lodash'
-import { isDeepProp, isPlainProp } from '../regex'
+import { reIsDeepProp, reIsPlainProp } from './regex'
+import { _Object } from './util'
 
 export default function isKey(value, object) {
   if (_.isArray(value)) {
@@ -10,6 +11,6 @@ export default function isKey(value, object) {
       value == null || _.isSymbol(value)) {
     return true
   }
-  return isPlainProp.test(value) || !isDeepProp.test(value) ||
-    (object != null && value in Object(object))
+  return reIsPlainProp.test(value) || !reIsDeepProp.test(value) ||
+    (object != null && value in _Object(object))
 }

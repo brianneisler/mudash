@@ -1,7 +1,4 @@
-import _ from 'lodash'
-import Immutable from 'immutable'
-import isImmutable from './isImmutable'
-
+import baseIsEqual from './baseIsEqual'
 export default function isEqual(value, other) {
-  return (isImmutable(value) && isImmutable(other)) ? Immutable.is(value, other) : _.isEqual(value, other)
+  return baseIsEqual(value, other)
 }

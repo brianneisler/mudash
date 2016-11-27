@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import Symbol from 'es6-symbol'
+import { Symbol } from './util'
 
 const emptyIterator = { next: () => ({done: true})}
 

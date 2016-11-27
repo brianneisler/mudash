@@ -1,1 +1,1 @@
-export default from './mutable'
+export { default } from './mutable'

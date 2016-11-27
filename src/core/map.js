@@ -1,12 +1,10 @@
 import _ from 'lodash'
 import isImmutable from './isImmutable'
-import { property } from '../composers'
+import iteratee from './iteratee'
 
-export default function map(data, iteratee = _.identity) {
-  if (!_.isFunction(iteratee)) {
-    iteratee = property(iteratee)
-  }
+export default function map(data, _iteratee) {
+  _iteratee = iteratee(_iteratee)
   return isImmutable(data)
-    ? data.map(iteratee)
-    : _.map(data, iteratee)
+    ? data.map(_iteratee)
+    : _.map(data, _iteratee)
 }
