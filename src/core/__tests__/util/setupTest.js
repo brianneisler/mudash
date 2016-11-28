@@ -748,6 +748,7 @@ export default function setupTest() {
     realm,
     root,
     set,
+    slice,
     square,
     strictArgs,
     stringProto,

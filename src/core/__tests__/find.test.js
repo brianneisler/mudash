@@ -34,4 +34,79 @@ describe('find', function() {
     expect(result).to.deep.equal({a:2})
     expect(result).to.equal(data.get(1))
   })
+
+  it('supports property iteratee shorthand in mutable array', function() {
+    const users = [
+      { 'user': 'barney',  'age': 36, 'active': true },
+      { 'user': 'fred',    'age': 40, 'active': false },
+      { 'user': 'pebbles', 'age': 1,  'active': true }
+    ]
+
+    const actual = find(users, 'active')
+    const expected = users[0]
+    expect(actual).to.equal(expected)
+  })
+
+  it('supports property iteratee shorthand in immutable list', function() {
+    const users = Immutable.fromJS([
+      { 'user': 'barney',  'age': 36, 'active': true },
+      { 'user': 'fred',    'age': 40, 'active': false },
+      { 'user': 'pebbles', 'age': 1,  'active': true }
+    ])
+
+    const actual = find(users, 'active')
+    const expected = { 'user': 'barney',  'age': 36, 'active': true }
+    expect(Immutable.Map.isMap(actual)).to.be.true
+    expect(actual.toJS()).to.deep.equal(expected)
+  })
+
+  it('supports matches iteratee shorthand in mutable array', function() {
+    const users = [
+      { 'user': 'barney',  'age': 36, 'active': true },
+      { 'user': 'fred',    'age': 40, 'active': false },
+      { 'user': 'pebbles', 'age': 1,  'active': true }
+    ]
+
+    const actual = find(users, { 'age': 1, 'active': true })
+    const expected = users[2]
+    expect(actual).to.equal(expected)
+  })
+
+  it('supports matches iteratee shorthand in immutable list', function() {
+    const users = Immutable.fromJS([
+      { 'user': 'barney',  'age': 36, 'active': true },
+      { 'user': 'fred',    'age': 40, 'active': false },
+      { 'user': 'pebbles', 'age': 1,  'active': true }
+    ])
+
+    const actual = find(users, { 'age': 1, 'active': true })
+    const expected = { 'user': 'pebbles', 'age': 1,  'active': true }
+    expect(Immutable.Map.isMap(actual)).to.be.true
+    expect(actual.toJS()).to.deep.equal(expected)
+  })
+
+  it('supports matchesProperty iteratee shorthand in mutable array', function() {
+    const users = [
+      { 'user': 'barney',  'age': 36, 'active': true },
+      { 'user': 'fred',    'age': 40, 'active': false },
+      { 'user': 'pebbles', 'age': 1,  'active': true }
+    ]
+
+    const actual = find(users, ['active', false])
+    const expected = users[1]
+    expect(actual).to.equal(expected)
+  })
+
+  it('supports matchesProperty iteratee shorthand in immutable list', function() {
+    const users = Immutable.fromJS([
+      { 'user': 'barney',  'age': 36, 'active': true },
+      { 'user': 'fred',    'age': 40, 'active': false },
+      { 'user': 'pebbles', 'age': 1,  'active': true }
+    ])
+
+    const actual = find(users, ['active', false])
+    const expected = { 'user': 'fred',    'age': 40, 'active': false }
+    expect(Immutable.Map.isMap(actual)).to.be.true
+    expect(actual.toJS()).to.deep.equal(expected)
+  })
 })

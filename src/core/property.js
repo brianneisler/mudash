@@ -1,6 +1,4 @@
-import get from './get'
+import { baseProperty, basePropertyDeep, isKey, toKey } from './util'
 export default function property(path) {
-  return (data) => {
-    return get(data, path)
-  }
+  return isKey(path) ? baseProperty(toKey(path)) : basePropertyDeep(path)
 }

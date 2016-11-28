@@ -9,6 +9,8 @@
 
 * [Array and List](#array-and-list)
   + [`chunk()`](#chunk)
+* [Collection](#collection)
+  + [`find()`](#find)
 * [Lang](#lang)
   + [`isImmutable()`](#isimmutable)
   + [`toImmutable()`](#toimmutable)
@@ -27,6 +29,21 @@ chunk(
 ```
 
 Creates an array or list of elements split into groups the length of `size`. If `data` can't be split evenly, the final chunk will be the remaining elements.
+
+
+## Collection
+
+### `find()`
+
+```js
+find(
+  collection: Array | List | Map | Object,
+  ?predicate=_.identity: (value:any, key:(string | number), collection: Array | List | Map | Object) => boolean, 
+  ?fromIndex=0: number
+): any
+```
+
+Iterates over elements of collection, returning the first element predicate returns truthy for.
 
 
 ## Lang

@@ -1,11 +1,12 @@
 import _ from 'lodash'
 import getKey from './getKey'
 import getSize from './getSize'
+import hasKey from './hasKey'
 import isIndex from './isIndex'
 import isKey from './isKey'
 import toKey from './toKey'
 
-export default function baseHas(object, path, hasFunc) {
+export default function baseHas(object, path, hasFunc = hasKey) {
   path = isKey(path, object) ? [path] : _.toPath(path)
 
   let result

@@ -1,3 +1,6 @@
+const CLONE_DEEP_FLAG = 1
+const CLONE_FLAT_FLAG = 2
+const CLONE_SYMBOLS_FLAG = 4
 const COMPARE_PARTIAL_FLAG = 1
 const COMPARE_UNORDERED_FLAG = 2
 const HASH_UNDEFINED = '__lodash_hash_undefined__'
@@ -41,6 +44,9 @@ const UINT_16_TAG = '[object Uint16Array]'
 const UINT_32_TAG = '[object Uint32Array]'
 
 export {
+  CLONE_DEEP_FLAG,
+  CLONE_FLAT_FLAG,
+  CLONE_SYMBOLS_FLAG,
   COMPARE_PARTIAL_FLAG,
   COMPARE_UNORDERED_FLAG,
   HASH_UNDEFINED,

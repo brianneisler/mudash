@@ -1,8 +1,9 @@
 import _ from 'lodash'
+import getKey from './getKey'
 import isKey from './isKey'
 import toKey from './toKey'
 
-export default function baseGet(object, path, getFunc) {
+export default function baseGet(object, path, getFunc = getKey) {
   path = isKey(path, object) ? [path] : _.toPath(path)
 
   let index = 0

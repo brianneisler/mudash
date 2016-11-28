@@ -1,6 +1,4 @@
-import get from './get'
+import { basePropertyOfDeep } from './util'
 export default function propertyOf(data) {
-  return (path) => {
-    return get(data, path)
-  }
+  return basePropertyOfDeep(data)
 }

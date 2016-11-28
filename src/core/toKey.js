@@ -1,1 +1,1 @@
-export { default } from './util/toKey'
+export { toKey as default } from './util'

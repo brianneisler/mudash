@@ -1,7 +1,7 @@
 import 'babel-polyfill'
 import { expect } from 'chai'
-import { map } from '../'
 import Immutable from 'immutable'
+import { map } from '../'
 
 describe('map', function() {
 
@@ -45,5 +45,40 @@ describe('map', function() {
     const result = map(list, (val) => val * 2)
     expect(Immutable.List.isList(result)).to.be.true
     expect(result.toJS()).to.deep.equal([2, 4, 6])
+  })
+
+  it('uses the property shorthand for mutable array', function() {
+    const values = [
+      {
+        a: 1
+      },
+      {
+        a: 2
+      },
+      {
+        a: 3
+      }
+    ]
+    const expected = [1, 2, 3]
+    const actual = map(values, 'a')
+    expect(actual).to.deep.equal(expected)
+  })
+
+  it('uses the property shorthand for immutable list', function() {
+    const values = Immutable.fromJS([
+      {
+        a: 1
+      },
+      {
+        a: 2
+      },
+      {
+        a: 3
+      }
+    ])
+    const expected = [1, 2, 3]
+    const actual = map(values, 'a')
+    expect(Immutable.List.isList(actual)).to.be.true
+    expect(actual.toJS()).to.deep.equal(expected)
   })
 })

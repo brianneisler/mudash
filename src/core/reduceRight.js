@@ -3,8 +3,13 @@ import isImmutable from './isImmutable'
 import iteratee from './iteratee'
 
 export default function reduceRight(data, _iteratee, accumulator) {
+  const initAccum = arguments.length < 3
   _iteratee = iteratee(_iteratee)
-  return isImmutable(data)
-    ? data.reduceRight(_iteratee, accumulator)
-    : _.reduceRight(data, _iteratee, accumulator)
+  if (isImmutable(data)) {
+    return data.reduceRight(_iteratee, accumulator)
+  }
+  if (initAccum) {
+    return _.reduceRight(data, _iteratee)
+  }
+  return _.reduceRight(data, _iteratee, accumulator)
 }
