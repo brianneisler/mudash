@@ -9,8 +9,8 @@ const users = Immutable.fromJS([
   { 'user': 'pebbles', 'age': 1,  'active': true }
 ])
 
-const result = _.find(users, { 'age': 1, 'active': true }) //Map { 'user': 'pebbles', 'age': 1,  'active': true }
+const result = _.find(users, { 'age': 1, 'active': true })    //Map { 'user': 'pebbles', 'age': 1,  'active': true }
 console.log(result)
 
-const result2 = fp.find({ 'age': 1, 'active': true })(users)
+const result2 = fp.find({ 'age': 1, 'active': true })(users)  //Map { 'user': 'pebbles', 'age': 1,  'active': true }
 console.log(result2)
