@@ -9,6 +9,7 @@ cache:
 before_install:
 - npm install -g gulp
 script:
+- gulp
 - gulp test
 before_deploy:
 - gulp
