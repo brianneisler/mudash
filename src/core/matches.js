@@ -1,9 +1,8 @@
-import baseIsEqual from './baseIsEqual'
 import get from './get'
 import keys from './keys'
 import size from './size'
 import { COMPARE_PARTIAL_FLAG, COMPARE_UNORDERED_FLAG } from './constants'
-import { _Object } from './util'
+import { _Object, baseIsEqual } from './util'
 
 export default function matches(source) {
   const props = keys(source)

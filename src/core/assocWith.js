@@ -1,9 +1,7 @@
 import _ from 'lodash'
-import assocKey from './assocKey'
-import baseSet from './baseSet'
 import forEach from './forEach'
-import getKey from './getKey'
 import { arg2 } from './customizers'
+import { assocKey, baseSet, getKey } from './util'
 
 const customAssocKey = (customizer) => {
   return (data, key, value) => {

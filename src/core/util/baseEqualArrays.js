@@ -1,6 +1,7 @@
-import { SetCache } from './cache'
-import { COMPARE_PARTIAL_FLAG, COMPARE_UNORDERED_FLAG } from './constants'
-import { arraySome, cacheHas } from './util'
+import { SetCache } from '../cache'
+import { COMPARE_PARTIAL_FLAG, COMPARE_UNORDERED_FLAG } from '../constants'
+import arraySome from './arraySome'
+import cacheHas from './cacheHas'
 import getKey from './getKey'
 
 export default function baseEqualArrays(array, other, bitmask, customizer, equalFunc, stack) {
@@ -8,7 +9,6 @@ export default function baseEqualArrays(array, other, bitmask, customizer, equal
   const arrLength = array.length
   const othLength = other.length
 
-  console.log('baseEqualArrays - isPartial:', isPartial, ' arrLength:', arrLength, ' othLength:', othLength, ' array:', array, ' other:', other)
   if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
     return false
   }

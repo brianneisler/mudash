@@ -1,5 +1,5 @@
-import { hasOwnProperty } from './util'
 import getPrototype from './getPrototype'
+import hasOwnProperty from './hasOwnProperty'
 import isImmutable from './isImmutable'
 
 export default function hasKey(object, key) {

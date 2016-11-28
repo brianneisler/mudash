@@ -1,26 +1,29 @@
 import _ from 'lodash'
-import { Stack } from './cache'
-import { ARRAY_TAG, ARGS_TAG, COMPARE_PARTIAL_FLAG, OBJECT_TAG } from './constants'
-import { getTag, hasOwnProperty } from './util'
+import { Stack } from '../cache'
+import { ARRAY_TAG, ARGS_TAG, COMPARE_PARTIAL_FLAG, OBJECT_TAG } from '../constants'
 import baseEqualArrays from './baseEqualArrays'
 import baseEqualByTag from './baseEqualByTag'
 import baseEqualObjects from './baseEqualObjects'
+import baseKeys from './baseKeys'
+import copyObject from './copyObject'
+import getTag from './getTag'
+import hasOwnProperty from './hasOwnProperty'
 
 export default function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
-  console.log('baseIsEqualDeep - object:', object, ' other:', other)
   let objIsArr    = _.isArray(object)
   const othIsArr  = _.isArray(other)
-  let objTag      = ARRAY_TAG
-  let othTag      = ARRAY_TAG
+  let objTag      = objIsArr ? ARRAY_TAG : getTag(object)
+  let othTag      = othIsArr ? ARRAY_TAG : getTag(other)
 
-  if (!objIsArr) {
-    objTag = getTag(object)
-    objTag = objTag == ARGS_TAG ? OBJECT_TAG : objTag
+  if (objTag == ARGS_TAG) {
+    objTag = OBJECT_TAG
+    object = copyObject(object, baseKeys(object))
   }
-  if (!othIsArr) {
-    othTag = getTag(other)
-    othTag = othTag == ARGS_TAG ? OBJECT_TAG : othTag
+  if (othTag == ARGS_TAG) {
+    othTag = OBJECT_TAG
+    other = copyObject(other, baseKeys(other))
   }
+
   let objIsObj = objTag == OBJECT_TAG
   const othIsObj = othTag == OBJECT_TAG
   const isSameTag = objTag == othTag
@@ -32,7 +35,6 @@ export default function baseIsEqualDeep(object, other, bitmask, customizer, equa
     objIsArr = true
     objIsObj = false
   }
-  console.log('isSameTag:', isSameTag, ' objIsObj:', objIsObj, ' objIsArr:', objIsArr, ' _.isTypedArray(object):', _.isTypedArray(object))
   if (isSameTag && !objIsObj) {
     stack || (stack = new Stack)
     return (objIsArr || _.isTypedArray(object))
@@ -54,6 +56,6 @@ export default function baseIsEqualDeep(object, other, bitmask, customizer, equa
   if (!isSameTag) {
     return false
   }
-  stack || (stack = new Stack)
+  stack = stack || new Stack
   return baseEqualObjects(object, other, bitmask, customizer, equalFunc, stack)
 }

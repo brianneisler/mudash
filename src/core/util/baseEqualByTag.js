@@ -12,9 +12,14 @@ import {
   SET_TAG,
   STRING_TAG,
   SYMBOL_TAG
-} from './constants'
-import { eq, mapToArray, setToArray, symbolValueOf, Uint8Array } from './util'
+} from '../constants'
+import { Uint8Array } from './context'
 import baseEqualArrays from './baseEqualArrays'
+import eq from './eq'
+import mapToArray from './mapToArray'
+import setToArray from './setToArray'
+import symbolValueOf from './symbolValueOf'
+
 
 export default function baseEqualByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
   let convert

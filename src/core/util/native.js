@@ -9,7 +9,6 @@ const WeakMap = getNative(context, 'WeakMap')
 const nativeCreate = getNative(_Object, 'create')
 
 const symbolProto = Symbol ? Symbol.prototype : undefined
-const symbolValueOf = symbolProto ? symbolProto.valueOf : undefined
 const symbolToString = symbolProto ? symbolProto.toString : undefined
 
 export {
@@ -21,6 +20,5 @@ export {
 
   nativeCreate,
   symbolProto,
-  symbolValueOf,
   symbolToString
 }

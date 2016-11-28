@@ -1,3 +1,6 @@
+//TODO BRN: Finish this work then remove disabling of eslint
+/* eslint-disable */
+
 import _ from 'lodash'
 export default function setupTest() {
   /** Used as a safe reference for `undefined` in pre-ES5 environments. */
@@ -449,9 +452,10 @@ export default function setupTest() {
     return (function() { return arguments }.apply(undefined, array))
   }
 
-  // /*--------------------------------------------------------------------------*/
-  //
-  // // Add bizarro values.
+  /*--------------------------------------------------------------------------*/
+
+  // Add bizarro values.
+
   // (function() {
   //   if (document || (typeof require != 'function')) {
   //     return
@@ -565,47 +569,49 @@ export default function setupTest() {
   //   delete funcProto._method
   // }())
   //
-  // // Add other realm values from the `vm` module.
-  // _.attempt(function() {
-  //   _.assign(realm, require('vm').runInNewContext([
-  //     `(function() {
-  //       var noop = function() {},
-  //           root = this
-  //
-  //       var object = {
-  //         'ArrayBuffer': root.ArrayBuffer,
-  //         'arguments': (function() { return arguments }(1, 2, 3)),
-  //         'array': [1],
-  //         'arrayBuffer': root.ArrayBuffer ? new root.ArrayBuffer : undefined,
-  //         'boolean': Object(false),
-  //         'date': new Date,
-  //         'errors': [new Error, new EvalError, new RangeError, new ReferenceError, new SyntaxError, new TypeError, new URIError],
-  //         'function': noop,
-  //         'map': root.Map ? new root.Map : undefined,
-  //         'nan': NaN,
-  //         'null': null,
-  //         'number': Object(0),
-  //         'object': { 'a': 1 },
-  //         'promise': root.Promise ? Promise.resolve(1) : undefined,
-  //         'regexp': /x/,
-  //         'set': root.Set ? new root.Set : undefined,
-  //         'string': Object('a'),
-  //         'symbol': root.Symbol ? root.Symbol() : undefined,
-  //         'undefined': undefined,
-  //         'weakMap': root.WeakMap ? new root.WeakMap : undefined,
-  //         'weakSet': root.WeakSet ? new root.WeakSet : undefined
-  //       }
-  //
-  //       ['${arrayViews.join('\', \'')}'].forEach(function(type) {
-  //         var Ctor = root[type]
-  //         object[type] = Ctor
-  //         object[type.toLowerCase()] = Ctor ? new Ctor(new ArrayBuffer(24)) : undefined'
-  //       })
-  //
-  //       return object
-  //     }())
-  //   `].join('\n')))
-  // })
+  // Add other realm values from the `vm` module.
+  const result = _.attempt(function() {
+    _.assign(realm, require('vm').runInNewContext(`
+      (function() {
+        var noop = function() {},
+            root = this
+
+        var object = {
+          'ArrayBuffer': root.ArrayBuffer,
+          'arguments': (function() { return arguments }(1, 2, 3)),
+          'array': [1],
+          'arrayBuffer': root.ArrayBuffer ? new root.ArrayBuffer : undefined,
+          'boolean': Object(false),
+          'date': new Date,
+          'errors': [new Error, new EvalError, new RangeError, new ReferenceError, new SyntaxError, new TypeError, new URIError],
+          'function': noop,
+          'map': root.Map ? new root.Map : undefined,
+          'nan': NaN,
+          'null': null,
+          'number': Object(0),
+          'object': { 'a': 1 },
+          'promise': root.Promise ? root.Promise.resolve(1) : undefined,
+          'regexp': /x/,
+          'set': root.Set ? new root.Set : undefined,
+          'string': Object('a'),
+          'symbol': root.Symbol ? root.Symbol() : undefined,
+          'undefined': undefined,
+          'weakMap': root.WeakMap ? new root.WeakMap : undefined,
+          'weakSet': root.WeakSet ? new root.WeakSet : undefined
+        }
+        var arrayViews = ['${arrayViews.join('\', \'')}']
+
+        arrayViews.forEach(function(type) {
+          var Ctor = root[type]
+          object[type] = Ctor
+          object[type.toLowerCase()] = Ctor ? new Ctor(new ArrayBuffer(24)) : undefined
+        })
+
+        return object
+      }())
+    `))
+  })
+
   //
   // // Add other realm values from an iframe.
   // _.attempt(function() {

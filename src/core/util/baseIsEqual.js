@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import Immutable from 'immutable'
-import isImmutable from './isImmutable'
 import baseIsEqualDeep from './baseIsEqualDeep'
+import isImmutable from './isImmutable'
 
 export default function baseIsEqual(value, other, bitmask, customizer, stack) {
   if (value === other) {

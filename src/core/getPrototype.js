@@ -1,1 +1,1 @@
-export { getPrototype } from './util'
+export { getPrototype as default } from './util'

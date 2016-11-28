@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import getKey from './getKey'
+import getSize from './getSize'
 import isIndex from './isIndex'
 import isKey from './isKey'
-import size from './size'
 import toKey from './toKey'
 
 export default function baseHas(object, path, hasFunc) {
@@ -23,7 +23,7 @@ export default function baseHas(object, path, hasFunc) {
   if (result) {
     return result
   }
-  length = object ? size(object) : 0
+  length = object ? getSize(object) : 0
   return !!length && _.isLength(length) && isIndex(key, length) &&
     (_.isArray(object) || _.isString(object) || _.isArguments(object))
 }

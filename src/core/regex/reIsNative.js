@@ -1,4 +1,5 @@
-import { funcToString, hasOwnProperty, RegExp } from '../util/context'
+import { funcToString, RegExp } from '../util/context'
+import hasOwnProperty from '../util/hasOwnProperty'
 import reRegExpChar from './reRegExpChar'
 
 const reIsNative = RegExp('^' +

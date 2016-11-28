@@ -1,8 +1,4 @@
-import _ from 'lodash'
-import isImmutable from './isImmutable'
-
+import { getSize } from './util'
 export default function size(data) {
-  return isImmutable(data)
-    ? data.count()
-    : _.size(data)
+  return getSize(data)
 }

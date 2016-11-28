@@ -1,9 +1,4 @@
-import _ from 'lodash'
-import isImmutable from './isImmutable'
-
+import { baseClone } from './util'
 export default function clone(data) {
-  if (isImmutable(data)) {
-    return data
-  }
-  return _.clone(data)
+  return baseClone(data)
 }

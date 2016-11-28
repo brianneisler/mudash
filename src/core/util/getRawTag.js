@@ -1,4 +1,5 @@
-import { hasOwnProperty, nativeObjectToString, symToStringTag } from './context'
+import { nativeObjectToString, symToStringTag } from './context'
+import hasOwnProperty from './hasOwnProperty'
 
 export default function getRawTag(value) {
   const isOwn = hasOwnProperty.call(value, symToStringTag)

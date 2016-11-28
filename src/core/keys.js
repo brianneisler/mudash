@@ -1,8 +1,4 @@
-import _ from 'lodash'
-import isImmutable from './isImmutable'
-
+import { baseKeys } from './util'
 export default function keys(data) {
-  return isImmutable(data)
-    ? data.keySeq()
-    : _.keys(data)
+  return baseKeys(data)
 }

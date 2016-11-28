@@ -2,7 +2,6 @@
 import _ from 'lodash'
 import ES6Symbol from 'es6-symbol'
 import { moduleExports, root } from './free'
-import overArg from './overArg'
 
 const contextProps = [
   'Array', 'Buffer', 'DataView', 'Date', 'Error', 'Float32Array', 'Float64Array',
@@ -23,7 +22,8 @@ const {
   Object: _Object,
   RegExp,
   String,
-  TypeError
+  TypeError,
+  Uint8Array
 } = context
 
 const arrayProto  = Array.prototype
@@ -34,7 +34,6 @@ const coreJsData  = context['__core-js_shared__']
 
 const { toString: funcToString } = funcProto
 const {
-  hasOwnProperty,
   toString: nativeObjectToString
 } = objectProto
 
@@ -45,10 +44,8 @@ const maskSrcKey = (function() {
 
 const Buffer = moduleExports ? context.Buffer : undefined
 const Symbol = context.Symbol || ES6Symbol
-const { Uint8Array } = context
 
 const allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined
-const getPrototype = overArg(Object.getPrototypeOf, Object)
 const objectCreate = Object.create
 const { propertyIsEnumerable } = objectProto
 const { splice } = arrayProto
@@ -80,11 +77,9 @@ export {
   maskSrcKey,
 
   funcToString,
-  hasOwnProperty,
   nativeObjectToString,
 
   allocUnsafe,
-  getPrototype,
   objectCreate,
   propertyIsEnumerable,
   splice,
