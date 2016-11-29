@@ -5,13 +5,33 @@
 - mudash uses data type hinting to determine return type. In most cases if a method receives an immutable data type it will return the result in an immutable form and equivalent for mutable data
 - A few additional methods exist beyond what is provided by lodash. These have been documented here.
 
-## TOC
 
-* [Array and List](#array-and-list)
+## TOC
+* [Array and Immutable.List](#array-and-immutablelist)
   + [`chunk()`](#chunk)
-* [Collection](#collection)
+  + [`circularShift()`](#circularShift)
+  + [`compact()`](#compact)
+  + [`concat()`](#concat)
+  + [`dropRight()`](#dropRight)
+* [Collection and Immutable.Iterable](#collection-and-imutableiterable)
+  + [`contains()`](#contains)
+  + [`count()`](#count)
+  + [`each()`](#each)
   + [`find()`](#find)
+  + [`forEach()`](#forEach)
+  + [`includes()`](#includes)
+  + [`size()`](#count)
+  + [`walk()`](#walk)
+* [Function](#function)
+  + [`apply()`](#apply)
+  + [`call()`](#call)
+  + [`circ()`](#circ)
+  + [`compose()`](#compose)
 * [Lang](#lang)
+  + [`clone()`](#clone)
+  + [`cloneDeep()`](#cloneDeep)
+  + [`cloneDeepWith()`](#cloneDeepWith)
+  + [`cloneWith()`](#cloneWith)
   + [`isImmutable()`](#isimmutable)
   + [`isImmutableIndexedSeq()`](#isimmutableindexedseq)
   + [`isImmutableIterable()`](#isimmutableiterable)
@@ -37,9 +57,15 @@
   + [`toImmutableSetSeq()`](#toimmutablesetseq)
   + [`toImmutableStack()`](#toimmutablestack)
   + [`toMutable()`](#tomutable)
+* [Object and Immutable.Map](#object-and-immutablemap)
+  + [`assign()`](#assign)
+  + [`assoc()`](#assoc)
+  + [`assocWith()`](#assocWith)
+  + [`delete()`](#delete)
+  + [`unset()`](#unset)
 
 
-## Array and List
+## Array and Immutable.List
 
 ### `chunk()`
 
@@ -53,7 +79,7 @@ chunk(
 Creates an array or list of elements split into groups the length of `size`. If `data` can't be split evenly, the final chunk will be the remaining elements.
 
 
-## Collection
+## Collection and Immutable.Iterable
 
 ### `find()`
 
@@ -70,6 +96,19 @@ find(
 ```
 
 Iterates over elements of collection, returning the first element predicate returns truthy for.
+
+
+## Function
+
+### `compose()`
+
+```js
+compose(
+  ...functions: Array<any => any>
+): (...args:any) => any
+```
+
+Used to compose multiple functions together in to a single function
 
 
 ## Lang
@@ -229,6 +268,7 @@ isImmutableStack(
 
 Returns true if data is of type [`Immutable.Stack`][Immutable.Stack]. Otherwise false.
 
+## Object and Immutable.Map
 
 
 [Immutable.Iterable]: https://facebook.github.io/immutable-js/docs/#/Iterable
