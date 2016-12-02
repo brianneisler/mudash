@@ -1,6 +1,11 @@
-import { baseGet, getKey } from './util'
+import { baseGet } from './base'
+import { castPath } from './util'
+import getKey from './getKey'
 
-export default function get(object, path, defaultValue) {
-  const result = object == null ? undefined : baseGet(object, path, getKey)
+export default function get(data, maybePath, defaultValue) {
+  let result = undefined
+  if (data != null) {
+    result = baseGet(data, castPath(maybePath), getKey)
+  }
   return result === undefined ? defaultValue : result
 }

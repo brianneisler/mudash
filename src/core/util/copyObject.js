@@ -1,5 +1,5 @@
+import baseAssignValue from '../base/baseAssignValue'
 import assignValue from './assignValue'
-import baseAssignValue from './baseAssignValue'
 
 export default function copyObject(source, props, object, customizer) {
   const isNew = !object

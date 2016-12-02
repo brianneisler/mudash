@@ -1,1 +1,1 @@
-export default from './immutable'
+export { default } from './immutable'

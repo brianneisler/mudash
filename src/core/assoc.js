@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import forEach from './forEach'
-import { assocKey, baseSet } from './util'
+import { baseSet } from './base'
+import { assocKey } from './util'
 
 export default function assoc(data, path, value) {
   if (_.isString(path)) {

@@ -1,15 +1,16 @@
 mudash
 =============
 
-[Lodash](https://lodash.com) wrapper providing [immutable](https://facebook.github.io/immutable-js/) JS support
+[Lodash](https://lodash.com) wrapper providing [Immutable.JS](https://facebook.github.io/immutable-js/) support
 
 
 ## Benefits
-- All the benefits of lodash brought to immutable js
-- Supports both mutable and immutable values
+- All the benefits of Lodash brought to Immutable.JS
+- Supports both standard mutable values and Immutable.JS data types
 - Converts types based on data hinting
-- Supports mixed nested data types making it easier to retrieve values from mixed immutable/mutable data sources
-- supports [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide) bringing functional programming to immutable js
+- Supports mixed nested data types making it easier to process values of mixed Immutable.JS/mutable data objects
+- All Lodash methods have been rewritten to be fully immutable operations (for both mutable and Immutable.JS data types)
+- Supports [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide) bringing functional programming to Immutable.JS
 
 
 ## Build Status
@@ -17,6 +18,7 @@ mudash
 [![npm version](https://badge.fury.io/js/mudash.svg)](https://badge.fury.io/js/mudash)<br />
 [![Build Status](https://travis-ci.org/brianneisler/mudash.svg)](https://travis-ci.org/brianneisler/mudash)<br />
 [![NPM](https://nodei.co/npm/mudash.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/mudash/)
+
 
 ## Documentation
 
@@ -50,10 +52,8 @@ fp.set('c.d', 3)(obj)   // returns { "a": 1, "b": 2, "c": { "d": 3 } }
 
 ## Gotchas
 
-#### some immutable methods conflict with lodash methods
-For example, immutable's `merge` is the equivalent of lodash's `assign` and lodash's `merge` is the equivalent of immutable's `mergeDeep`. In order to reconcile this we have opted for lodash's signature over immutable's. Therefore, for this example, use `assign` for a shallow merge and `merge` for a deep merge.
+#### Some Immutable.JS methods conflict with Lodash methods (mudash chooses Lodash)
+For example, Immutable's `merge` is the equivalent of Lodash's `assign` and Lodash's `merge` is the equivalent of Immutable's `mergeDeep`. In order to reconcile this we have opted for Lodash's signature over Immutable's. Therefore, for this example, use `assign` for a shallow merge and `merge` for a deep merge.
 
-#### lodash has methods that mutate values
-In many cases lodash mutates values. In the case of immutable values that are passed to these methods in mudash the method will no longer mutate the value. If a mutable value is passed to the method it WILL continue to mutate the value.
-
-*In the future we may opt for an entirely immutable approach for both forms of data, similar to the approach for lodash-fp*
+#### Lodash has methods that mutate values (mudash does not)
+In many cases Lodash mutates values. In the case of mutable values that are passed to these methods in mudash the method will no longer mutate the value. This has resulted in a slight change to the [signature of a few methods](./docs/FAQ.md#what-functions-are-different-from-lodash).

@@ -1,1 +1,3 @@
-export { identity as default } from './util'
+export default function identity(value) {
+  return value
+}

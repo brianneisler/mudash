@@ -1,1 +1,4 @@
-export { isImmutableSeq as default } from './util'
+import { Seq } from 'immutable'
+export default function isImmutableSeq(data) {
+  return Seq.isSeq(data)
+}

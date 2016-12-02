@@ -1,4 +1,4 @@
-import { baseMatchesProperty } from './util'
+import { baseMatchesProperty } from './base'
 import cloneDeep from './cloneDeep'
 
 export default function matchesProperty(path, srcValue) {

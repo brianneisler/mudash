@@ -1,8 +1,8 @@
-import baseKeys from './baseKeys'
-import getKey from './getKey'
+import baseKeys from '../base/baseKeys'
+import getKey from '../getKey'
+import setKey from '../setKey'
 import getSize from './getSize'
 import isStrictComparable from './isStrictComparable'
-import setKey from './setKey'
 
 export default function getMatchData(object) {
   let result = baseKeys(object)

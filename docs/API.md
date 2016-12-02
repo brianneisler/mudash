@@ -1,24 +1,26 @@
 # API
 
 *NOTES*
-- These API docs are still being written. However, we have attempted to stick to the lodash signature as much as possible. So, in most cases, the [lodash documentation](https://lodash.com/docs) is a good point of reference.
-- mudash uses data type hinting to determine return type. In most cases if a method receives an immutable data type it will return the result in an immutable form and equivalent for mutable data
-- A few additional methods exist beyond what is provided by lodash. These have been documented here.
-
+* These API docs are still being written. However, we have attempted to stick to the lodash signature as much as possible. So, in most cases, the [lodash documentation](https://lodash.com/docs) is a good point of reference.
+* All Mudash methods are immutable. The [signatures of a few methods](./FAQ.md#what-functions-are-different-from-lodash) are different from Lodash.
+* Mudash uses data type hinting to determine return type. In most cases if a method receives an Immutable data type it will return the result in an Immutable form and equivalent for mutable data.
+* A few additional methods exist beyond what is provided by Lodash. These have been documented here.
 
 ## TOC
 * [Array and Immutable.List](#array-and-immutablelist)
   + [`chunk()`](#chunk)
-  + [`circularShift()`](#circularShift)
+  + [`circularShift()`](#circularshift)
   + [`compact()`](#compact)
   + [`concat()`](#concat)
-  + [`dropRight()`](#dropRight)
-* [Collection and Immutable.Iterable](#collection-and-imutableiterable)
+  + [`dropRight()`](#dropright)
+  + [`pull()`](#pull)
+  + [`pullAll()`](#pullall)
+* [Collection and Immutable.Iterable](#collection-and-immutableiterable)
   + [`contains()`](#contains)
   + [`count()`](#count)
   + [`each()`](#each)
   + [`find()`](#find)
-  + [`forEach()`](#forEach)
+  + [`forEach()`](#foreach)
   + [`includes()`](#includes)
   + [`size()`](#count)
   + [`walk()`](#walk)
@@ -29,9 +31,9 @@
   + [`compose()`](#compose)
 * [Lang](#lang)
   + [`clone()`](#clone)
-  + [`cloneDeep()`](#cloneDeep)
-  + [`cloneDeepWith()`](#cloneDeepWith)
-  + [`cloneWith()`](#cloneWith)
+  + [`cloneDeep()`](#clonedeep)
+  + [`cloneDeepWith()`](#clonedeepwith)
+  + [`cloneWith()`](#clonewith)
   + [`isImmutable()`](#isimmutable)
   + [`isImmutableIndexedSeq()`](#isimmutableindexedseq)
   + [`isImmutableIterable()`](#isimmutableiterable)
@@ -60,7 +62,7 @@
 * [Object and Immutable.Map](#object-and-immutablemap)
   + [`assign()`](#assign)
   + [`assoc()`](#assoc)
-  + [`assocWith()`](#assocWith)
+  + [`assocWith()`](#assocwith)
   + [`delete()`](#delete)
   + [`unset()`](#unset)
 

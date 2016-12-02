@@ -1,8 +1,8 @@
-import baseClone from './baseClone'
-import baseIsEqual from './baseIsEqual'
-import getKey from './getKey'
-import hasKey from './hasKey'
-import isImmutable from './isImmutable'
+import baseClone from '../base/baseClone'
+import baseIsEqual from '../base/baseIsEqual'
+import getKey from '../getKey'
+import hasKey from '../hasKey'
+import isImmutable from '../isImmutable'
 
 export default function assocKey(data, key, value) {
   const dataValue = getKey(data, key)

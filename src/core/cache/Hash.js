@@ -1,5 +1,6 @@
 import { HASH_UNDEFINED } from '../constants'
-import { hasOwnProperty, nativeCreate } from '../util'
+import { contextHasOwnProperty } from '../context'
+import { nativeCreate } from '../native'
 
 export default class Hash {
   constructor(entries) {
@@ -30,12 +31,12 @@ export default class Hash {
       const result = data[key]
       return result === HASH_UNDEFINED ? undefined : result
     }
-    return hasOwnProperty.call(data, key) ? data[key] : undefined
+    return contextHasOwnProperty.call(data, key) ? data[key] : undefined
   }
 
   has(key) {
     const data = this.__data__
-    return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key)
+    return nativeCreate ? data[key] !== undefined : contextHasOwnProperty.call(data, key)
   }
 
   set(key, value) {

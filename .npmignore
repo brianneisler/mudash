@@ -6,6 +6,8 @@
 .travis.yml
 __tests__
 config
+docs
+examples
 gulpfile.*
 src
 

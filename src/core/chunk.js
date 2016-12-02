@@ -1,9 +1,9 @@
 import _ from 'lodash'
+import { hintConvert } from './hints'
 import isIterateeCall from './isIterateeCall'
 import push from './push'
 import slice from './slice'
 import size from './size'
-import { hintConvert } from './hints'
 
 export default function chunk(data, _size, guard) {
   if ((guard ? isIterateeCall(data, _size, guard) : size === undefined)) {

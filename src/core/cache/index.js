@@ -1,3 +1,4 @@
+export { default as cacheHas } from './cacheHas'
 export { default as Hash } from './Hash'
 export { default as ListCache } from './ListCache'
 export { default as MapCache } from './MapCache'

@@ -1,11 +1,10 @@
 import _ from 'lodash'
 import each from './each'
 import get from './get'
+import hasKey from './hasKey'
 import isEqualWith from './isEqualWith'
 import keys from './keys'
 import size from './size'
-import { hasKey } from './util'
-// const fetchKeys = require('lodash.keys');
 
 export default function isShallowEqual(value, other) {
   return isEqualWith(value, other, shallowEqual)

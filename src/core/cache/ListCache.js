@@ -1,4 +1,5 @@
-import { assocIndexOf, splice } from '../util'
+import { contextSplice } from '../context'
+import assocIndexOf from '../util/assocIndexOf'
 
 export default class ListCache {
 
@@ -29,7 +30,7 @@ export default class ListCache {
     if (index == lastIndex) {
       data.pop()
     } else {
-      splice.call(data, index, 1)
+      contextSplice.call(data, index, 1)
     }
     --this.size
     return true

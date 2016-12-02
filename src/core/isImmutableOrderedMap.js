@@ -1,1 +1,4 @@
-export { isImmutableOrderedMap as default } from './util'
+import { OrderedMap } from 'immutable'
+export default function isImmutableOrderedMap(data) {
+  return OrderedMap.isOrderedMap(data)
+}

@@ -1,7 +1,7 @@
 import _ from 'lodash'
-import { _Object, propertyIsEnumerable } from './context'
-import arrayFilter from './arrayFilter'
-import nativeGetSymbols from './nativeGetSymbols'
+import { _Object, contextPropertyIsEnumerable } from '../context'
+import arrayFilter from '../array/arrayFilter'
+import nativeGetSymbols from '../native/nativeGetSymbols'
 
 const getSymbols = !nativeGetSymbols ? _.stubArray : (object) => {
   if (object == null) {
@@ -9,7 +9,7 @@ const getSymbols = !nativeGetSymbols ? _.stubArray : (object) => {
   }
   object = _Object(object)
   return arrayFilter(nativeGetSymbols(object), (symbol) =>
-    propertyIsEnumerable.call(object, symbol)
+    contextPropertyIsEnumerable.call(object, symbol)
   )
 }
 export default getSymbols

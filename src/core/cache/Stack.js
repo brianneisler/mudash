@@ -1,5 +1,5 @@
 import { LARGE_ARRAY_SIZE } from '../constants'
-import { Map } from '../util'
+import { Map } from '../native'
 import ListCache from './ListCache'
 import MapCache from './MapCache'
 

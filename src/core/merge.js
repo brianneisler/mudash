@@ -1,6 +1,6 @@
 import _ from 'lodash'
-import isImmutable from './isImmutable'
 import { mapImmutable, mapMutable } from './helpers'
+import isImmutable from './isImmutable'
 
 export default function merge(data, ...args) {
   return isImmutable(data)

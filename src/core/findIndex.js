@@ -1,16 +1,23 @@
-import each from './each'
-import iteratee from './iteratee'
-import slice from './slice'
+import _ from 'lodash'
+import { baseFindIndex } from './base'
+import { nativeMax } from './native'
+import { getIteratee, getSize } from './util'
+import isIndexed from './isIndexed'
+import isOrdered from './isOrdered'
+import toIndexed from './toIndexed'
 
-export default function findIndex(data, predicate, fromIndex = 0) {
-  predicate = iteratee(predicate)
-  let foundIndex = undefined
-  each(slice(data, fromIndex), (value, index) => {
-    const result = predicate(value)
-    if (result) {
-      foundIndex = index
-      return false
+export default function findIndex(data, predicate, fromIndex) {
+  let indexed = data
+  if (!isIndexed(data)) {
+    if (!isOrdered(data)) {
+      return -1
     }
-  })
-  return foundIndex
+    indexed = toIndexed(data)
+  }
+  const length = getSize(data)
+  let index = fromIndex == null ? 0 : _.toInteger(fromIndex)
+  if (index < 0) {
+    index = nativeMax(length + index, 0)
+  }
+  return baseFindIndex(indexed, getIteratee(predicate), index)
 }

@@ -2,7 +2,7 @@
   "name": "mudash",
   "version": "0.2.1",
   "main": "./index.js",
-  "description": "Lodash wrapper providing immutable JS support",
+  "description": "Lodash wrapper providing Immutable.JS support",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brianneisler/mudash.git"

@@ -1,4 +1,4 @@
-import baseIsNative from './baseIsNative'
+import baseIsNative from '../base/baseIsNative'
 import getValue from './getValue'
 
 export default function getNative(object, key) {

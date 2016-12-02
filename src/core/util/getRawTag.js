@@ -1,21 +1,21 @@
-import { nativeObjectToString, symToStringTag } from './context'
-import hasOwnProperty from './hasOwnProperty'
+import { contextHasOwnProperty, contextSymbolToStringTag } from '../context'
+import nativeObjectToString from '../native/nativeObjectToString'
 
 export default function getRawTag(value) {
-  const isOwn = hasOwnProperty.call(value, symToStringTag)
-  const tag = value[symToStringTag]
+  const isOwn = contextHasOwnProperty.call(value, contextSymbolToStringTag)
+  const tag = value[contextSymbolToStringTag]
   let unmasked
   try {
-    value[symToStringTag] = undefined
+    value[contextSymbolToStringTag] = undefined
     unmasked = true
   } catch (error) {}  // eslint-disable-line no-empty
 
   const result = nativeObjectToString.call(value)
   if (unmasked) {
     if (isOwn) {
-      value[symToStringTag] = tag
+      value[contextSymbolToStringTag] = tag
     } else {
-      delete value[symToStringTag]
+      delete value[contextSymbolToStringTag]
     }
   }
   return result

@@ -1,4 +1,4 @@
-import isKeyable from './isKeyable'
+import isKeyable from '../isKeyable'
 export default function getMapData(map, key) {
   const data = map.__data__
   return isKeyable(key)

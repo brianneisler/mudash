@@ -1,1 +1,4 @@
-export { isImmutableSet as default } from './util'
+import { Set } from 'immutable'
+export default function isImmutableSet(data) {
+  return Set.isSet(data)
+}

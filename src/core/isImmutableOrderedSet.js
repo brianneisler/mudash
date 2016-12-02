@@ -1,1 +1,4 @@
-export { isImmutableOrderedSet as default } from './util'
+import { OrderedSet } from 'immutable'
+export default function isImmutableOrderedSet(data) {
+  return OrderedSet.isOrderedSet(data)
+}

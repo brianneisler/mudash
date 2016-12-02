@@ -1,4 +1,5 @@
-import { getMapData, Map } from '../util'
+import { Map } from '../native'
+import getMapData from '../util/getMapData'
 import Hash from './Hash'
 import ListCache from './ListCache'
 

@@ -1,1 +1,4 @@
-export { isImmutableKeyedSeq as default } from './util'
+import { Seq } from 'immutable'
+export default function isImmutableKeyedSeq(data) {
+  return data instanceof Seq.Keyed
+}
