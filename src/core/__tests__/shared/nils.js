@@ -1,3 +1,7 @@
-export default function nils({ Object: _Object }) {
-  return [ NaN, null, undefined, _Object(NaN)]
+export function nils() {
+  return [ NaN, null, undefined]
+}
+
+export function nilObjects({ Object: _Object }) {
+  return [ _Object(NaN)]
 }

@@ -1,3 +1,7 @@
-export default function strings({ Object: _Object }) {
-  return ['', 'a', 'abc', _Object(''), _Object('a'), _Object('abc')]
+export function strings() {
+  return ['', 'a', 'abc' ]
+}
+
+export function stringObjects({ Object: _Object }) {
+  return [_Object(''), _Object('a'), _Object('abc')]
 }

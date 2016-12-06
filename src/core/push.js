@@ -10,5 +10,5 @@ export default function push(data, ...values) {
   if (isImmutable(data)) {
     return data.push(...values)
   }
-  return concat(data, [...values])
+  return concat(data, values)
 }

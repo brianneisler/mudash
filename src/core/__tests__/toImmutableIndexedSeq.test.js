@@ -10,7 +10,7 @@ describe('toImmutableIndexedSeq', function() {
   const testContext = setupTest()
 
   it('should return empty Immutable.Seq.Indexed for primitives', function() {
-    const values = primitives(testContext, ['booleans', 'nils', 'numbers', 'symbols'])
+    const values = primitives(testContext, ['booleans', 'booleanObjects', 'nils', 'nilObjects', 'numbers', 'numberObjects', 'symbols'])
     _.each(values, (value) => {
       expect(Immutable.is(toImmutableIndexedSeq(value), Immutable.Seq.Indexed())).to.be.true
     })

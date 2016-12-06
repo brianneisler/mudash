@@ -1,1 +1,6 @@
+export { default as clone } from './clone'
+export { default as expectExactEqual } from './expectExactEqual'
+export { default as expectImmutableChange } from './expectImmutableChange'
+export { default as getType } from './getType'
+export { default as isImmutable } from './isImmutable'
 export { default as setupTest } from './setupTest'

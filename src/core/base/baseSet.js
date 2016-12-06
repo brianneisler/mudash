@@ -9,10 +9,10 @@ import toKey from '../toKey'
 export default function baseSet(data, path, value, setFunc, options = {}) {
   path = castPath(path)
   const index = 0
-  return composeRecurPathSet(path, setFunc, options)(data, index, value)
+  return withRecurPathSet(path, setFunc, options)(data, index, value)
 }
 
-function composeRecurPathSet(path, setFunc, { customizer }) {
+function withRecurPathSet(path, setFunc, { customizer }) {
   const length = path.length
   const lastIndex = length - 1
 
@@ -28,9 +28,9 @@ function composeRecurPathSet(path, setFunc, { customizer }) {
       const custom = isIndex(path[index + 1]) ? [] : {}
       newValue = customizer ? customizer(objValue, key, data) : undefined
       if (newValue === undefined) {
-        newValue = objValue == null
-          ? (isImmutable(data) ? toImmutable(custom) : custom)
-          : objValue
+        newValue = _.isObject(objValue)
+          ? objValue
+          : (isImmutable(data) ? toImmutable(custom) : custom)
       }
       newValue = recurSet(newValue, ++index, value)
     }

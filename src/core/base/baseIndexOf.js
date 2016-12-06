@@ -1,8 +1,6 @@
+import withEqValue from '../with/withEqValue'
+import baseFindIndex from './baseFindIndex'
 
-//TODO BRN :Finish this..
-
-// function baseIndexOf(array, value, fromIndex) {
-//   return value === value
-//     ? strictIndexOf(array, value, fromIndex)
-//     : baseFindIndex(array, baseIsNaN, fromIndex)
-// }
+export default function baseIndexOf(data, value, fromIndex) {
+  return baseFindIndex(data, withEqValue(value), fromIndex)
+}

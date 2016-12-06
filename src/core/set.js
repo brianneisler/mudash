@@ -1,6 +1,6 @@
 import { baseSet } from './base'
-import setKey from './setKey'
+import { assocKey } from './util'
 
-export default function set(object, path, value) {
-  return object == null ? object : baseSet(object, path, value, setKey)
+export default function set(data, path, value) {
+  return data == null ? data : baseSet(data, path, value, assocKey)
 }

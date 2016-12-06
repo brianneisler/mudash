@@ -1,14 +1,6 @@
-import getKey from '../getKey'
-import getSize from '../util/getSize'
+import withComparatorValue from '../with/withComparatorValue'
+import baseFindIndex from './baseFindIndex'
 
-export default function baseIndexOfWith(array, value, fromIndex, comparator) {
-  let index = fromIndex - 1
-  const length = getSize(array)
-  //const eqValue =
-  while (++index < length) {
-    if (comparator(getKey(array, index), value)) {
-      return index
-    }
-  }
-  return -1
+export default function baseIndexOfWith(data, value, fromIndex, comparator) {
+  return baseFindIndex(data, withComparatorValue(comparator, value), fromIndex)
 }

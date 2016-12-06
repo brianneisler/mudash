@@ -1,3 +1,7 @@
-export default function booleans({ Object: _Object }) {
-  return [ true, false, _Object(true), _Object(false) ]
+export function booleans() {
+  return [ true, false ]
+}
+
+export function booleanObjects({ Object: _Object }) {
+  return [ _Object(true), _Object(false) ]
 }
