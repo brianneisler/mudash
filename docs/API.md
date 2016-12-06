@@ -7,8 +7,8 @@
 * A few additional methods exist beyond what is provided by Lodash. These have been documented here.
 
 *Legend*
-*&ast;TODO* - Immutable.JS support still needs to be implemented
-*&ast;Lo* - No changes from Lodash method
+* *&ast;TODO* - Immutable.JS support still needs to be implemented
+* *&ast;Lo* - No changes from Lodash method
 
 ## TOC
 * [Array and Immutable.List](#array-and-immutablelist)

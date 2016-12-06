@@ -1,8 +1,8 @@
 * [Full API documentation](./API.md) - Learn about each method
 
 *Legend*
-*&ast;TODO* - Immutable.JS support still needs to be implemented
-*&ast;Lo* - No changes from Lodash method
+* *&ast;TODO* - Immutable.JS support still needs to be implemented
+* *&ast;Lo* - No changes from Lodash method
 
 ## TOC
 * [Array and Immutable.List](./API.md#array-and-immutablelist)
