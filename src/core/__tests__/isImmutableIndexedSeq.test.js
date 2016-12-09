@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import { expect } from 'chai'
 import _ from 'lodash'
 import { isImmutableIndexedSeq } from '../'
-import { immutables, primitives } from './shared'
+import { immutables, primitives } from './values'
 import { setupTest } from './util'
 
 describe('isImmutableIndexedSeq', function() {

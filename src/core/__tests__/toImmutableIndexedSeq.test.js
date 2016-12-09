@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import Immutable from 'immutable'
 import _ from 'lodash'
 import { toImmutableIndexedSeq } from '../'
-import { primitives } from './shared'
+import { primitives } from './values'
 import { setupTest } from './util'
 
 describe('toImmutableIndexedSeq', function() {

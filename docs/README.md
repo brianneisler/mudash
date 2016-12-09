@@ -25,7 +25,6 @@
   + [`flattenDeep()`](./API.md#flattendeep) *&ast;TODO*
   + [`flattenDepth()`](./API.md#flattendepth) *&ast;TODO*
   + [`fromPairs()`](./API.md#frompairs) *&ast;TODO*
-  + [`fill()`](./API.md#fill) *&ast;TODO*
   + [`head()`](./API.md#head)
   + [`indexOf()`](./API.md#indexof)
   + [`initial()`](./API.md#initial) *&ast;TODO*
@@ -66,9 +65,9 @@
   + [`union()`](./API.md#union) *&ast;TODO*
   + [`unionBy()`](./API.md#unionby) *&ast;TODO*
   + [`unionWith()`](./API.md#unionwith) *&ast;TODO*
-  + [`uniq()`](./API.md#uniq) *&ast;TODO*
-  + [`uniqBy()`](./API.md#uniqby) *&ast;TODO*
-  + [`uniqWith()`](./API.md#uniqwith) *&ast;TODO*
+  + [`uniq()`](./API.md#uniq)
+  + [`uniqBy()`](./API.md#uniqby)
+  + [`uniqWith()`](./API.md#uniqwith)
   + [`unzip()`](./API.md#unzip) *&ast;TODO*
   + [`unzipWith()`](./API.md#unzipwith) *&ast;TODO*
   + [`without()`](./API.md#without) *&ast;TODO*
@@ -98,6 +97,7 @@
   + [`forEachRight()`](./API.md#foreachright) *&ast;TODO*
   + [`groupBy()`](./API.md#groupBy)
   + [`includes()`](./API.md#includes)
+  + [`includesWith()`](./API.md#includeswith)
   + [`invokeMap()`](./API.md#invokemap) *&ast;TODO*
   + [`keyBy()`](./API.md#keyby) *&ast;TODO*
   + [`map()`](./API.md#map)

@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import _ from 'lodash'
 import { slice } from '../'
 import Immutable from 'immutable'
-import { clone, expectExactEqual, getType } from './util'
+import { clone, expectAllExactEqual, getType } from './util'
 
 describe('slice', function() {
   const inputs = [
@@ -36,13 +36,13 @@ describe('slice', function() {
 function testSliceDefaultParamsReturnsExisting(data, expected) {
   it(`default params returns existing ${getType(expected)}`, function() {
     const result = slice(data)
-    expectExactEqual(data, result, expected)
+    expectAllExactEqual(data, result, expected)
   })
 }
 
 function testSliceStartingAt0ReturnsExisting(data, expected) {
   it(`starting at 0 returns existing ${getType(expected)}`, function() {
     const result = slice(data, 0)
-    expectExactEqual(data, result, expected)
+    expectAllExactEqual(data, result, expected)
   })
 }

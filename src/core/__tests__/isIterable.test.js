@@ -3,7 +3,7 @@ import _ from 'lodash'
 import { expect } from 'chai'
 import { isIterable } from '../'
 import Immutable from 'immutable'
-import { primitives } from './shared'
+import { primitives } from './values'
 import {  getType, setupTest } from './util'
 
 describe('isIterable:', function() {

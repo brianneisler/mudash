@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import { expect } from 'chai'
 import _ from 'lodash'
 import { isImmutableOrderedSet } from '../'
-import { primitives } from './shared'
+import { primitives } from './values'
 import { setupTest } from './util'
 
 describe('isImmutableOrderedSet', function() {

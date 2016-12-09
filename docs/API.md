@@ -1,9 +1,9 @@
 # API
 
 *NOTES*
-* These API docs are still being written. However, we have attempted to stick to the lodash signature as much as possible. So, in most cases, the [lodash documentation](https://lodash.com/docs) is a good point of reference.
-* All Mudash methods are immutable. The [signatures of a few methods](./FAQ.md#what-functions-are-different-from-lodash) are different from Lodash.
-* Mudash uses data type hinting to determine return type. In most cases if a method receives an Immutable data type it will return the result in an Immutable form and equivalent for mutable data.
+* These API docs are still being written. However, we have attempted to stick to the Lodash signature as much as possible. So, in most cases, the [lodash documentation](https://lodash.com/docs) is a good point of reference.
+* All mudash methods are immutable. The [signatures of a few methods](./FAQ.md#what-functions-are-different-from-lodash) are different from Lodash.
+* mudash uses data type hinting to determine return type. In most cases if a method receives an Immutable data type it will return the result in an Immutable form and equivalent for mutable data.
 * A few additional methods exist beyond what is provided by Lodash. These have been documented here.
 
 *Legend*
@@ -31,7 +31,6 @@
   + [`flattenDeep()`](#flattendeep) *&ast;TODO*
   + [`flattenDepth()`](#flattendepth) *&ast;TODO*
   + [`fromPairs()`](#frompairs) *&ast;TODO*
-  + [`fill()`](#fill) *&ast;TODO*
   + [`head()`](#head)
   + [`indexOf()`](#indexof)
   + [`initial()`](#initial) *&ast;TODO*
@@ -72,9 +71,9 @@
   + [`union()`](#union) *&ast;TODO*
   + [`unionBy()`](#unionby) *&ast;TODO*
   + [`unionWith()`](#unionwith) *&ast;TODO*
-  + [`uniq()`](#uniq) *&ast;TODO*
-  + [`uniqBy()`](#uniqby) *&ast;TODO*
-  + [`uniqWith()`](#uniqwith) *&ast;TODO*
+  + [`uniq()`](#uniq)
+  + [`uniqBy()`](#uniqby)
+  + [`uniqWith()`](#uniqwith)
   + [`unzip()`](#unzip) *&ast;TODO*
   + [`unzipWith()`](#unzipwith) *&ast;TODO*
   + [`without()`](#without) *&ast;TODO*
@@ -104,6 +103,7 @@
   + [`forEachRight()`](#foreachright) *&ast;TODO*
   + [`groupBy()`](#groupBy)
   + [`includes()`](#includes)
+  + [`includesWith()`](#includeswith)
   + [`invokeMap()`](#invokemap) *&ast;TODO*
   + [`keyBy()`](#keyby) *&ast;TODO*
   + [`map()`](#map)
@@ -461,7 +461,7 @@ Creates an array or list of elements split into groups the length of `size`. If 
 
 ```js
 find(
-  collection: Array | Immutable.Iterable | Object,
+  data: Array | Immutable.Iterable | Object,
   ?predicate=_.identity: (
     value: any,
     key: string | number,
@@ -472,6 +472,36 @@ find(
 ```
 
 Iterates over elements of collection, returning the first element predicate returns truthy for.
+
+
+### `includes()`
+
+```js
+includes(
+  data: Array | Immutable.Iterable | Object | String,
+  value: any,
+  ?fromIndex=0: number
+): boolean
+```
+
+Checks if `value` is in `data`. If `data` is a string, it's checked for a substring of value, otherwise SameValueZeroOrImmutableEqual is used for equality comparisons. If fromIndex is negative, it's used as the offset from the end of collection.
+
+
+### `includesWith()`
+
+```js
+includes(
+  data: Array | Immutable.Iterable | Object | String,
+  value: any,
+  comparator: (
+    dataValue: any,
+    value: any
+  ) => boolean,
+  ?fromIndex=0: number
+): boolean
+```
+
+This method is like [`includes`](#includes) except that it accepts comparator which is invoked to compare elements of the data to the value.
 
 
 ### `slice()`

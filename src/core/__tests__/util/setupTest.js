@@ -2,6 +2,8 @@
 /* eslint-disable */
 
 import _ from 'lodash'
+import toArgs from './toArgs'
+
 export default function setupTest() {
   /** Used as a safe reference for `undefined` in pre-ES5 environments. */
   let undefined
@@ -72,7 +74,10 @@ export default function setupTest() {
   const {
     ArrayBuffer,
     Buffer,
+    Infinity,
     Map,
+    Math,
+    NaN,
     Promise,
     Proxy,
     Set,
@@ -448,10 +453,6 @@ export default function setupTest() {
     return object
   }
 
-  function toArgs(array) {
-    return (function() { return arguments }.apply(undefined, array))
-  }
-
   /*--------------------------------------------------------------------------*/
 
   // Add bizarro values.
@@ -707,7 +708,9 @@ export default function setupTest() {
     MAX_MEMOIZE_SIZE,
     MAX_SAFE_INTEGER,
     Array,
+    Infinity,
     Map,
+    NaN,
     Object,
     Proxy,
     Set,
@@ -727,6 +730,7 @@ export default function setupTest() {
     emojiVar,
     empties,
     errors,
+    falsey,
     fitzModifiers,
     freeze,
     funcTag,

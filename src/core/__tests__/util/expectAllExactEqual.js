@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import getType from './getType'
 import isImmutable from './isImmutable'
 
-export default function expectExactEqual(data, result, expected) {
+export default function expectAllExactEqual(data, result, expected) {
   expect(result).to.equal(data)
   expect(getType(data)).to.equal(getType(expected))
   expect(getType(result)).to.equal(getType(expected))

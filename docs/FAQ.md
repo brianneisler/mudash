@@ -1,8 +1,8 @@
-#Mudash FAQ
+#mudash FAQ
 
 ## What functions are different from Lodash?
 * [`fill()`](https://lodash.com/docs/4.17.2#fill) - array is no longer mutated, instead a new array is returned
-* [`pull()`](https://lodash.com/docs/4.17.2#pull) - since `_.without` exists which, this method has been modified to remove the first value encountered from the left. Returns a new array.
+* [`pull()`](https://lodash.com/docs/4.17.2#pull) - since `_.without` exists which, this method has been modified to remove the FIRST value encountered from the left. Returns a new array.
 * [`pullAll()`](https://lodash.com/docs/4.17.2#pullAll) -
 * [`pullAllBy()`](https://lodash.com/docs/4.17.2#pullAllBy)
 * [`pullAllWith()`](https://lodash.com/docs/4.17.2#pullAllWith)

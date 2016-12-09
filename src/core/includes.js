@@ -1,11 +1,9 @@
 import _ from 'lodash'
-import isImmutable from './isImmutable'
-import slice from './slice'
+import { baseIncludes } from './base'
+import toIndexed from './toIndexed'
 
 export default function includes(data, value, fromIndex) {
-  const part = slice(data, fromIndex)
-  if (isImmutable(part)) {
-    return part.includes(value)
-  }
-  return _.includes(part, value)
+  const indexed = toIndexed(data)
+  fromIndex = fromIndex ? _.toInteger(fromIndex) : 0
+  return baseIncludes(indexed, value, fromIndex)
 }

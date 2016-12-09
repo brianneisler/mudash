@@ -56,4 +56,4 @@ fp.set('c.d', 3)(obj)   // returns { "a": 1, "b": 2, "c": { "d": 3 } }
 For example, Immutable's `merge` is the equivalent of Lodash's `assign` and Lodash's `merge` is the equivalent of Immutable's `mergeDeep`. In order to reconcile this we have opted for Lodash's signature over Immutable's. Therefore, for this example, use `assign` for a shallow merge and `merge` for a deep merge.
 
 #### Lodash has methods that mutate values (mudash does not)
-In many cases Lodash mutates values. In the case of mutable values that are passed to these methods in mudash the method will no longer mutate the value. This has resulted in a slight change to the [signature of a few methods](./docs/FAQ.md#what-functions-are-different-from-lodash).
+In a few cases Lodash mutates values. In the case of mutable values that are passed to these methods in mudash the method will no longer mutate the value. This has resulted in a slight change to the [signature of a few methods](./docs/FAQ.md#what-functions-are-different-from-lodash).

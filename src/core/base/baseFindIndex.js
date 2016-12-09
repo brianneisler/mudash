@@ -2,6 +2,12 @@ import getSize from '../util/getSize'
 import getKey from '../getKey'
 export default function baseFindIndex(indexed, predicate, fromIndex, fromRight = false) {
   const length = getSize(indexed)
+  if (!length) {
+    return -1
+  }
+  if (fromIndex > length) {
+    fromIndex = length - 1
+  }
   let index = fromIndex + (fromRight ? 1 : -1)
 
   while ((fromRight ? index-- : ++index < length)) {
