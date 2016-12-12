@@ -110,6 +110,8 @@
   + [`orderBy()`](#orderby) *&ast;TODO*
   + [`partition()`](#partition) *&ast;TODO*
   + [`reduce()`](#reduce)
+  + [`reduceReducers()`](#reduceReducers)
+  + [`reduceReducersRight()`](#reduceReducersRight)
   + [`reduceRight()`](#reduceright)
   + [`reject()`](#reject)
   + [`sample()`](#sample) *&ast;TODO*

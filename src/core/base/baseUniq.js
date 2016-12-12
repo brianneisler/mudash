@@ -1,11 +1,11 @@
 import Immutable from 'immutable'
 import cacheHas from '../cache/cacheHas'
-import hintConvert from '../hints/hintConvert'
 import getSize from '../util/getSize'
 import withMutations from '../with/withMutations'
 import baseIncludes from './baseIncludes'
 import baseIncludesWith from './baseIncludesWith'
 import getKey from '../getKey'
+import hintConvert from '../hintConvert'
 
 //TODO BRN: This method should try to preserve the original immutable type. Right now it just returns a List
 export default function baseUniq(indexed, iteratee, comparator) {

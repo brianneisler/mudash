@@ -104,6 +104,8 @@
   + [`orderBy()`](./API.md#orderby) *&ast;TODO*
   + [`partition()`](./API.md#partition) *&ast;TODO*
   + [`reduce()`](./API.md#reduce)
+  + [`reduceReducers()`](./API.md#reduceReducers)
+  + [`reduceReducersRight()`](./API.md#reduceReducersRight)
   + [`reduceRight()`](./API.md#reduceright)
   + [`reject()`](./API.md#reject)
   + [`sample()`](./API.md#sample) *&ast;TODO*

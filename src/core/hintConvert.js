@@ -1,6 +1,6 @@
-import hintIm from './hintIm'
-import immutable from '../immutable'
-import mutable from '../mutable'
+import { hintIm } from './hints'
+import immutable from './immutable'
+import mutable from './mutable'
 
 export default function hintConvert(data, value) {
   return hintIm(

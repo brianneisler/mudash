@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { hintConvert } from './hints'
+import hintConvert from './hintConvert'
 import isIterateeCall from './isIterateeCall'
 import push from './push'
 import slice from './slice'
