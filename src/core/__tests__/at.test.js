@@ -1,177 +1,356 @@
 import 'babel-polyfill'
 import _ from 'lodash'
 import { at } from '../'
-import { clone, expectEqual, expectImmutableChange, hintConvert, setupTest } from './util'
-import { indexed } from './types'
+import { clone, expectEqual, expectImmutableChange, getType, hintConvert, setupTest, toArgs } from './util'
+import { indexed, keyed } from './types'
 
 
-describe('at', function() {
+describe('at:', function() {
   const context = setupTest()
-  const { empties, stubOne } = context
+  const { empties, falsey, stubOne } = context
 
-  const tests = {
-    'should return the elements corresponding to the specified keys from indexed data': {
-      inputs: {
-        data: {
-          value: ['a', 'b', 'c'],
-          types: indexed()
-        },
-        paths: {
-          value: [0, 2],
-          types: indexed()
-        }
-      },
-      expected: ['a', 'c']
-    },
-    'should return `undefined` for nonexistent keys from indexed data': {
-      inputs: {
-        data: {
-          value: ['a', 'b', 'c'],
-          types: indexed()
-        },
-        paths: {
-          value: [2, 4, 0],
-          types: indexed()
-        }
-      },
-      expected: ['c', undefined, 'a']
-    },
-    'should work with non-index keys on array values': () => {
-      const paths = _.reject(empties, (value) => {
-        return (value === 0) || _.isArray(value)
-      }).concat(-1, 1.1)
-
-      const data = _.transform(paths, (result, value) => {
-        result[value] = 1
-      }, [])
-
-      return {
+  describe('basic tests', function() {
+    const tests = {
+      'should return the elements corresponding to the specified keys from indexed data': {
         inputs: {
           data: {
-            value: data
+            value: ['a', 'b', 'c'],
+            types: indexed()
           },
           paths: {
-            value: paths, // [ {}, undefined, false, NaN, '', -1, 1.1 ]
+            value: [0, 2],
             types: indexed()
           }
         },
-        expected: _.map(paths, stubOne)
+        expected: ['a', 'c']
+      },
+      'should return `undefined` for nonexistent keys from indexed data': {
+        inputs: {
+          data: {
+            value: ['a', 'b', 'c'],
+            types: indexed()
+          },
+          paths: {
+            value: [2, 4, 0],
+            types: indexed()
+          }
+        },
+        expected: ['c', undefined, 'a']
+      },
+      'should work with non-index keys on array values': () => {
+        const paths = _.reject(empties, (value) => {
+          return (value === 0) || _.isArray(value)
+        }).concat(-1, 1.1)
+
+        const data = _.transform(paths, (result, value) => {
+          result[value] = 1
+        }, [])
+
+        return {
+          inputs: {
+            data: {
+              value: data
+            },
+            paths: {
+              value: paths, // [ {}, undefined, false, NaN, '', -1, 1.1 ]
+              types: indexed()
+            }
+          },
+          expected: _.map(paths, stubOne),
+          options: { cloneData: false }
+        }
+      },
+      'should return an empty array when no keys are given': {
+        inputs: {
+          data: {
+            value: ['a', 'b', 'c'],
+            types: indexed()
+          },
+          paths: {
+            value: [],
+            types: indexed()
+          }
+        },
+        expected: []
+      },
+      'should work with an `arguments` object for `data`': {
+        inputs: {
+          data: {
+            value: toArgs([1, 2, 3])
+          },
+          paths: {
+            value: [2, 0],
+            types: indexed()
+          }
+        },
+        expected: [3, 1],
+        options: { cloneData: false }
+      },
+      'should work with `arguments` object as secondary arguments': {
+        inputs: {
+          data: {
+            value: [1, 2, 3, 4, 5],
+            types: indexed()
+          },
+          paths: {
+            value: toArgs([1, 2, 3])
+          }
+        },
+        expected: [2, 3, 4],
+        options: { clonePaths: false }
+      },
+      'should work with a keyed value for `data`': {
+        inputs: {
+          data: {
+            value: { 'a': [{ 'b': { 'c': 3 } }, 4] },
+            types: keyed()
+          },
+          paths: {
+            value: ['a[0].b.c', 'a[1]'],
+            types: indexed()
+          }
+        },
+        expected: [3, 4]
+      },
+      'should pluck inherited property values': () => {
+        function Foo() {
+          this.a = 1
+        }
+        Foo.prototype.b = 2
+
+        return {
+          inputs: {
+            data: {
+              value: new Foo
+            },
+            paths: {
+              value: ['b'],
+              types: indexed()
+            }
+          },
+          expected: [2]
+        }
       }
     }
-  }
 
-  _.each(tests, (test, displayName) => {
-    if (_.isFunction(test)) {
-      test = test()
+    _.each(tests, (test, displayName) => {
+      if (_.isFunction(test)) {
+        test = test()
+      }
+      const { inputs: { data: dataInput, paths: pathsInput } } = test
+      if (dataInput.types) {
+        _.each(dataInput.types, (dataType, dataTypeName) => {
+          const data = dataType(dataInput.value)
+          testAtPaths(test, displayName, data, dataTypeName, pathsInput)
+        })
+      } else {
+        const data = dataInput.value
+        testAtPaths(test, displayName, data, getType(data), pathsInput)
+      }
+    })
+  })
+
+  describe('no paths tests', function() {
+    const tests = {
+      'should return an empty data set when no paths are given': {
+        inputs: {
+          data: {
+            value: ['a', 'b', 'c'],
+            types: indexed()
+          }
+        },
+        expected: []
+      }
     }
-    const { expected, inputs: { data: dataInput, paths: pathsInput } } = test
-    if (dataInput.types) {
-      _.each(dataInput.types, (dataType, dataTypeName) => {
-        const data = dataType(dataInput.value)
-        _.each(pathsInput.types, (pathsType, pathsTypeName) => {
-          const paths = pathsType(pathsInput.value)
-          testAt(data, paths, hintConvert(data, expected),
-            `${displayName} using ${dataTypeName} as data and ${pathsTypeName} as paths`,
+
+    _.each(tests, (test, displayName) => {
+      if (_.isFunction(test)) {
+        test = test()
+      }
+      const { expected, inputs: { data: dataInput } } = test
+      if (dataInput.types) {
+        _.each(dataInput.types, (dataType, dataTypeName) => {
+          const data = dataType(dataInput.value)
+          testAtWithNoPaths(data, hintConvert(data, expected),
+            `${displayName} using ${dataTypeName} as data and no paths specified`,
             context
           )
         })
-      })
-    } else {
-      const data = dataInput.value
-      _.each(pathsInput.types, (pathsType, pathsTypeName) => {
-        const paths = pathsType(pathsInput.value)
-        testAt(data, paths, hintConvert(data, expected),
-          `${displayName} using ${pathsTypeName} as paths`,
-          { cloneData: false },
+      } else {
+        const data = dataInput.value
+        testAtWithNoPaths(data, hintConvert(data, expected),
+          `${displayName} using data and no paths specified`,
           context
         )
-      })
-    }
+      }
+    })
   })
 
+  describe('falsey data tests', function() {
+    const tests = {
+      'should work with a falsey `data` when keys are given': {
+        inputs: {
+          paths: {
+            value: [0, 1, 'pop', 'push'],
+            types: indexed()
+          }
+        },
+        expected: [undefined, undefined, undefined, undefined]
+      }
+    }
+
+    _.each(tests, (test, displayName) => {
+      if (_.isFunction(test)) {
+        test = test()
+      }
+      const { inputs: { paths: pathsInput } } = test
+      _.each(falsey, (data) => {
+        testAtPaths(test, displayName, data, getType(data), pathsInput)
+      })
+    })
+  })
+
+  describe('multiple paths tests', function() {
+    const tests = {
+      'should return an empty array when no keys are given': {
+        inputs: {
+          data: {
+            value: ['a', 'b', 'c'],
+            types: indexed()
+          },
+          args: [
+            {
+              value: [],
+              types: indexed()
+            },
+            {
+              value: [],
+              types: indexed()
+            }
+          ]
+        },
+        expected: []
+      },
+      'should accept multiple key arguments': {
+        inputs: {
+          data: {
+            value: ['a', 'b', 'c', 'd'],
+            types: indexed()
+          },
+          args: [
+            {
+              value: 3
+            },
+            {
+              value: 0
+            },
+            {
+              value: 2
+            }
+          ]
+        },
+        expected: ['d', 'a', 'c']
+      }
+      //
+    }
+
+    _.each(tests, (test, displayName) => {
+      if (_.isFunction(test)) {
+        test = test()
+      }
+      const { expected, inputs: { data: dataInput, args: argsInput } } = test
+      if (dataInput.types) {
+        _.each(dataInput.types, (dataType, dataTypeName) => {
+          const data = dataType(dataInput.value)
+          testArgs(displayName, data, dataTypeName, argsInput, expected)
+        })
+      } else {
+        const data = dataInput.value
+        testArgs(displayName, data, getType(data), argsInput, expected)
+      }
+    })
+
+    function testArgs(displayName, data, dataTypeName, argsInput, expected) {
+      const index = -1
+      recurTestArg(displayName, data, dataTypeName, [], argsInput, index, expected)
+    }
+
+    function recurTestArg(displayName, data, dataTypeName, args, argsInput, index, expected) {
+      const argInput = argsInput[++index]
+      const { length } = argsInput
+      if (argInput.types) {
+        _.each(argInput.types, (argType) => {
+          const arg = argType(argInput.value)
+          if (index < length - 1) {
+            recurTestArg(displayName, data, dataTypeName, args.concat(arg), argsInput, index, expected)
+          } else {
+            testAtWithMultiplePaths(data, args.concat(arg), hintConvert(data, expected),
+              `${displayName} using ${dataTypeName} as data and path args ${args.concat(arg)}`
+            )
+          }
+        })
+      } else {
+        const arg = argInput.value
+        if (index < length - 1) {
+          recurTestArg(displayName, data, dataTypeName, args.concat(arg), argsInput, index, expected)
+        } else {
+          testAtWithMultiplePaths(data, args.concat(arg), hintConvert(data, expected),
+            `${displayName} using ${dataTypeName} as data and path args ${args.concat(arg)}`
+          )
+        }
+      }
+    }
+  })
 })
 
-function testAt(data, paths, expected, displayName, options = { cloneData: true, ...options }) {
+function testAt(data, paths, expected, displayName, options = { cloneData: true, clonePaths: true, ...options }) {
   it(displayName, function() {
     const dataExpected = options.cloneData ? clone(data) : data
-    const pathsExpected = clone(paths)
+    const pathsExpected = options.clonePaths ? clone(paths) : paths
     const result = at(data, paths)
     expectImmutableChange(data, result, dataExpected, expected)
     expectEqual(paths, pathsExpected)
   })
 }
 
-function testNoPaths(data, expected, )
+function testAtWithNoPaths(data, expected, displayName) {
+  it(displayName, function() {
+    const dataExpected = clone(data)
+    const result = at(data)
+    expectImmutableChange(data, result, dataExpected, expected)
+  })
+}
 
-// QUnit.module('lodash.at');
-//
-//   (function() {
-//     var array = ['a', 'b', 'c'],
-//         object = { 'a': [{ 'b': { 'c': 3 } }, 4] };
-//
+function testAtWithMultiplePaths(data, args, expected, displayName) {
+  it(displayName, function() {
+    const dataExpected = clone(data)
+    const argsExpected = _.map(args, (arg) => clone(arg))
+    const result = at(data, ...args)
+    expectImmutableChange(data, result, dataExpected, expected)
+    _.each(argsExpected, (argExpected, i) => expectEqual(args[i], argExpected))
+  })
+}
+
+function testAtPaths(test, displayName, data, dataTypeName, pathsInput) {
+  const { expected } = test
+  if (pathsInput.types) {
+    _.each(pathsInput.types, (pathsType, pathsTypeName) => {
+      const paths = pathsType(pathsInput.value)
+      testAt(data, paths, hintConvert(data, expected),
+        `${displayName} using ${dataTypeName} as data and ${pathsTypeName} as paths`,
+        test.options
+      )
+    })
+  } else {
+    const paths = pathsInput.value
+    testAt(data, paths, hintConvert(data, expected),
+      `${displayName} using ${dataTypeName} as data and ${getType(paths)} as paths`,
+      test.options
+    )
+  }
+}
 
 
-//
-//     QUnit.test('should return an empty array when no keys are given', function(assert) {
-//       assert.expect(2);
-//
-//       assert.deepEqual(_.at(array), []);
-//       assert.deepEqual(_.at(array, [], []), []);
-//     });
-//
-//     QUnit.test('should accept multiple key arguments', function(assert) {
-//       assert.expect(1);
-//
-//       var actual = _.at(['a', 'b', 'c', 'd'], 3, 0, 2);
-//       assert.deepEqual(actual, ['d', 'a', 'c']);
-//     });
-//
-//     QUnit.test('should work with a falsey `object` when keys are given', function(assert) {
-//       assert.expect(1);
-//
-//       var expected = lodashStable.map(falsey, lodashStable.constant(Array(4)));
-//
-//       var actual = lodashStable.map(falsey, function(object) {
-//         try {
-//           return _.at(object, 0, 1, 'pop', 'push');
-//         } catch (e) {}
-//       });
-//
-//       assert.deepEqual(actual, expected);
-//     });
-//
-//     QUnit.test('should work with an `arguments` object for `object`', function(assert) {
-//       assert.expect(1);
-//
-//       var actual = _.at(args, [2, 0]);
-//       assert.deepEqual(actual, [3, 1]);
-//     });
-//
-//     QUnit.test('should work with `arguments` object as secondary arguments', function(assert) {
-//       assert.expect(1);
-//
-//       var actual = _.at([1, 2, 3, 4, 5], args);
-//       assert.deepEqual(actual, [2, 3, 4]);
-//     });
-//
-//     QUnit.test('should work with an object for `object`', function(assert) {
-//       assert.expect(1);
-//
-//       var actual = _.at(object, ['a[0].b.c', 'a[1]']);
-//       assert.deepEqual(actual, [3, 4]);
-//     });
-//
-//     QUnit.test('should pluck inherited property values', function(assert) {
-//       assert.expect(1);
-//
-//       function Foo() {
-//         this.a = 1;
-//       }
-//       Foo.prototype.b = 2;
-//
-//       var actual = _.at(new Foo, 'b');
-//       assert.deepEqual(actual, [2]);
-//     });
 //
 //     QUnit.test('should work in a lazy sequence', function(assert) {
 //       assert.expect(6);
