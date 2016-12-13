@@ -1,5 +1,6 @@
 export { default as clone } from './clone'
 export { default as expectAllExactEqual } from './expectAllExactEqual'
+export { default as expectEqual } from './expectEqual'
 export { default as expectImmutableChange } from './expectImmutableChange'
 export { default as getType } from './getType'
 export { default as hintConvert } from './hintConvert'

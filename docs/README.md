@@ -2,7 +2,7 @@
 
 *Legend*
 * *&ast;TODO* - Immutable.JS support still needs to be implemented
-* *&ast;Lo* - No changes from Lodash method
+* *&ast;Lo* - No changes from Lodash method required (passthrough to Lodash)
 
 ## TOC
 * [Array and Immutable.List](./API.md#array-and-immutablelist)
@@ -21,9 +21,9 @@
   + [`fill()`](./API.md#fill) *&ast;TODO*
   + [`findIndex()`](./API.md#findindex)
   + [`findLastIndex()`](./API.md#findlastindex)
-  + [`flatten()`](./API.md#flatten) *&ast;TODO*
-  + [`flattenDeep()`](./API.md#flattendeep) *&ast;TODO*
-  + [`flattenDepth()`](./API.md#flattendepth) *&ast;TODO*
+  + [`flatten()`](./API.md#flatten)
+  + [`flattenDeep()`](./API.md#flattendeep)
+  + [`flattenDepth()`](./API.md#flattendepth)
   + [`fromPairs()`](./API.md#frompairs) *&ast;TODO*
   + [`head()`](./API.md#head)
   + [`indexOf()`](./API.md#indexof)
@@ -104,8 +104,8 @@
   + [`orderBy()`](./API.md#orderby) *&ast;TODO*
   + [`partition()`](./API.md#partition) *&ast;TODO*
   + [`reduce()`](./API.md#reduce)
-  + [`reduceReducers()`](./API.md#reduceReducers)
-  + [`reduceReducersRight()`](./API.md#reduceReducersRight)
+  + [`reduceReducers()`](./API.md#reducereducers)
+  + [`reduceReducersRight()`](./API.md#reducereducersright)
   + [`reduceRight()`](./API.md#reduceright)
   + [`reject()`](./API.md#reject)
   + [`sample()`](./API.md#sample) *&ast;TODO*
@@ -134,7 +134,7 @@
   + [`defer()`](./API.md#defer) *&ast;Lo*
   + [`delay()`](./API.md#delay) *&ast;Lo*
   + [`flip()`](./API.md#flip) *&ast;Lo*
-  + [`memoize()`](./API.md#memoize) *&ast;Lo*
+  + [`memoize()`](./API.md#memoize)
   + [`negate()`](./API.md#negate) *&ast;Lo*
   + [`once()`](./API.md#once) *&ast;Lo*
   + [`overArg()`](./API.md#overarg)
@@ -143,6 +143,7 @@
   + [`partialRight()`](./API.md#partialright) *&ast;Lo*
   + [`rearg()`](./API.md#rearg) *&ast;Lo*
   + [`rest()`](./API.md#rest) *&ast;Lo*
+  + [`select()`]('./API.md#select')
   + [`spread()`](./API.md#spread) *&ast;Lo*
   + [`throttle()`](./API.md#throttle) *&ast;Lo*
   + [`unary()`](./API.md#unary) *&ast;Lo*
@@ -302,7 +303,7 @@
   + [`assignWith()`](./API.md#assignwith) *&ast;TODO*
   + [`assoc()`](./API.md#assoc)
   + [`assocWith()`](./API.md#assocwith)
-  + [`at()`](./API.md#at) *&ast;TODO*
+  + [`at()`](./API.md#at)
   + [`create()`](./API.md#create) *&ast;TODO*
   + [`delete()`](./API.md#delete)
   + [`defaults()`](./API.md#defaults) *&ast;TODO*

@@ -8,7 +8,7 @@
 
 *Legend*
 * *&ast;TODO* - Immutable.JS support still needs to be implemented
-* *&ast;Lo* - No changes from Lodash method
+* *&ast;Lo* - No changes from Lodash method required (passthrough to Lodash)
 
 ## TOC
 * [Array and Immutable.List](#array-and-immutablelist)
@@ -27,9 +27,9 @@
   + [`fill()`](#fill) *&ast;TODO*
   + [`findIndex()`](#findindex)
   + [`findLastIndex()`](#findlastindex)
-  + [`flatten()`](#flatten) *&ast;TODO*
-  + [`flattenDeep()`](#flattendeep) *&ast;TODO*
-  + [`flattenDepth()`](#flattendepth) *&ast;TODO*
+  + [`flatten()`](#flatten)
+  + [`flattenDeep()`](#flattendeep)
+  + [`flattenDepth()`](#flattendepth)
   + [`fromPairs()`](#frompairs) *&ast;TODO*
   + [`head()`](#head)
   + [`indexOf()`](#indexof)
@@ -110,8 +110,8 @@
   + [`orderBy()`](#orderby) *&ast;TODO*
   + [`partition()`](#partition) *&ast;TODO*
   + [`reduce()`](#reduce)
-  + [`reduceReducers()`](#reduceReducers)
-  + [`reduceReducersRight()`](#reduceReducersRight)
+  + [`reduceReducers()`](#reducereducers)
+  + [`reduceReducersRight()`](#reducereducersright)
   + [`reduceRight()`](#reduceright)
   + [`reject()`](#reject)
   + [`sample()`](#sample) *&ast;TODO*
@@ -140,7 +140,7 @@
   + [`defer()`](#defer) *&ast;Lo*
   + [`delay()`](#delay) *&ast;Lo*
   + [`flip()`](#flip) *&ast;Lo*
-  + [`memoize()`](#memoize) *&ast;Lo*
+  + [`memoize()`](#memoize)
   + [`negate()`](#negate) *&ast;Lo*
   + [`once()`](#once) *&ast;Lo*
   + [`overArg()`](#overarg)
@@ -149,6 +149,7 @@
   + [`partialRight()`](#partialright) *&ast;Lo*
   + [`rearg()`](#rearg) *&ast;Lo*
   + [`rest()`](#rest) *&ast;Lo*
+  + [`select()`]('#select')
   + [`spread()`](#spread) *&ast;Lo*
   + [`throttle()`](#throttle) *&ast;Lo*
   + [`unary()`](#unary) *&ast;Lo*

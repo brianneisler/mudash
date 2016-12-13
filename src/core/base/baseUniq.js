@@ -7,21 +7,6 @@ import baseIncludesWith from './baseIncludesWith'
 import getKey from '../getKey'
 import hintConvert from '../hintConvert'
 
-//TODO BRN: This method should try to preserve the original immutable type. Right now it just returns a List
-export default function baseUniq(indexed, iteratee, comparator) {
-  let includes = baseIncludes
-  const result = hintConvert(indexed, [])
-  let seen = []
-
-  if (comparator) {
-    includes = baseIncludesWith
-  } else {
-    includes = cacheHas
-    seen = new Immutable.Set()
-  }
-  return findUniques(result, indexed, seen, iteratee, comparator, includes)
-}
-
 const findUniques = withMutations((result, indexed, seen, iteratee, comparator, includes) => {
   const length = getSize(indexed)
   let index = -1
@@ -39,3 +24,18 @@ const findUniques = withMutations((result, indexed, seen, iteratee, comparator, 
   }
   return result
 })
+
+//TODO BRN: Should this method should try to preserve the original immutable type? Right now it just returns a List
+export default function baseUniq(indexed, iteratee, comparator) {
+  let includes = baseIncludes
+  const result = hintConvert(indexed, [])
+  let seen = []
+
+  if (comparator) {
+    includes = baseIncludesWith
+  } else {
+    includes = cacheHas
+    seen = new Immutable.Set()
+  }
+  return findUniques(result, indexed, seen, iteratee, comparator, includes)
+}

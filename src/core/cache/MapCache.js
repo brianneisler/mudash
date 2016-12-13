@@ -1,7 +1,6 @@
-import { Map } from '../native'
-import getMapData from '../util/getMapData'
+import Immutable from 'immutable'
+import getMapData from './getMapData'
 import Hash from './Hash'
-import ListCache from './ListCache'
 
 export default class MapCache {
 
@@ -20,7 +19,7 @@ export default class MapCache {
     this.size = 0
     this.__data__ = {
       'hash': new Hash,
-      'map': new (Map || ListCache),
+      'map': new Immutable.Map,
       'string': new Hash
     }
   }
