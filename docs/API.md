@@ -20,10 +20,10 @@
   + [`difference()`](#difference) *&ast;TODO*
   + [`differenceBy()`](#differenceby) *&ast;TODO*
   + [`differenceWith()`](#differencewith) *&ast;TODO*
-  + [`drop()`](#drop) *&ast;TODO*
+  + [`drop()`](#drop)
   + [`dropRight()`](#dropright)
-  + [`dropRightWhile()`](#droprightwhile) *&ast;TODO*
-  + [`dropWhile()`](#dropwhile) *&ast;TODO*
+  + [`dropRightWhile()`](#droprightwhile)
+  + [`dropWhile()`](#dropwhile)
   + [`fill()`](#fill) *&ast;TODO*
   + [`findIndex()`](#findindex)
   + [`findLastIndex()`](#findlastindex)
@@ -457,6 +457,49 @@ chunk(
 
 Creates an array or list of elements split into groups the length of `size`. If `data` can't be split evenly, the final chunk will be the remaining elements.
 
+### `drop()`
+
+```js
+drop(
+  data: Array | Immutable.List,
+  n: number
+): Array | Immutable.List
+```
+
+Creates an slice of `array` or `immutable list` with `n` elements dropped from the beginning.
+
+### `dropRight()`
+
+```js
+dropRight(
+  data: Array | Immutable.List,
+  n: number
+): Array | Immutable.List
+```
+
+Creates an slice of `array` or `immutable list` excluding `n` elements dropped from the end.
+
+```js
+dropRightWhile(
+  data: Array | List,
+  predicate: (value: any, index: number, data: Array | Immutable.List)
+): Array | Immutable.List
+```
+
+Creates a slice of `array` or `immutable list` excluding elements dropped from the end.
+Elements are dropped until `predicate` returns falsey. The predicate is
+invoked with three arguments: (value, index, array).
+
+```js
+dropWhile(
+  data: Array | List,
+  predicate: (value: any, index: number, data: Array | Immutable.List)
+): Array | Immutable.List
+```
+
+Creates a slice of `array` or `immutable list` excluding elements dropped from the beginning.
+Elements are dropped until `predicate` returns falsey. The predicate is
+invoked with three arguments: (value, index, array).
 
 ## Collection and Immutable.Iterable
 

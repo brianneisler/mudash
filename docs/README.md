@@ -14,7 +14,7 @@
   + [`difference()`](./API.md#difference) *&ast;TODO*
   + [`differenceBy()`](./API.md#differenceby) *&ast;TODO*
   + [`differenceWith()`](./API.md#differencewith) *&ast;TODO*
-  + [`drop()`](./API.md#drop) *&ast;TODO*
+  + [`drop()`](./API.md#drop)
   + [`dropRight()`](./API.md#dropright)
   + [`dropRightWhile()`](./API.md#droprightwhile) *&ast;TODO*
   + [`dropWhile()`](./API.md#dropwhile) *&ast;TODO*
