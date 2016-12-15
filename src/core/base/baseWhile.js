@@ -2,7 +2,6 @@ import size from '../size'
 import slice from '../slice'
 import getKey from '../getKey'
 
-// TODO CC - Does not work with iteratee shorthands yet
 export default function baseWhile(data, predicate, isDrop, fromRight) {
   const length = size(data)
   let index = fromRight ? length : -1

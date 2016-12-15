@@ -20,9 +20,21 @@ describe('dropWhile', function () {
     expect(result.toJS(result)).to.deep.equal([2, 3, 4])
   })
 
-  // it('should match iteratee shorthand', function () {
-  //   const array = [ { 'a': 1 }, { 'a': 0 }, { 'b': 0 }]
-  //   const result = dropWhile(array, { 'a': 1 })
-  //   expect(result).to.deep.equal([{ 'a': 0 }, { 'b': 0 }])
-  // })
+  it('should `_.match` iteratee shorthand', function () {
+    const array = [ { 'a': 1 }, { 'a': 0 }, { 'b': 0 }]
+    const result = dropWhile(array, { 'a': 1 })
+    expect(result).to.deep.equal([{ 'a': 0 }, { 'b': 0 }])
+  })
+
+  it('should `_.matchProperty` iteratee shorthand', function () {
+    const array = [ { 'a': 0 }, { 'a': 1 }, { 'b': 0 }]
+    const result = dropWhile(array, ['a', 0])
+    expect(result).to.deep.equal([ { 'a': 1 }, { 'b': 0 } ])
+  })
+
+  it('should `_.property` iteratee shorthand', function () {
+    const array = [ { 'a': 1 }, { 'a': 0 }, { 'b': 0 }]
+    const result = dropWhile(array, 'a')
+    expect(result).to.deep.equal([ { 'a': 0 } , { 'b': 0 } ])
+  })
 })

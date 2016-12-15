@@ -5,6 +5,6 @@ import baseWhile from './base/baseWhile'
 
 export default function dropRightWhile(data, predicate) {
   return (data && size(data))
-    ? baseWhile(data, getIteratee(predicate, 3), true, true)
+    ? baseWhile(data, getIteratee(predicate), true, true)
     : hintConvert(data, [])
 }

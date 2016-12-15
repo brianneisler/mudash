@@ -22,8 +22,8 @@
   + [`differenceWith()`](#differencewith) *&ast;TODO*
   + [`drop()`](#drop)
   + [`dropRight()`](#dropright)
-  + [`dropRightWhile()`](#droprightwhile) *&ast;TODO*
-  + [`dropWhile()`](#dropwhile) *&ast;TODO*
+  + [`dropRightWhile()`](#droprightwhile)
+  + [`dropWhile()`](#dropwhile)
   + [`fill()`](#fill) *&ast;TODO*
   + [`findIndex()`](#findindex)
   + [`findLastIndex()`](#findlastindex)
