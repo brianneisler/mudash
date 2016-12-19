@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { Iterable } from 'immutable'
 import { contextSymbolIterator } from './context'
-import hasKey from './hasKey'
+import { hasKey } from './util'
 import isImmutable from './isImmutable'
 
 export default function isIterable(data) {

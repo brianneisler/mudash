@@ -1,8 +1,8 @@
 import mutationPush from '../mutations/mutationPush'
 import mutationPushAll from '../mutations/mutationPushAll'
+import getKey from '../util/getKey'
 import getSize from '../util/getSize'
 import withMutations from '../with/withMutations'
-import getKey from '../getKey'
 import hintConvert from '../hintConvert'
 import isFlattenable from '../isFlattenable'
 

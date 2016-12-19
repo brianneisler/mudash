@@ -16,8 +16,8 @@
   + [`differenceWith()`](./API.md#differencewith) *&ast;TODO*
   + [`drop()`](./API.md#drop)
   + [`dropRight()`](./API.md#dropright)
-  + [`dropRightWhile()`](./API.md#droprightwhile) *&ast;TODO*
-  + [`dropWhile()`](./API.md#dropwhile) *&ast;TODO*
+  + [`dropRightWhile()`](./API.md#droprightwhile)
+  + [`dropWhile()`](./API.md#dropwhile)
   + [`fill()`](./API.md#fill) *&ast;TODO*
   + [`findIndex()`](./API.md#findindex)
   + [`findLastIndex()`](./API.md#findlastindex)
@@ -179,7 +179,7 @@
   + [`isGeneratorFunction()`](./API.md#isgeneratorfunction)
   + [`isIm()`](./API.md#isim)
   + [`isImIndexedSeq()`](./API.md#isimindexedseq)
-  + [`isimiterable()`](./API.md#isimiterable)
+  + [`isImIterable()`](./API.md#isimiterable)
   + [`isImKeyedSeq()`](./API.md#isimkeyedseq)
   + [`isImList()`](./API.md#isimlist)
   + [`isImMap()`](./API.md#isimmap)
@@ -267,7 +267,6 @@
   + [`toIndexed()`](./API.md#toindexed)
   + [`toInteger()`](./API.md#tointeger) *&ast;Lo*
   + [`toIterable()`](./API.md#toiterable)
-  + [`toKey()`](./API.md#tokey)
   + [`toLength()`](./API.md#tolength) *&ast;Lo*
   + [`toMutable()`](./API.md#tomutable)
   + [`toNumber()`](./API.md#tonumber) *&ast;Lo*
@@ -308,6 +307,7 @@
   + [`delete()`](./API.md#delete)
   + [`defaults()`](./API.md#defaults) *&ast;TODO*
   + [`defaultsDeep()`](./API.md#defaultsdeep) *&ast;TODO*
+  + [`dissoc()`](./API.md#dissoc)
   + [`findKey()`](./API.md#findkey) *&ast;TODO*
   + [`findLastKey()`](./API.md#findlastkey) *&ast;TODO*
   + [`forIn()`](./API.md#forin) *&ast;TODO*
@@ -317,12 +317,9 @@
   + [`functions()`](./API.md#functions) *&ast;Lo*
   + [`functionsIn()`](./API.md#functionsin) *&ast;TODO*
   + [`get()`](./API.md#get)
-  + [`getKey()`](./API.md#getkey)
   + [`getPrototype()`](./API.md#getprototype)
   + [`has()`](./API.md#has)
   + [`hasIn()`](./API.md#hasin) *&ast;TODO*
-  + [`hasKey()`](./API.md#haskey)
-  + [`hasKeyIn()`](./API.md#haskeyin)
   + [`invert()`](./API.md#invert) *&ast;TODO*
   + [`invertBy()`](./API.md#invertby) *&ast;TODO*
   + [`invoke()`](./API.md#invoke) *&ast;TODO*
@@ -339,15 +336,13 @@
   + [`pickBy()`](./API.md#pickby) *&ast;TODO*
   + [`result()`](./API.md#result) *&ast;TODO*
   + [`set()`](./API.md#set)
-  + [`setKey()`](./API.md#setkey)
   + [`setWith()`](./API.md#setwith)
   + [`toPairs()`](./API.md#topairs) *&ast;TODO*
   + [`toPairsIn()`](./API.md#topairsin) *&ast;TODO*
   + [`transform()`](./API.md#transform) *&ast;TODO*
   + [`unset()`](./API.md#unset)
-  + [`unsetKey()`](./API.md#unsetkey)
-  + [`update()`](./API.md#update) *&ast;TODO*
-  + [`updateWith()`](./API.md#updatewith) *&ast;TODO*
+  + [`update()`](./API.md#update)
+  + [`updateWith()`](./API.md#updatewith)
   + [`values()`](./API.md#values)
   + [`valuesIn()`](./API.md#valuesin) *&ast;TODO*
 * [Seq](./API.md#seq)

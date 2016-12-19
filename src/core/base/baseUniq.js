@@ -4,7 +4,7 @@ import getSize from '../util/getSize'
 import withMutations from '../with/withMutations'
 import baseIncludes from './baseIncludes'
 import baseIncludesWith from './baseIncludesWith'
-import getKey from '../getKey'
+import getKey from '../util/getKey'
 import hintConvert from '../hintConvert'
 
 const findUniques = withMutations((result, indexed, seen, iteratee, comparator, includes) => {

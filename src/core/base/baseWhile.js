@@ -1,6 +1,6 @@
+import getKey from '../util/getKey'
 import size from '../size'
 import slice from '../slice'
-import getKey from '../getKey'
 
 export default function baseWhile(data, predicate, isDrop, fromRight) {
   const length = size(data)

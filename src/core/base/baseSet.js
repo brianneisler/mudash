@@ -1,18 +1,18 @@
 import _ from 'lodash'
 import castPath from '../util/castPath'
-import getKey from '../getKey'
+import getKey from '../util/getKey'
+import toKey from '../util/toKey'
 import isImmutable from '../isImmutable'
 import isIndex from '../isIndex'
 import toImmutable from '../toImmutable'
-import toKey from '../toKey'
 
-export default function baseSet(data, path, value, setFunc, options = {}) {
+export default function baseSet(data, path, value, setKeyFunc, options = {}) {
   path = castPath(path)
   const index = 0
-  return withRecurPathSet(path, setFunc, options)(data, index, value)
+  return withRecurPathSet(path, setKeyFunc, options)(data, index, value)
 }
 
-function withRecurPathSet(path, setFunc, { customizer }) {
+function withRecurPathSet(path, setKeyFunc, { customizer }) {
   const length = path.length
   const lastIndex = length - 1
 
@@ -34,7 +34,7 @@ function withRecurPathSet(path, setFunc, { customizer }) {
       }
       newValue = recurSet(newValue, ++index, value)
     }
-    return setFunc(data, key, newValue)
+    return setKeyFunc(data, key, newValue)
   }
   return recurSet
 }

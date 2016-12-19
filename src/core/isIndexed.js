@@ -1,6 +1,6 @@
 import { Iterable } from 'immutable'
+import { hasKey } from './util'
 import isImmutable from './isImmutable'
-import hasKey from './hasKey'
 
 export default function isIndexed(data) {
   return isImmutable(data)

@@ -1,4 +1,4 @@
-import getKey from '../getKey'
+import getKey from '../util/getKey'
 
 export default function strictLastIndexOf(indexed, value, fromIndex) {
   let index = fromIndex + 1

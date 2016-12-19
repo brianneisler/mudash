@@ -1,9 +1,9 @@
 import { COMPARE_PARTIAL_FLAG } from '../constants'
 import getAllKeys from '../util/getAllKeys'
+import getKey from '../util/getKey'
 import getSize from '../util/getSize'
-import getKey from '../getKey'
-import hasKey from '../hasKey'
-import hasKeyIn from '../hasKeyIn'
+import hasKey from '../util/hasKey'
+import hasKeyIn from '../util/hasKeyIn'
 
 export default function baseEqualObjects(object, other, bitmask, customizer, equalFunc, stack) {
   const isPartial = bitmask & COMPARE_PARTIAL_FLAG

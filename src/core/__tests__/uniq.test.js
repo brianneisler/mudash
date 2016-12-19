@@ -1,9 +1,8 @@
 import 'babel-polyfill'
 import _ from 'lodash'
-import Immutable from 'immutable'
+import { testUniqueValues } from './shared'
+import { indexed } from './types'
 import { hintConvert, setupTest } from './util'
-import  { testUniqueValues } from './shared'
-
 
 describe('uniq', function() {
   const context = setupTest()
@@ -39,14 +38,7 @@ describe('uniq', function() {
     }
   }
 
-  const dataTypes = {
-    // TODO BRN: Args -> clone -> deep equal doesn't seem to work... not sure why
-    // 'an `arguments` object': toArgs,
-    'an array': _.toArray,
-    'an Immutable.List': Immutable.List,
-    'an Immutable.Stack': Immutable.Stack,
-    'an Immutable.Seq': Immutable.Seq
-  }
+  const dataTypes = indexed()
 
   _.each(dataTypes, (dataType, dataDisplayName) => {
     _.each(tests, (test, testName) => {

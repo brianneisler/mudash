@@ -1,4 +1,4 @@
-import getKey from '../getKey'
+import getKey from '../util/getKey'
 import size from '../size'
 
 export default function strictIndexOf(indexed, value, fromIndex) {

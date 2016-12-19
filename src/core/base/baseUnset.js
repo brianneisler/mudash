@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import castPath from '../util/castPath'
-import getKey from '../getKey'
-import toKey from '../toKey'
+import getKey from '../util/getKey'
+import toKey from '../util/toKey'
 
 export default function baseUnset(data, path, unsetFunc, setFunc) {
   path = castPath(path)

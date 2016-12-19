@@ -1,8 +1,8 @@
 import baseGet from './baseGet'
 import baseIsMatch from './baseIsMatch'
+import getKey from '../util/getKey'
 import getMatchData from '../util/getMatchData'
 import getSize from '../util/getSize'
-import getKey from '../getKey'
 import matchesStrictComparable from '../util/matchesStrictComparable'
 
 export default function baseMatches(source) {

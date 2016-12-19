@@ -1,7 +1,7 @@
 import _ from 'lodash'
+import { hasKey } from './util'
 import each from './each'
 import get from './get'
-import hasKey from './hasKey'
 import isEqualWith from './isEqualWith'
 import keys from './keys'
 import size from './size'

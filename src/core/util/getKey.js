@@ -1,4 +1,4 @@
-import isImmutable from './isImmutable'
+import isImmutable from '../isImmutable'
 
 export default function getKey(data, key) {
   if (data != null) {

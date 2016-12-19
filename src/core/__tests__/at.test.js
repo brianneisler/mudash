@@ -1,9 +1,19 @@
 import 'babel-polyfill'
 import _ from 'lodash'
 import { at } from '../'
-import { clone, expectEqual, expectImmutableChange, getType, hintConvert, setupTest, toArgs } from './util'
+import { withHintConvert, withMultipleTypeInputs } from './recompose'
+import { immutableArgsTest, immutableTest } from './tests'
 import { indexed, keyed } from './types'
+import { compose, getType, runTests, setupTest, toArgs } from './util'
 
+
+const enhance = compose(
+  withMultipleTypeInputs,
+  withHintConvert
+)
+const testAt = enhance(immutableTest(({ data, paths }) => at(data, paths)))
+const testAtWithArgs = enhance(immutableArgsTest(({ data, args }) => at(data, ...args)))
+const testAtWithNoPaths = enhance(immutableTest(({ data }) => at(data)))
 
 describe('at:', function() {
   const context = setupTest()
@@ -49,15 +59,15 @@ describe('at:', function() {
         return {
           inputs: {
             data: {
-              value: data
+              value: data,
+              clone: false
             },
             paths: {
               value: paths, // [ {}, undefined, false, NaN, '', -1, 1.1 ]
               types: indexed()
             }
           },
-          expected: _.map(paths, stubOne),
-          options: { cloneData: false }
+          expected: _.map(paths, stubOne)
         }
       },
       'should return an empty array when no keys are given': {
@@ -76,15 +86,15 @@ describe('at:', function() {
       'should work with an `arguments` object for `data`': {
         inputs: {
           data: {
-            value: toArgs([1, 2, 3])
+            value: toArgs([1, 2, 3]),
+            clone: false
           },
           paths: {
             value: [2, 0],
             types: indexed()
           }
         },
-        expected: [3, 1],
-        options: { cloneData: false }
+        expected: [3, 1]
       },
       'should work with `arguments` object as secondary arguments': {
         inputs: {
@@ -93,11 +103,11 @@ describe('at:', function() {
             types: indexed()
           },
           paths: {
-            value: toArgs([1, 2, 3])
+            value: toArgs([1, 2, 3]),
+            clone: false
           }
         },
-        expected: [2, 3, 4],
-        options: { clonePaths: false }
+        expected: [2, 3, 4]
       },
       'should work with a keyed value for `data`': {
         inputs: {
@@ -133,21 +143,7 @@ describe('at:', function() {
       }
     }
 
-    _.each(tests, (test, displayName) => {
-      if (_.isFunction(test)) {
-        test = test()
-      }
-      const { inputs: { data: dataInput, paths: pathsInput } } = test
-      if (dataInput.types) {
-        _.each(dataInput.types, (dataType, dataTypeName) => {
-          const data = dataType(dataInput.value)
-          testAtPaths(test, displayName, data, dataTypeName, pathsInput)
-        })
-      } else {
-        const data = dataInput.value
-        testAtPaths(test, displayName, data, getType(data), pathsInput)
-      }
-    })
+    runTests(tests, context, testAt)
   })
 
   describe('no paths tests', function() {
@@ -163,51 +159,27 @@ describe('at:', function() {
       }
     }
 
-    _.each(tests, (test, displayName) => {
-      if (_.isFunction(test)) {
-        test = test()
-      }
-      const { expected, inputs: { data: dataInput } } = test
-      if (dataInput.types) {
-        _.each(dataInput.types, (dataType, dataTypeName) => {
-          const data = dataType(dataInput.value)
-          testAtWithNoPaths(data, hintConvert(data, expected),
-            `${displayName} using ${dataTypeName} as data and no paths specified`,
-            context
-          )
-        })
-      } else {
-        const data = dataInput.value
-        testAtWithNoPaths(data, hintConvert(data, expected),
-          `${displayName} using data and no paths specified`,
-          context
-        )
-      }
-    })
+    runTests(tests, context, testAtWithNoPaths)
   })
 
   describe('falsey data tests', function() {
-    const tests = {
-      'should work with a falsey `data` when keys are given': {
-        inputs: {
-          paths: {
-            value: [0, 1, 'pop', 'push'],
-            types: indexed()
-          }
-        },
-        expected: [undefined, undefined, undefined, undefined]
-      }
+    const testTemplate = {
+      inputs: {
+        paths: {
+          value: [0, 1, 'pop', 'push'],
+          types: indexed()
+        }
+      },
+      expected: [undefined, undefined, undefined, undefined]
     }
 
-    _.each(tests, (test, displayName) => {
-      if (_.isFunction(test)) {
-        test = test()
-      }
-      const { inputs: { paths: pathsInput } } = test
-      _.each(falsey, (data) => {
-        testAtPaths(test, displayName, data, getType(data), pathsInput)
-      })
-    })
+    const tests = _.reduce(falsey, (result, data) => {
+      let test = _.cloneDeep(testTemplate)
+      test = _.update(test, 'inputs.data', () => ({ value: data }))
+      return _.set(result, `should work with a falsey 'data' of type '${getType(data)}' when keys are given`, test)
+    }, {})
+
+    runTests(tests, context, testAt)
   })
 
   describe('multiple paths tests', function() {
@@ -251,107 +223,107 @@ describe('at:', function() {
         },
         expected: ['d', 'a', 'c']
       }
-      //
     }
-
-    _.each(tests, (test, displayName) => {
-      if (_.isFunction(test)) {
-        test = test()
-      }
-      const { expected, inputs: { data: dataInput, args: argsInput } } = test
-      if (dataInput.types) {
-        _.each(dataInput.types, (dataType, dataTypeName) => {
-          const data = dataType(dataInput.value)
-          testArgs(displayName, data, dataTypeName, argsInput, expected)
-        })
-      } else {
-        const data = dataInput.value
-        testArgs(displayName, data, getType(data), argsInput, expected)
-      }
-    })
-
-    function testArgs(displayName, data, dataTypeName, argsInput, expected) {
-      const index = -1
-      recurTestArg(displayName, data, dataTypeName, [], argsInput, index, expected)
-    }
-
-    function recurTestArg(displayName, data, dataTypeName, args, argsInput, index, expected) {
-      const argInput = argsInput[++index]
-      const { length } = argsInput
-      if (argInput.types) {
-        _.each(argInput.types, (argType) => {
-          const arg = argType(argInput.value)
-          if (index < length - 1) {
-            recurTestArg(displayName, data, dataTypeName, args.concat(arg), argsInput, index, expected)
-          } else {
-            testAtWithMultiplePaths(data, args.concat(arg), hintConvert(data, expected),
-              `${displayName} using ${dataTypeName} as data and path args ${args.concat(arg)}`
-            )
-          }
-        })
-      } else {
-        const arg = argInput.value
-        if (index < length - 1) {
-          recurTestArg(displayName, data, dataTypeName, args.concat(arg), argsInput, index, expected)
-        } else {
-          testAtWithMultiplePaths(data, args.concat(arg), hintConvert(data, expected),
-            `${displayName} using ${dataTypeName} as data and path args ${args.concat(arg)}`
-          )
-        }
-      }
-    }
+    runTests(tests, context, testAtWithArgs)
   })
 })
 
-function testAt(data, paths, expected, displayName, options = { cloneData: true, clonePaths: true, ...options }) {
-  it(displayName, function() {
-    const dataExpected = options.cloneData ? clone(data) : data
-    const pathsExpected = options.clonePaths ? clone(paths) : paths
-    const result = at(data, paths)
-    expectImmutableChange(data, result, dataExpected, expected)
-    expectEqual(paths, pathsExpected)
-  })
-}
-
-function testAtWithNoPaths(data, expected, displayName) {
-  it(displayName, function() {
-    const dataExpected = clone(data)
-    const result = at(data)
-    expectImmutableChange(data, result, dataExpected, expected)
-  })
-}
-
-function testAtWithMultiplePaths(data, args, expected, displayName) {
-  it(displayName, function() {
-    const dataExpected = clone(data)
-    const argsExpected = _.map(args, (arg) => clone(arg))
-    const result = at(data, ...args)
-    expectImmutableChange(data, result, dataExpected, expected)
-    _.each(argsExpected, (argExpected, i) => expectEqual(args[i], argExpected))
-  })
-}
-
-function testAtPaths(test, displayName, data, dataTypeName, pathsInput) {
-  const { expected } = test
-  if (pathsInput.types) {
-    _.each(pathsInput.types, (pathsType, pathsTypeName) => {
-      const paths = pathsType(pathsInput.value)
-      testAt(data, paths, hintConvert(data, expected),
-        `${displayName} using ${dataTypeName} as data and ${pathsTypeName} as paths`,
-        test.options
-      )
-    })
-  } else {
-    const paths = pathsInput.value
-    testAt(data, paths, hintConvert(data, expected),
-      `${displayName} using ${dataTypeName} as data and ${getType(paths)} as paths`,
-      test.options
-    )
-  }
-}
-
-
 //
+// _.each(tests, (test, displayName) => {
+//   if (_.isFunction(test)) {
+//     test = test()
+//   }
+//   const { expected, inputs: { data: dataInput, args: argsInput } } = test
+//   if (dataInput.types) {
+//     _.each(dataInput.types, (dataType, dataTypeName) => {
+//       const data = dataType(dataInput.value)
+//       testArgs(displayName, data, dataTypeName, argsInput, expected)
+//     })
+//   } else {
+//     const data = dataInput.value
+//     testArgs(displayName, data, getType(data), argsInput, expected)
+//   }
+// })
+//
+// function testArgs(displayName, data, dataTypeName, argsInput, expected) {
+//   const index = -1
+//   recurTestArg(displayName, data, dataTypeName, [], argsInput, index, expected)
+// }
+//
+// function recurTestArg(displayName, data, dataTypeName, args, argsInput, index, expected) {
+//   const argInput = argsInput[++index]
+//   const { length } = argsInput
+//   if (argInput.types) {
+//     _.each(argInput.types, (argType) => {
+//       const arg = argType(argInput.value)
+//       if (index < length - 1) {
+//         recurTestArg(displayName, data, dataTypeName, args.concat(arg), argsInput, index, expected)
+//       } else {
+//         testAtWithMultiplePaths(data, args.concat(arg), hintConvert(data, expected),
+//           `${displayName} using ${dataTypeName} as data and path args ${args.concat(arg)}`
+//         )
+//       }
+//     })
+//   } else {
+//     const arg = argInput.value
+//     if (index < length - 1) {
+//       recurTestArg(displayName, data, dataTypeName, args.concat(arg), argsInput, index, expected)
+//     } else {
+//       testAtWithMultiplePaths(data, args.concat(arg), hintConvert(data, expected),
+//         `${displayName} using ${dataTypeName} as data and path args ${args.concat(arg)}`
+//       )
+//     }
+//   }
+// }
+//
+// function testAt(data, paths, expected, displayName, options = { cloneData: true, clonePaths: true, ...options }) {
+//   it(displayName, function() {
+//     const dataExpected = options.cloneData ? clone(data) : data
+//     const pathsExpected = options.clonePaths ? clone(paths) : paths
+//     const result = at(data, paths)
+//     expectImmutableChange(data, result, dataExpected, expected)
+//     expectEqual(paths, pathsExpected)
+//   })
+// }
+//
+// function testAtWithNoPaths(data, expected, displayName) {
+//   it(displayName, function() {
+//     const dataExpected = clone(data)
+//     const result = at(data)
+//     expectImmutableChange(data, result, dataExpected, expected)
+//   })
+// }
+//
+// function testAtWithMultiplePaths(data, args, expected, displayName) {
+//   it(displayName, function() {
+//     const dataExpected = clone(data)
+//     const argsExpected = _.map(args, (arg) => clone(arg))
+//     const result = at(data, ...args)
+//     expectImmutableChange(data, result, dataExpected, expected)
+//     _.each(argsExpected, (argExpected, i) => expectEqual(args[i], argExpected))
+//   })
+// }
+//
+// function testAtPaths(test, data, dataTypeName, pathsInput) {
+//   const { expected, name } = test
+//   if (pathsInput.types) {
+//     _.each(pathsInput.types, (pathsType, pathsTypeName) => {
+//       const paths = pathsType(pathsInput.value)
+//       testAt(data, paths, hintConvert(data, expected),
+//         `${name} using ${dataTypeName} as data and ${pathsTypeName} as paths`,
+//         test.options
+//       )
+//     })
+//   } else {
+//     const paths = pathsInput.value
+//     testAt(data, paths, hintConvert(data, expected),
+//       `${name} using ${dataTypeName} as data and ${getType(paths)} as paths`,
+//       test.options
+//     )
+//   }
+// }
+
+
 //     QUnit.test('should work in a lazy sequence', function(assert) {
 //       assert.expect(6);
 //

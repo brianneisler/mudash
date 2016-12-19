@@ -7,6 +7,7 @@ export default function assoc(data, path, value) {
   if (_.isString(path)) {
     data = baseSet(data, path, value, assocKey)
   } else {
+    //TODO BRN: Improve this so that it uses withMutations when making multiple modifications
     forEach(path, (pathValue, pathKey) => {
       data = baseSet(data, pathKey, pathValue, assocKey)
     })

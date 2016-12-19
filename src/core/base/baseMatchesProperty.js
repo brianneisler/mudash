@@ -1,9 +1,9 @@
 import { COMPARE_PARTIAL_FLAG, COMPARE_UNORDERED_FLAG } from '../constants'
 import isStrictComparable from '../util/isStrictComparable'
 import matchesStrictComparable from '../util/matchesStrictComparable'
+import toKey from '../util/toKey'
 import has from '../has'
 import isKey from '../isKey'
-import toKey from '../toKey'
 import baseGet from './baseGet'
 import baseIsEqual from './baseIsEqual'
 

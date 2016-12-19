@@ -1,6 +1,6 @@
 import { _Object } from '../context'
-import getKey from '../getKey'
-import hasKeyIn from '../hasKeyIn'
+import getKey from './getKey'
+import hasKeyIn from './hasKeyIn'
 
 export default function matchesStrictComparable(key, srcValue) {
   return function(object) {

@@ -1,10 +1,10 @@
-import { baseIsEqual } from './base'
+import baseIsEqual from '../base/baseIsEqual'
+import isImmutable from '../isImmutable'
 import getKey from './getKey'
 import hasKey from './hasKey'
-import isImmutable from './isImmutable'
 
+//WARNING: This is a MUTABLE function
 export default function setKey(object, key, value) {
-
   const objValue = getKey(object, key)
   if (!(hasKey(object, key) && baseIsEqual(objValue, value)) || (value === undefined && !(hasKey(object, key)))) {
     if (isImmutable(object)) {

@@ -1,13 +1,23 @@
+import first from './first'
+import flatten from './flatten'
+import identity from './identity'
+import last from './last'
+import reduceRight from './reduceRight'
+import size from './size'
+import slice from './slice'
+
 export default function compose(...funcs) {
-  if (funcs.length === 0) {
-    return arg => arg
+  funcs = flatten(funcs)
+  const length = size(funcs)
+  if (length === 0) {
+    return identity
   }
 
-  if (funcs.length === 1) {
-    return funcs[0]
+  if (length === 1) {
+    return first(funcs)
   }
 
-  const last = funcs[funcs.length - 1]
-  const rest = funcs.slice(0, -1)
-  return (...args) => rest.reduceRight((composed, func) => func(composed), last(...args))
+  const lastFunc = last(funcs)
+  const rest = slice(funcs, 0, -1)
+  return (...args) => reduceRight(rest, (composed, func) => func(composed), lastFunc(...args))
 }

@@ -2,7 +2,7 @@ import { COMPARE_PARTIAL_FLAG, COMPARE_UNORDERED_FLAG } from '../constants'
 import arraySome from '../array/arraySome'
 import cacheHas from '../cache/cacheHas'
 import SetCache from '../cache/SetCache'
-import getKey from '../getKey'
+import getKey from '../util/getKey'
 
 export default function baseEqualArrays(array, other, bitmask, customizer, equalFunc, stack) {
   const isPartial = bitmask & COMPARE_PARTIAL_FLAG

@@ -1,6 +1,7 @@
-import eq from '../eq'
-import getKey from '../getKey'
+import getKey from '../util/getKey'
 import getSize from '../util/getSize'
+import eq from '../eq'
+
 export default function assocIndexOf(indexedTupple, key) {
   let length = getSize(indexedTupple)
   while (length--) {

@@ -273,7 +273,6 @@
   + [`toIndexed()`](#toindexed)
   + [`toInteger()`](#tointeger) *&ast;Lo*
   + [`toIterable()`](#toiterable)
-  + [`toKey()`](#tokey)
   + [`toLength()`](#tolength) *&ast;Lo*
   + [`toMutable()`](#tomutable)
   + [`toNumber()`](#tonumber) *&ast;Lo*
@@ -309,11 +308,12 @@
   + [`assignWith()`](#assignwith) *&ast;TODO*
   + [`assoc()`](#assoc)
   + [`assocWith()`](#assocwith)
-  + [`at()`](#at) *&ast;TODO*
+  + [`at()`](#at)
   + [`create()`](#create) *&ast;TODO*
   + [`delete()`](#delete)
   + [`defaults()`](#defaults) *&ast;TODO*
   + [`defaultsDeep()`](#defaultsdeep) *&ast;TODO*
+  + [`dissoc()`](#dissoc)
   + [`findKey()`](#findkey) *&ast;TODO*
   + [`findLastKey()`](#findlastkey) *&ast;TODO*
   + [`forIn()`](#forin) *&ast;TODO*
@@ -323,12 +323,9 @@
   + [`functions()`](#functions) *&ast;Lo*
   + [`functionsIn()`](#functionsin) *&ast;TODO*
   + [`get()`](#get)
-  + [`getKey()`](#getkey)
   + [`getPrototype()`](#getprototype)
   + [`has()`](#has)
   + [`hasIn()`](#hasin) *&ast;TODO*
-  + [`hasKey()`](#haskey)
-  + [`hasKeyIn()`](#haskeyin)
   + [`invert()`](#invert) *&ast;TODO*
   + [`invertBy()`](#invertby) *&ast;TODO*
   + [`invoke()`](#invoke) *&ast;TODO*
@@ -345,15 +342,13 @@
   + [`pickBy()`](#pickby) *&ast;TODO*
   + [`result()`](#result) *&ast;TODO*
   + [`set()`](#set)
-  + [`setKey()`](#setkey)
   + [`setWith()`](#setwith)
   + [`toPairs()`](#topairs) *&ast;TODO*
   + [`toPairsIn()`](#topairsin) *&ast;TODO*
   + [`transform()`](#transform) *&ast;TODO*
   + [`unset()`](#unset)
-  + [`unsetKey()`](#unsetkey)
-  + [`update()`](#update) *&ast;TODO*
-  + [`updateWith()`](#updatewith) *&ast;TODO*
+  + [`update()`](#update)
+  + [`updateWith()`](#updatewith)
   + [`values()`](#values)
   + [`valuesIn()`](#valuesin) *&ast;TODO*
 * [Seq](#seq)
@@ -466,7 +461,8 @@ drop(
 ): Array | Immutable.List
 ```
 
-Creates an slice of `array` or `immutable list` with `n` elements dropped from the beginning.
+Creates an slice of `data` with `n` elements dropped from the beginning.
+
 
 ### `dropRight()`
 
@@ -477,29 +473,42 @@ dropRight(
 ): Array | Immutable.List
 ```
 
-Creates an slice of `array` or `immutable list` excluding `n` elements dropped from the end.
+Creates an slice of `data` excluding `n` elements dropped from the end.
+
+
+### `dropRightWhile()`
 
 ```js
 dropRightWhile(
   data: Array | List,
-  predicate: (value: any, index: number, data: Array | Immutable.List)
+  predicate: (
+    value: any,
+    index: number,
+    data: Array | Immutable.List
+  ) => any
 ): Array | Immutable.List
 ```
 
-Creates a slice of `array` or `immutable list` excluding elements dropped from the end.
-Elements are dropped until `predicate` returns falsey. The predicate is
-invoked with three arguments: (value, index, array).
+Creates a slice of `data` excluding elements dropped from the end.
+Elements are dropped until `predicate` returns falsey.
+
+
+### `dropWhile()`
 
 ```js
 dropWhile(
   data: Array | List,
-  predicate: (value: any, index: number, data: Array | Immutable.List)
+  predicate: (
+    value: any,
+    index: number,
+    data: Array | Immutable.List
+  ) => any
 ): Array | Immutable.List
 ```
 
-Creates a slice of `array` or `immutable list` excluding elements dropped from the beginning.
-Elements are dropped until `predicate` returns falsey. The predicate is
-invoked with three arguments: (value, index, array).
+Creates a slice of `data` excluding elements dropped from the beginning.
+Elements are dropped until `predicate` returns falsey.
+
 
 ## Collection and Immutable.Iterable
 
@@ -733,7 +742,91 @@ isImmutableStack(
 
 Returns true if data is of type [`Immutable.Stack`][Immutable.Stack]. Otherwise false.
 
+
 ## Object and Immutable.Map
+
+### `set()`
+
+**Note:** Unlike Lodash, this method is immutable and does NOT mutate data.
+
+```js
+set(
+  data: Array | Immutable.List | Immutable.Map | Object,
+  path: string,
+  value: any
+): Array | Immutable.List | Immutable.Map | Object
+```
+
+Sets the value at path of data. If a portion of path doesn't exist, it's created. When creating path, this method will preserve the parent data type. Therefore, Immutable instances will be created for Immutable parents and mutable Object/Array instances will be created for mutable parents. Arrays and Lists will be created for index properties while Objects and Maps are created for all other missing properties. Use [`setWith`](#setWith) to customize path creation.
+
+
+### `setWith()`
+
+**Note:** Unlike Lodash, this method is immutable and does NOT mutate data.
+
+```js
+setWith(
+  data: Array | Immutable.List | Immutable.Map | Object,
+  path: string,
+  value: any,
+  ?customizer: (
+    value: any,
+    key: string,
+    data: Array | Immutable.List | Immutable.Map | Object,
+  ) => Array | Immutable.List | Immutable.Map | Object
+): Array | Immutable.List | Immutable.Map | Object
+```
+
+This method is like [`set`](#set) except that it accepts customizer which is invoked to produce the objects of path. If customizer returns undefined path creation is handled by the method instead.
+
+
+### `unset()`
+
+**Note:** Unlike Lodash, this method is immutable and does NOT mutate data.
+
+```js
+unset(
+  data: Array | Immutable.List | Immutable.Map | Object,
+  path: string
+): Array | Immutable.List | Immutable.Map | Object
+```
+
+Removes the property at path of data. This method returns a new instance.
+
+
+### `update()`
+
+**Note:** Unlike Lodash, this method is immutable and does NOT mutate data.
+
+```js
+update(
+  data: Array | Immutable.List | Immutable.Map | Object,
+  path: string,
+  updater: (value: any) => any
+): Array | Immutable.List | Immutable.Map | Object
+```
+
+This method is like [`set`](#set) except that accepts updater to produce the value to set. Use [`updateWith`](#updateWith) to customize path creation. This method returns a new instance.
+
+
+### `updateWith()`
+
+**Note:** Unlike Lodash, this method is immutable and does NOT mutate data.
+
+```js
+updateWith(
+  data: Array | Immutable.List | Immutable.Map | Object,
+  path: string,
+  updater: (value: any) => any,
+  ?customizer: (
+    value: any,
+    key: string,
+    data: Array | Immutable.List | Immutable.Map | Object,
+  ) => Array | Immutable.List | Immutable.Map | Object
+): Array | Immutable.List | Immutable.Map | Object
+```
+
+This method is like [`update`](#update) except that it accepts customizer which is invoked to produce the objects of path. If customizer returns undefined path creation is handled by the method instead. This method returns a new instance.
 
 
 [Immutable.Iterable]: https://facebook.github.io/immutable-js/docs/#/Iterable
