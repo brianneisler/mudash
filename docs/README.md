@@ -333,7 +333,7 @@
   + [`omit()`](./API.md#omit)
   + [`omitBy()`](./API.md#omitby)
   + [`pick()`](./API.md#pick)
-  + [`pickBy()`](./API.md#pickby) *&ast;TODO*
+  + [`pickBy()`](./API.md#pickby)
   + [`result()`](./API.md#result) *&ast;TODO*
   + [`set()`](./API.md#set)
   + [`setWith()`](./API.md#setwith)

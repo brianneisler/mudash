@@ -1,6 +1,8 @@
-import { keyIn } from './composers'
-import filter from './filter'
+import basePickBy from './base/basePickBy'
+import hasKeyIn from './util/hasKeyIn'
 
-export default function pick(data, keys) {
-  return filter(data, keyIn(keys))
+export default function pick(data, maybePath) {
+  return basePickBy(data, maybePath, function (value, path) {
+    return hasKeyIn(data, path)
+  })
 }
