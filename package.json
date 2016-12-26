@@ -1,6 +1,6 @@
 {
   "name": "mudash",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "main": "./index.js",
   "description": "Lodash wrapper providing Immutable.JS support",
   "repository": {
