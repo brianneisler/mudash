@@ -17,9 +17,9 @@
   + [`circularShift()`](#circularshift)
   + [`compact()`](#compact)
   + [`concat()`](#concat)
-  + [`difference()`](#difference) *&ast;TODO*
-  + [`differenceBy()`](#differenceby) *&ast;TODO*
-  + [`differenceWith()`](#differencewith) *&ast;TODO*
+  + [`difference()`](#difference)
+  + [`differenceBy()`](#differenceby)
+  + [`differenceWith()`](#differencewith)
   + [`drop()`](#drop)
   + [`dropRight()`](#dropright)
   + [`dropRightWhile()`](#droprightwhile)
@@ -451,6 +451,50 @@ chunk(
 ```
 
 Creates an array or list of elements split into groups the length of `size`. If `data` can't be split evenly, the final chunk will be the remaining elements.
+
+
+### `difference()`
+
+```js
+difference(
+  data: Array | List,
+  ...values: Array<Array | List>
+): Array | List
+```
+
+Creates an Indexed instance of values not included in the other given Indexed instances using SameValueZeroOrImmutableEqual for equality comparisons. The order and references of result values are determined by the first Indexed instance.
+
+
+### `differenceBy()`
+
+```js
+differenceBy(
+  data: Array | List,
+  ...values: Array<Array | List>,
+  iteratee=_.identity: (
+    value: any
+  ) => any
+): Array | List
+```
+
+This method is like [`difference`](#difference) except that it accepts `iteratee` which is invoked for each element of `data` and `values` to generate the criterion by which they're compared. The order and references of result values are determined by the first Indexed instance.
+
+
+### `differenceWith()`
+
+```js
+differenceWith(
+  data: Array | List,
+  ...values: Array<Array | List>,
+  comparator=_.identity: (
+    dataValue: any,
+    otherValue: any
+  ) => boolean
+): Array | List
+```
+
+This method is like [`difference`](#difference) except that it accepts `comparator` which is invoked to compare elements of `data` to `values`. The order and references of result values are determined by the first Indexed instance.
+
 
 ### `drop()`
 

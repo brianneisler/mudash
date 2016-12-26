@@ -11,9 +11,9 @@
   + [`circularShift()`](./API.md#circularshift)
   + [`compact()`](./API.md#compact)
   + [`concat()`](./API.md#concat)
-  + [`difference()`](./API.md#difference) *&ast;TODO*
-  + [`differenceBy()`](./API.md#differenceby) *&ast;TODO*
-  + [`differenceWith()`](./API.md#differencewith) *&ast;TODO*
+  + [`difference()`](./API.md#difference)
+  + [`differenceBy()`](./API.md#differenceby)
+  + [`differenceWith()`](./API.md#differencewith)
   + [`drop()`](./API.md#drop)
   + [`dropRight()`](./API.md#dropright)
   + [`dropRightWhile()`](./API.md#droprightwhile)

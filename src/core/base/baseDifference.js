@@ -4,39 +4,43 @@ import mutationPush from '../mutations/mutationPush'
 import getKey from '../util/getKey'
 import getSize from '../util/getSize'
 import withMutations from '../with/withMutations'
+import hintConvert from '../hintConvert'
+import map from '../map'
 import baseIncludes from './baseIncludes'
 import baseIncludesWith from './baseIncludesWith'
-import hintConvert from '../hintConvert'
+import baseUnary from './baseUnary'
 
-const findUniques = withMutations((result, indexed, seen, iteratee, comparator, includes) => {
-  const length = getSize(indexed)
+const findDifference = withMutations((result, indexed, values, iteratee, comparator, includes) => {
   let index = -1
+  const length = getSize(indexed)
+  if (!length) {
+    return result
+  }
   while (++index < length) {
     let value = getKey(indexed, index)
     const computed = iteratee ? iteratee(value) : value
 
-    // Resetting for -0
     value = (comparator || value !== 0) ? value : 0
-
-    if (!includes(seen, computed, comparator)) {
-      seen = seen.add(computed)
-      mutationPush(result, value)
+    if (!includes(values, computed, comparator)) {
+      result = mutationPush(result, value)
     }
   }
   return result
 })
 
-//TODO BRN: Should this method should try to preserve the original immutable type? Right now it just returns a List
-export default function baseUniq(indexed, iteratee, comparator) {
+
+export default function baseDifference(indexed, values, iteratee, comparator) {
   let includes = baseIncludes
   const result = hintConvert(indexed, [])
-  let seen = []
 
+  if (iteratee) {
+    values = map(indexed, baseUnary(iteratee))
+  }
   if (comparator) {
     includes = baseIncludesWith
   } else {
     includes = cacheHas
-    seen = new Immutable.Set()
+    values = new Immutable.Set(values)
   }
-  return findUniques(result, indexed, seen, iteratee, comparator, includes)
+  return findDifference(result, indexed, values, iteratee, comparator, includes)
 }

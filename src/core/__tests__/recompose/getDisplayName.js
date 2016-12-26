@@ -1,15 +1,15 @@
 import _ from 'lodash'
 
-const getDisplayName = module => {
-  if (_.isString(module)) {
-    return module
+const getDisplayName = result => {
+  if (_.isString(result)) {
+    return result
   }
 
-  if (!module) {
+  if (!result) {
     return undefined
   }
 
-  return module.displayName || module.name || 'Module'
+  return result.displayName || result.name || 'Test'
 }
 
 export default getDisplayName

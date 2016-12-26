@@ -1,5 +1,6 @@
 export { default as baseAssignValue } from './baseAssignValue'
 export { default as baseClone } from './baseClone'
+export { default as baseDifference } from './baseDifference'
 export { default as baseEqualArrays } from './baseEqualArrays'
 export { default as baseEqualByTag } from './baseEqualByTag'
 export { default as baseEqualObjects } from './baseEqualObjects'
