@@ -1,11 +1,7 @@
 language: node_js
+cache: yarn
 node_js:
 - '6.2'
-cache:
-  directories:
-  - node_modules
-  - "$HOME/.npm"
-  - "$HOME/.gem"
 before_install:
 - npm install -g gulp
 script:

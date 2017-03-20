@@ -1,13 +1,14 @@
 import baseGet from './baseGet'
-import baseSet from './baseSet'
+import baseUnset from './baseUnset'
 import getSize from '../util/getSize'
 import getKey from '../util/getKey'
 import setKey from '../util/setKey'
+import unsetKey from '../util/unsetKey'
 import castPath from '../util/castPath'
 import withMutations from '../with/withMutations'
-import { hintConvert, get } from '../'
+import {  get } from '../'
 
-const pickPaths = withMutations((result, data, paths, predicate) => {
+const omitPaths = withMutations((result, data, paths, predicate) => {
   const length = getSize(paths)
   let index = -1
 
@@ -15,14 +16,13 @@ const pickPaths = withMutations((result, data, paths, predicate) => {
     const path = get(paths, index)
     const value = baseGet(data, path, getKey)
     if (predicate(value, path)) {
-      result = baseSet(result, castPath(path, data), value, setKey)
+      result = baseUnset(result, castPath(path, data), unsetKey, setKey)
     }
   }
 
   return result
 })
 
-export default function basePickBy(data, paths, predicate) {
-  const result = hintConvert(data, {})
-  return pickPaths(result, data, paths, predicate)
+export default function baseOmitBy(data, paths, predicate) {
+  return omitPaths(data, data, paths, predicate)
 }

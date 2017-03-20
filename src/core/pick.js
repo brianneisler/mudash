@@ -1,12 +1,6 @@
-import basePickBy from './base/basePickBy'
-import hasKeyIn from './util/hasKeyIn'
+import { basePick } from './base'
+import flatten from './flatten'
 
-export default function pick(data, maybePath) {
-  if (data == null) {
-    return {}
-  }
-
-  return basePickBy(data, maybePath, function (value, path) {
-    return hasKeyIn(data, path)
-  })
+export default function pick(data, ...paths) {
+  return data == null ? {} : basePick(data, flatten(paths))
 }

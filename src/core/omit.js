@@ -1,6 +1,6 @@
-import { keyIn } from './composers'
-import filterNot from './filterNot'
+import { baseOmit } from './base'
+import flatten from './flatten'
 
-export default function omit(data, keys) {
-  return filterNot(data, keyIn(keys))
+export default function omit(data, ...paths) {
+  return data == null ? {} : baseOmit(data, flatten(paths))
 }

@@ -8,6 +8,8 @@ const object = { 'a': 1, 'b': 2, 'c': 3 }
 describe('pick', function () {
   it('should create an object composed of object properties', function () {
     const result = pick(object, ['a', 'c'])
+    expect(object).to.not.equal(result)
+    expect(object).to.deep.equal({ 'a': 1, 'b': 2, 'c': 3 })
     expect(result).to.deep.equal({'a': 1, 'c': 3})
   })
 

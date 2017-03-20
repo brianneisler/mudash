@@ -1,15 +1,14 @@
-import getAllKeys from './util/getAllKeys'
-import getIteratee from './util/getIteratee'
-import basePickBy from './base/basePickBy'
+import { getAllKeys } from './util'
+import iteratee from './iteratee'
+import { basePickBy } from './base'
+import map from './map'
 
 export default function pickBy(data, predicate) {
   if (data == null) {
     return {}
   }
 
-  const props = getAllKeys(data)
-  predicate = getIteratee(predicate)
-  return basePickBy(data, props, function(value, path) {
-    return predicate(value, path[0])
-  })
+  const props = map(getAllKeys(data), (prop) => [prop])
+  predicate = iteratee(predicate)
+  return basePickBy(data, props, (value, path) => predicate(value, path[0]))
 }
