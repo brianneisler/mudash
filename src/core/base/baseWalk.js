@@ -1,9 +1,9 @@
-import _ from 'lodash'
 import castPath from '../util/castPath'
 import get from '../get'
+import isFunction from '../isFunction'
 
 export default function baseWalk(data, path, iteratee, walkee) {
-  if (_.isFunction(path)) {
+  if (isFunction(path)) {
     walkee = iteratee
     iteratee = path
     path = undefined

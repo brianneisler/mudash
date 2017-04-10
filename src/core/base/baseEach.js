@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import baseForOwn from './baseForOwn'
-import { isForEachable } from '../util'
+import { getKey, getSize, isForEachable } from '../util'
 
 export default function baseEach(data, iteratee) {
   if (data == null) {
@@ -13,11 +13,11 @@ export default function baseEach(data, iteratee) {
     }
     return baseForOwn(data, iteratee)
   }
-  const length = data.length
+  const size = getSize(data)
   let index = -1
 
-  while (++index < length) {
-    if (iteratee(data[index], index, data) === false) {
+  while (++index < size) {
+    if (iteratee(getKey(data, index), index, data) === false) {
       break
     }
   }

@@ -1,9 +1,10 @@
 import _ from 'lodash'
 import { _Object } from './context'
 import { reIsDeepProp, reIsPlainProp } from './regex'
+import isArray from './isArray'
 
 export default function isKey(value, object) {
-  if (_.isArray(value)) {
+  if (isArray(value)) {
     return false
   }
   const type = typeof value

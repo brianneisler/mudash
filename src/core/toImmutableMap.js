@@ -1,7 +1,9 @@
-import _ from 'lodash'
 import { Map } from 'immutable'
+import isArray from './isArray'
 import isImmutable from './isImmutable'
 import isImmutableMap from './isImmutableMap'
+import isObject from './isObject'
+import isString from './isString'
 import toImmutableIterable from './toImmutableIterable'
 
 export default function toImmutableMap(data) {
@@ -9,9 +11,9 @@ export default function toImmutableMap(data) {
     return data
   } else if (isImmutable(data)) {
     return data.toMap()
-  } else if (_.isString(data) || _.isArray(data)) {
+  } else if (isString(data) || isArray(data)) {
     return toImmutableIterable(data).toMap()
-  } else if (_.isObject(data)) {
+  } else if (isObject(data)) {
     return Map(data)
   }
   return Map()

@@ -1,9 +1,10 @@
 import _ from 'lodash'
+import isFunction from '../isFunction'
 import isImmutable from '../isImmutable'
 
-export default function deepClone(customizer) {
+export default function withDeepClone(customizer) {
   const cloner = (data, key, object) => {
-    if (_.isFunction(customizer)) {
+    if (isFunction(customizer)) {
       const result = customizer(data, key, object)
       if (!_.isUndefined(result)) {
         return result

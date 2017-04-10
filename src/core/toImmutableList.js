@@ -1,7 +1,9 @@
-import _ from 'lodash'
 import { List } from 'immutable'
+import isArray from './isArray'
 import isImmutable from './isImmutable'
 import isImmutableList from './isImmutableList'
+import isObject from './isObject'
+import isString from './isString'
 import toImmutableIterable from './toImmutableIterable'
 
 export default function toImmutableList(data) {
@@ -9,9 +11,9 @@ export default function toImmutableList(data) {
     return data
   } else if (isImmutable(data)) {
     return data.toList()
-  } else if (_.isString(data) || _.isArray(data)) {
+  } else if (isString(data) || isArray(data)) {
     return List(data)
-  } else if (_.isObject(data)) {
+  } else if (isObject(data)) {
     return toImmutableIterable(data).toList()
   }
   return List()

@@ -1,7 +1,9 @@
-import _ from 'lodash'
 import { OrderedSet } from 'immutable'
+import isArray from './isArray'
 import isImmutable from './isImmutable'
 import isImmutableOrderedSet from './isImmutableOrderedSet'
+import isObject from './isObject'
+import isString from './isString'
 import toImmutableIterable from './toImmutableIterable'
 
 export default function toImmutableOrderedSet(data) {
@@ -9,9 +11,9 @@ export default function toImmutableOrderedSet(data) {
     return data
   } else if (isImmutable(data)) {
     return data.toOrderedSet()
-  } else if (_.isString(data) || _.isArray(data)) {
+  } else if (isString(data) || isArray(data)) {
     return OrderedSet(data)
-  } else if (_.isObject(data)) {
+  } else if (isObject(data)) {
     return toImmutableIterable(data).toOrderedSet()
   }
   return OrderedSet()

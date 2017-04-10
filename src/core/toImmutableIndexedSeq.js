@@ -1,7 +1,9 @@
-import _ from 'lodash'
 import { Seq } from 'immutable'
+import isArray from './isArray'
 import isImmutable from './isImmutable'
 import isImmutableIndexedSeq from './isImmutableIndexedSeq'
+import isObject from './isObject'
+import isString from './isString'
 import toImmutableSeq from './toImmutableSeq'
 
 export default function toImmutableIndexedSeq(data) {
@@ -9,9 +11,9 @@ export default function toImmutableIndexedSeq(data) {
     return data
   } else if (isImmutable(data)) {
     return data.toIndexedSeq()
-  } else if (_.isString(data) || _.isArray(data)) {
+  } else if (isString(data) || isArray(data)) {
     return Seq.Indexed(data)
-  } else if (_.isObject(data)) {
+  } else if (isObject(data)) {
     return toImmutableSeq(data).toIndexedSeq()
   }
   return Seq.Indexed()

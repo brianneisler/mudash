@@ -1,7 +1,7 @@
-import _ from 'lodash'
 import castPath from '../util/castPath'
 import getKey from '../util/getKey'
 import toKey from '../util/toKey'
+import isObject from '../isObject'
 
 export default function baseUnset(data, path, unsetFunc, setFunc) {
   path = castPath(path)
@@ -14,7 +14,7 @@ function composeRecurPathUnset(path, unsetFunc, setFunc) {
   const lastIndex = length - 1
 
   const recurUnset = (data, index) => {
-    if (!_.isObject(data)) {
+    if (!isObject(data)) {
       return data
     }
     const key = toKey(path[index])

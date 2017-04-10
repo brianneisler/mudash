@@ -1,8 +1,8 @@
-import isImmutable from '../isImmutable'
+import Keyed from '../protocols/Keyed'
 
 export default function getKey(data, key) {
   if (data != null) {
-    return isImmutable(data)
+    return Keyed.is(data)
       ? data.get(key)
       : data[key]
   }

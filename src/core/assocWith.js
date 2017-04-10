@@ -1,8 +1,9 @@
-import _ from 'lodash'
 import { baseSet } from './base'
 import { arg2 } from './customizers'
 import { assocKey, getKey } from './util'
 import forEach from './forEach'
+import isFunction from './isFunction'
+import isString from './isString'
 
 const customAssocKey = (customizer) => {
   return (data, key, value) => {
@@ -13,11 +14,11 @@ const customAssocKey = (customizer) => {
 }
 
 export default function assocWith(data, path, value, customizer = arg2) {
-  if (_.isFunction(value)) {
+  if (isFunction(value)) {
     customizer = value
   }
   const setFunc = customAssocKey(customizer)
-  if (_.isString(path)) {
+  if (isString(path)) {
     data = baseSet(data, path, value, setFunc)
   } else {
     forEach(path, (pathValue, pathKey) => {

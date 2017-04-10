@@ -100,7 +100,7 @@
   + [`flatMapDeep()`](#flatmapdeep) *&ast;TODO*
   + [`flatMapDepth()`](#flatmapdepth) *&ast;TODO*
   + [`forEach()`](#foreach)
-  + [`forEachRight()`](#foreachright) *&ast;TODO*
+  + [`forEachRight()`](#foreachright)
   + [`groupBy()`](#groupBy)
   + [`includes()`](#includes)
   + [`includesWith()`](#includeswith)
@@ -165,13 +165,13 @@
   + [`gt()`](#gt) *&ast;Lo*
   + [`gte()`](#gte) *&ast;Lo*
   + [`isArguments()`](#isarguments) *&ast;Lo*
-  + [`isArray()`](#isarray) *&ast;Lo*
+  + [`isArray()`](#isarray)
   + [`isArrayBuffer()`](#isarraybuffer) *&ast;Lo*
   + [`isArrayLike()`](#isarraylike) *&ast;Lo*
   + [`isArrayLikeObject()`](#isarraylikeobject) *&ast;Lo*
   + [`isAssociative()`](#isassociative)
   + [`isBatchable()`](#isbatchable)
-  + [`isBoolean()`](#isboolean) *&ast;Lo*
+  + [`isBoolean()`](#isboolean)
   + [`isBuffer()`](#isbuffer) *&ast;Lo*
   + [`isDate()`](#isdate) *&ast;Lo*
   + [`isElement()`](#iselement) *&ast;Lo*
@@ -180,7 +180,7 @@
   + [`isEqualWith()`](#isequalwith)
   + [`isError()`](#iserror) *&ast;Lo*
   + [`isFinite()`](#isfinite) *&ast;Lo*
-  + [`isFunction()`](#isfunction) *&ast;Lo*
+  + [`isFunction()`](#isfunction)
   + [`isGenerator()`](#isgenerator)
   + [`isGeneratorFunction()`](#isgeneratorfunction)
   + [`isIm()`](#isim)
@@ -224,16 +224,16 @@
   + [`isNative()`](#isnative) *&ast;Lo*
   + [`isNil()`](#isnil) *&ast;Lo*
   + [`isNull()`](#isnull) *&ast;Lo*
-  + [`isNumber()`](#isnumber) *&ast;Lo*
-  + [`isObject()`](#isobject) *&ast;Lo*
-  + [`isObjectLike()`](#isobjectlike) *&ast;Lo*
+  + [`isNumber()`](#isnumber)
+  + [`isObject()`](#isobject)
+  + [`isObjectLike()`](#isobjectlike)
   + [`isPlainObject()`](#isplainobject) *&ast;Lo*
   + [`isPrototype()`](#isprototype)
   + [`isRegExp()`](#isregexp) *&ast;Lo*
   + [`isSafeInteger()`](#issafeinteger) *&ast;Lo*
   + [`isSet()`](#isset) *&ast;Lo*
   + [`isShallowEqual()`](#isshallowequal)
-  + [`isString()`](#isstring) *&ast;Lo*
+  + [`isString()`](#isstring)
   + [`isSymbol()`](#issymbol) *&ast;Lo*
   + [`isTypedArray()`](#istypedarray) *&ast;Lo*
   + [`isUndefined()`](#isundefined) *&ast;Lo*
@@ -573,6 +573,38 @@ find(
 Iterates over elements of collection, returning the first element predicate returns truthy for.
 
 
+### `forEach()`
+
+```js
+forEach(
+  data: Array | Immutable.Iterable | Object,
+  ?iteratee=_.identity: (
+    value: any,
+    key: string | number,
+    data: Array | Immutable.Iterable | Object
+  ) => boolean
+): Array | Immutable.Iterable | Object
+```
+
+Iterates over elements of `data` and invokes `iteratee` for each element. Iteratee functions may exit iteration early by explicitly returning `false`.
+
+
+### `forEachRight()`
+
+```js
+forEachRight(
+  data: Array | Immutable.Iterable | Object,
+  ?iteratee=_.identity: (
+    value: any,
+    key: string | number,
+    data: Array | Immutable.Iterable | Object
+  ) => boolean
+): Array | Immutable.Iterable | Object
+```
+
+This method is like [`forEach`](#foreach) except that it iterates over elements of `data` from right to left.
+
+
 ### `includes()`
 
 ```js
@@ -631,6 +663,39 @@ Used to compose multiple functions together in to a single function
 
 ## Lang
 
+### `isArray()`
+
+```js
+isArray(
+  data: any
+): boolean
+```
+
+Returns `true` if value is an `Array`. Otherwise `false`.
+
+
+### `isBoolean()`
+
+```js
+isBoolean(
+  data: any
+): boolean
+```
+
+Returns `true` if value is classified as a boolean primitive or object. Otherwise `false`.
+
+
+### `isFunction()`
+
+```js
+isFunction(
+  data: any
+): boolean
+```
+
+Returns `true` if data is classified as a function. Otherwise `false`.
+
+
 ### `isImmutable()`
 
 *aliases:* `isIm`
@@ -641,7 +706,7 @@ isImmutable(
 ): boolean
 ```
 
-Returns true if data is an immutable data type from immutable js. Otherwise false.
+Returns `true` if data is an immutable data type from immutable js. Otherwise `false`.
 
 
 ### `isImmutableIndexedSeq()`
@@ -654,7 +719,7 @@ isImmutableIndexedSeq(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.Seq.Indexed`][Immutable.Seq.Indexed]. Otherwise false.
+Returns `true` if data is of type [`Immutable.Seq.Indexed`][Immutable.Seq.Indexed]. Otherwise `false`.
 
 
 ### `isImmutableIterable()`
@@ -667,7 +732,7 @@ isImmutableIterable(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.Iterable`][Immutable.Iterable]. Otherwise false.
+Returns `true` if data is of type [`Immutable.Iterable`][Immutable.Iterable]. Otherwise `false`.
 
 
 ### `isImmutableKeyedSeq()`
@@ -680,7 +745,7 @@ isImmutableKeyedSeq(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.Seq.Keyed`][Immutable.Seq.Keyed]. Otherwise false.
+Returns `true` if data is of type [`Immutable.Seq.Keyed`][Immutable.Seq.Keyed]. Otherwise `false`.
 
 
 ### `isImmutableList()`
@@ -693,7 +758,7 @@ isImmutableList(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.List`][Immutable.List]. Otherwise false.
+Returns `true` if data is of type [`Immutable.List`][Immutable.List]. Otherwise `false`.
 
 
 ### `isImmutableMap()`
@@ -706,7 +771,7 @@ isImmutableMap(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.Map`][Immutable.Map]. Otherwise false.
+Returns `true` if data is of type [`Immutable.Map`][Immutable.Map]. Otherwise `false`.
 
 
 ### `isImmutableOrderedMap()`
@@ -719,7 +784,7 @@ isImmutableOrderedMap(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.OrderedMap`][Immutable.OrderedMap]. Otherwise false.
+Returns `true` if data is of type [`Immutable.OrderedMap`][Immutable.OrderedMap]. Otherwise `false`.
 
 
 ### `isImmutableOrderedSet()`
@@ -732,7 +797,7 @@ isImmutableOrderedSet(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.OrderedSet`][Immutable.OrderedSet]. Otherwise false.
+Returns `true` if data is of type [`Immutable.OrderedSet`][Immutable.OrderedSet]. Otherwise `false`.
 
 
 ### `isImmutableSeq()`
@@ -745,7 +810,7 @@ isImmutableSeq(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.Seq`][Immutable.Seq]. Otherwise false.
+Returns `true` if data is of type [`Immutable.Seq`][Immutable.Seq]. Otherwise `false`.
 
 
 ### `isImmutableSet()`
@@ -758,7 +823,7 @@ isImmutableSet(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.Set`][Immutable.Set]. Otherwise false.
+Returns `true` if data is of type [`Immutable.Set`][Immutable.Set]. Otherwise `false`.
 
 
 ### `isImmutableSetSeq()`
@@ -771,7 +836,7 @@ isImmutableSetSeq(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.Seq.Set`][Immutable.Seq.Set]. Otherwise false.
+Returns `true` if data is of type [`Immutable.Seq.Set`][Immutable.Seq.Set]. Otherwise `false`.
 
 
 ### `isImmutableStack()`
@@ -784,7 +849,40 @@ isImmutableStack(
 ): boolean
 ```
 
-Returns true if data is of type [`Immutable.Stack`][Immutable.Stack]. Otherwise false.
+Returns `true` if data is of type [`Immutable.Stack`][Immutable.Stack]. Otherwise `false`.
+
+
+### `isNumber()`
+
+```js
+isNumber(
+  data: any
+): boolean
+```
+
+Returns `true` if value is classified as a `Number` primitive or object. Otherwise `false`.
+
+
+### `isObject()`
+
+```js
+isObject(
+  data: any
+): boolean
+```
+
+Returns `true` if value is the language type of `Object`. Otherwise `false`.
+
+
+### `isString()`
+
+```js
+isString(
+  data: any
+): boolean
+```
+
+Returns `true` if value is classified as a `String` primitive or object. Otherwise `false`.
 
 
 ## Object and Immutable.Map

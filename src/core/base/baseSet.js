@@ -1,10 +1,10 @@
-import _ from 'lodash'
 import castPath from '../util/castPath'
 import getKey from '../util/getKey'
 import toKey from '../util/toKey'
 import isImmutable from '../isImmutable'
 import isIndex from '../isIndex'
 import toImmutable from '../toImmutable'
+import isObject from '../isObject'
 
 export default function baseSet(data, path, value, setKeyFunc, options = {}) {
   path = castPath(path)
@@ -17,7 +17,7 @@ function withRecurPathSet(path, setKeyFunc, { customizer }) {
   const lastIndex = length - 1
 
   const recurSet = (data, index, value) => {
-    if (!_.isObject(data)) {
+    if (!isObject(data)) {
       return data
     }
 
@@ -28,7 +28,7 @@ function withRecurPathSet(path, setKeyFunc, { customizer }) {
       const custom = isIndex(path[index + 1]) ? [] : {}
       newValue = customizer ? customizer(objValue, key, data) : undefined
       if (newValue === undefined) {
-        newValue = _.isObject(objValue)
+        newValue = isObject(objValue)
           ? objValue
           : (isImmutable(data) ? toImmutable(custom) : custom)
       }

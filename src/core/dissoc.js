@@ -1,13 +1,13 @@
-import _ from 'lodash'
-import forEach from './forEach'
 import { baseUnset } from './base'
 import { assocKey, dissocKey } from './util'
+import forEach from './forEach'
+import isString from './isString'
 
 export default function dissoc(data, path) {
   if (data == null) {
     return data
   }
-  if (_.isString(path)) {
+  if (isString(path)) {
     data = baseUnset(data, path, dissocKey, assocKey)
   } else {
     //TODO BRN: Improve this so that it uses withMutations when making multiple modifications

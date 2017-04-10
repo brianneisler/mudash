@@ -1,4 +1,5 @@
-import _ from 'lodash'
+import isObject from '../isObject'
+
 export default function isStrictComparable(value) {
-  return value === value && !_.isObject(value)
+  return value === value && !isObject(value)
 }

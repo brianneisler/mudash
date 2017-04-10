@@ -1,8 +1,8 @@
-import _ from 'lodash'
+import identity from '../identity'
+import isArray from '../isArray'
 import baseMatches from './baseMatches'
 import baseMatchesProperty from './baseMatchesProperty'
 import baseProperty from './baseProperty'
-import identity from '../identity'
 
 export default function baseIteratee(value) {
   // Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.
@@ -14,7 +14,7 @@ export default function baseIteratee(value) {
     return identity
   }
   if (typeof value == 'object') {
-    return _.isArray(value)
+    return isArray(value)
       ? baseMatchesProperty(value[0], value[1])
       : baseMatches(value)
   }

@@ -1,6 +1,6 @@
 import _ from 'lodash'
-import { deepClone } from './composers'
+import { withDeepClone } from './with'
 
 export default function cloneDeepWith(data, customizer) {
-  return _.cloneDeepWith(data, deepClone(customizer))
+  return _.cloneDeepWith(data, withDeepClone(customizer))
 }

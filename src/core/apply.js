@@ -1,5 +1,5 @@
-import _ from 'lodash'
+import isFunction from './isFunction'
 
 export default function apply(method, args) {
-  return _.isFunction(method) ? method.apply(null, args) : null
+  return isFunction(method) ? method.apply(null, args) : null
 }

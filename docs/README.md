@@ -94,7 +94,7 @@
   + [`flatMapDeep()`](./API.md#flatmapdeep) *&ast;TODO*
   + [`flatMapDepth()`](./API.md#flatmapdepth) *&ast;TODO*
   + [`forEach()`](./API.md#foreach)
-  + [`forEachRight()`](./API.md#foreachright) *&ast;TODO*
+  + [`forEachRight()`](./API.md#foreachright)
   + [`groupBy()`](./API.md#groupBy)
   + [`includes()`](./API.md#includes)
   + [`includesWith()`](./API.md#includeswith)
@@ -159,13 +159,13 @@
   + [`gt()`](./API.md#gt) *&ast;Lo*
   + [`gte()`](./API.md#gte) *&ast;Lo*
   + [`isArguments()`](./API.md#isarguments) *&ast;Lo*
-  + [`isArray()`](./API.md#isarray) *&ast;Lo*
+  + [`isArray()`](./API.md#isarray)
   + [`isArrayBuffer()`](./API.md#isarraybuffer) *&ast;Lo*
   + [`isArrayLike()`](./API.md#isarraylike) *&ast;Lo*
   + [`isArrayLikeObject()`](./API.md#isarraylikeobject) *&ast;Lo*
   + [`isAssociative()`](./API.md#isassociative)
   + [`isBatchable()`](./API.md#isbatchable)
-  + [`isBoolean()`](./API.md#isboolean) *&ast;Lo*
+  + [`isBoolean()`](./API.md#isboolean)
   + [`isBuffer()`](./API.md#isbuffer) *&ast;Lo*
   + [`isDate()`](./API.md#isdate) *&ast;Lo*
   + [`isElement()`](./API.md#iselement) *&ast;Lo*
@@ -174,7 +174,7 @@
   + [`isEqualWith()`](./API.md#isequalwith)
   + [`isError()`](./API.md#iserror) *&ast;Lo*
   + [`isFinite()`](./API.md#isfinite) *&ast;Lo*
-  + [`isFunction()`](./API.md#isfunction) *&ast;Lo*
+  + [`isFunction()`](./API.md#isfunction)
   + [`isGenerator()`](./API.md#isgenerator)
   + [`isGeneratorFunction()`](./API.md#isgeneratorfunction)
   + [`isIm()`](./API.md#isim)
@@ -218,16 +218,16 @@
   + [`isNative()`](./API.md#isnative) *&ast;Lo*
   + [`isNil()`](./API.md#isnil) *&ast;Lo*
   + [`isNull()`](./API.md#isnull) *&ast;Lo*
-  + [`isNumber()`](./API.md#isnumber) *&ast;Lo*
-  + [`isObject()`](./API.md#isobject) *&ast;Lo*
-  + [`isObjectLike()`](./API.md#isobjectlike) *&ast;Lo*
+  + [`isNumber()`](./API.md#isnumber)
+  + [`isObject()`](./API.md#isobject)
+  + [`isObjectLike()`](./API.md#isobjectlike)
   + [`isPlainObject()`](./API.md#isplainobject) *&ast;Lo*
   + [`isPrototype()`](./API.md#isprototype)
   + [`isRegExp()`](./API.md#isregexp) *&ast;Lo*
   + [`isSafeInteger()`](./API.md#issafeinteger) *&ast;Lo*
   + [`isSet()`](./API.md#isset) *&ast;Lo*
   + [`isShallowEqual()`](./API.md#isshallowequal)
-  + [`isString()`](./API.md#isstring) *&ast;Lo*
+  + [`isString()`](./API.md#isstring)
   + [`isSymbol()`](./API.md#issymbol) *&ast;Lo*
   + [`isTypedArray()`](./API.md#istypedarray) *&ast;Lo*
   + [`isUndefined()`](./API.md#isundefined) *&ast;Lo*

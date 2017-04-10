@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import isFunction from '../isFunction'
 export default function isForEachable(data) {
-  return data && _.isFunction(data.forEach)
+  return data && isFunction(data.forEach)
 }

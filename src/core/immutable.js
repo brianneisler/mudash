@@ -1,8 +1,9 @@
-import _ from 'lodash'
+import isArray from './isArray'
 import isMutable from './isMutable'
+import isObjectLike from './isObjectLike'
 import toImmutable from './toImmutable'
 
 export default function immutable(data) {
-  return isMutable(data) && (_.isObjectLike(data) || _.isArray(data)) ?
+  return isMutable(data) && (isObjectLike(data) || isArray(data)) ?
     toImmutable(data) : data
 }

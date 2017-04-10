@@ -1,7 +1,7 @@
-import _ from 'lodash'
 import arrayPush from '../array/arrayPush'
+import isArray from '../isArray'
 
 export default function baseGetAllKeys(object, keysFunc, symbolsFunc) {
   const result = keysFunc(object)
-  return _.isArray(object) ? result : arrayPush(result, symbolsFunc(object))
+  return isArray(object) ? result : arrayPush(result, symbolsFunc(object))
 }

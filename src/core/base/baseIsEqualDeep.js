@@ -4,6 +4,7 @@ import { ARRAY_TAG, ARGS_TAG, COMPARE_PARTIAL_FLAG, OBJECT_TAG } from '../consta
 import contextHasOwnProperty from '../context/contextHasOwnProperty'
 import copyObject from '../util/copyObject'
 import getTag from '../util/getTag'
+import isArray from '../isArray'
 import baseEqualArrays from './baseEqualArrays'
 import baseEqualByTag from './baseEqualByTag'
 import baseEqualObjects from './baseEqualObjects'
@@ -11,8 +12,8 @@ import baseKeys from './baseKeys'
 
 
 export default function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
-  let objIsArr    = _.isArray(object)
-  const othIsArr  = _.isArray(other)
+  let objIsArr    = isArray(object)
+  const othIsArr  = isArray(other)
   let objTag      = objIsArr ? ARRAY_TAG : getTag(object)
   let othTag      = othIsArr ? ARRAY_TAG : getTag(other)
 

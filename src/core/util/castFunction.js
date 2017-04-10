@@ -1,5 +1,5 @@
-import _ from 'lodash'
 import identity from '../identity'
+import isFunction from '../isFunction'
 export default function castFunction(value) {
-  return _.isFunction(value) ? value : identity
+  return isFunction(value) ? value : identity
 }
