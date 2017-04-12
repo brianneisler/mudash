@@ -3,8 +3,8 @@ import getKey from '../util/getKey'
 import toKey from '../util/toKey'
 import isImmutable from '../isImmutable'
 import isIndex from '../isIndex'
-import toImmutable from '../toImmutable'
 import isObject from '../isObject'
+import toImmutable from '../toImmutable'
 
 export default function baseSet(data, path, value, setKeyFunc, options = {}) {
   path = castPath(path)

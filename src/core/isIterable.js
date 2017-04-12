@@ -1,6 +1,6 @@
 import { Iterable } from 'immutable'
 import { contextSymbolIterator } from './context'
-import { hasKey } from './util'
+import hasKey from './hasKey'
 import isImmutable from './isImmutable'
 import isObject from './isObject'
 

@@ -1,15 +1,16 @@
 import { baseSet } from './base'
 import { arg2 } from './customizers'
-import { assocKey, getKey } from './util'
 import forEach from './forEach'
+import getKey from './getKey'
 import isFunction from './isFunction'
 import isString from './isString'
+import setKey from './setKey'
 
 const customAssocKey = (customizer) => {
   return (data, key, value) => {
     const dataValue = getKey(data, key)
     value = customizer(dataValue, value)
-    return assocKey(data, key, value)
+    return setKey(data, key, value)
   }
 }
 

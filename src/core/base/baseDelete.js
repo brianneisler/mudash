@@ -3,27 +3,27 @@ import getKey from '../util/getKey'
 import toKey from '../util/toKey'
 import isObject from '../isObject'
 
-export default function baseUnset(data, path, unsetFunc, setFunc) {
+export default function baseDelete(data, path, deleteFunc, setFunc) {
   path = castPath(path)
   const index = 0
-  return composeRecurPathUnset(path, unsetFunc, setFunc)(data, index)
+  return composeRecurPathDelete(path, deleteFunc, setFunc)(data, index)
 }
 
-function composeRecurPathUnset(path, unsetFunc, setFunc) {
+function composeRecurPathDelete(path, deleteFunc, setFunc) {
   const length = path.length
   const lastIndex = length - 1
 
-  const recurUnset = (data, index) => {
+  const recurDelete = (data, index) => {
     if (!isObject(data)) {
       return data
     }
     const key = toKey(path[index])
     if (index != lastIndex) {
       let value = getKey(data, key)
-      value = recurUnset(value, ++index)
+      value = recurDelete(value, ++index)
       return setFunc(data, key, value)
     }
-    return unsetFunc(data, key)
+    return deleteFunc(data, key)
   }
-  return recurUnset
+  return recurDelete
 }

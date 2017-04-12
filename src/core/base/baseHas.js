@@ -1,8 +1,7 @@
 import getKey from '../util/getKey'
 import toKey from '../util/toKey'
 
-export default function baseHas(associative, path, hasKeyFunc) {
-  let data = associative
+export default function baseHas(data, path, hasKeyFunc) {
   let result = false
   let index = -1
   const { length } = path

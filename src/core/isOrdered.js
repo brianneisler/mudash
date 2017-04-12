@@ -1,5 +1,5 @@
 import { Iterable } from 'immutable'
-import { hasKey } from './util'
+import hasKey from './hasKey'
 import isImmutable from './isImmutable'
 
 export default function isOrdered(data) {

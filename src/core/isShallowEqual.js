@@ -1,6 +1,6 @@
-import { hasKey } from './util'
 import each from './each'
 import get from './get'
+import hasKey from './hasKey'
 import isEqualWith from './isEqualWith'
 import isObject from './isObject'
 import keys from './keys'

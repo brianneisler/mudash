@@ -1,5 +1,5 @@
 import { Iterable } from 'immutable'
-import { hasKey } from './util'
+import hasKey from './hasKey'
 import isFunction from './isFunction'
 import isImmutable from './isImmutable'
 

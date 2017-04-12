@@ -1,10 +1,7 @@
 import { baseHas } from './base'
-import { castPath, hasKey } from './util'
-import isAssociative from './isAssociative'
+import { castPath } from './util'
+import hasKey from './hasKey'
 
 export default function has(data, maybePath, hasKeyFunc = hasKey) {
-  if (isAssociative(data)) {
-    return baseHas(data, castPath(maybePath), hasKeyFunc)
-  }
-  return data
+  return data == null ? data : baseHas(data, castPath(maybePath), hasKeyFunc)
 }

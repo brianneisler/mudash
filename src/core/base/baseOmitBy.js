@@ -1,5 +1,5 @@
+import baseDelete from './baseDelete'
 import baseGet from './baseGet'
-import baseUnset from './baseUnset'
 import getSize from '../util/getSize'
 import getKey from '../util/getKey'
 import setKey from '../util/setKey'
@@ -16,7 +16,7 @@ const omitPaths = withMutations((result, data, paths, predicate) => {
     const path = get(paths, index)
     const value = baseGet(data, path, getKey)
     if (predicate(value, path)) {
-      result = baseUnset(result, castPath(path, data), unsetKey, setKey)
+      result = baseDelete(result, castPath(path, data), unsetKey, setKey)
     }
   }
 

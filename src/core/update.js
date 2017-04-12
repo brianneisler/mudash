@@ -1,6 +1,8 @@
 import { baseUpdate } from './base'
-import { assocKey, castFunction, castPath, getKey } from './util'
+import { castFunction, castPath } from './util'
+import getKey from './getKey'
+import setKey from './setKey'
 
 export default function update(data, maybePath, updater) {
-  return data == null ? data : baseUpdate(data, castPath(maybePath, data), castFunction(updater), assocKey, getKey)
+  return data == null ? data : baseUpdate(data, castPath(maybePath, data), castFunction(updater), setKey, getKey)
 }

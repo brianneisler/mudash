@@ -1,6 +1,6 @@
 import { baseSet } from './base'
-import { assocKey } from './util'
+import setKey from './setKey'
 
 export default function setWith(data, path, value, customizer) {
-  return data == null ? data : baseSet(data, path, value, assocKey, { customizer })
+  return data == null ? data : baseSet(data, path, value, setKey, { customizer })
 }
