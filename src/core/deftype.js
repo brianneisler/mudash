@@ -7,6 +7,7 @@ const imFunction = _.memoize((name) => function(...args) {
   return this['@@functions'][name].call(null, ...args, this)
 })
 const imProp = _.memoize((name) => ({
+  enumerable: true,
   get: function() {
     return this['@@data'].get(name)
   },
@@ -35,15 +36,21 @@ export default function deftype(name, def) {
     //   return super.set(key, value)
     // }
 
+    constructor(data, fns) {
+      super(data, fns)
+      _.each(def, (value, prop) => {
+        if (isType(value)) {
+          Object.defineProperty(this, prop, imProp(prop))
+        }
+      })
+    }
     toString() {
       return this['@@data'].__toString(`${name} {`, '}')
     }
   }
 
   _.each(def, (value, prop) => {
-    if (isType(value)) {
-      Object.defineProperty(NewType.prototype, prop, imProp(prop))
-    } else if (isFunction(value)) {
+    if (!isType(value) && isFunction(value)) {
       NewType.prototype[prop] = imFunction(prop)
     }
   })
@@ -76,8 +83,17 @@ export default function deftype(name, def) {
 
 class Type {
   constructor(data, functions) {
-    this['@@data'] = Immutable.Map(data) || Immutable.Map({})
-    this['@@functions'] = functions
+    Object.defineProperty(this, '@@data', {
+      value: Immutable.Map(data) || Immutable.Map({})
+    })
+    Object.defineProperty(this, '@@functions', {
+      value: functions
+    })
+    // this['@@data'] = Immutable.Map(data) || Immutable.Map({})
+    // this['@@functions'] = functions
+  }
+  delete(key) {
+    return this['@@data'].delete(key)
   }
   get(key) {
     return this['@@data'].get(key)
@@ -93,5 +109,8 @@ class Type {
   }
   inspect() {
     return this.toString()
+  }
+  [Symbol.iterator]() {
+    return this['@@data'].keys()
   }
 }
