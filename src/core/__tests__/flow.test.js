@@ -1,13 +1,13 @@
 import 'babel-polyfill'
 import { expect } from 'chai'
-import { compose } from '../'
+import { flow } from '../'
 import Immutable from 'immutable'
 
-describe('compose', function() {
+describe('flow', function() {
 
-  it('composes two functions', function() {
+  it('flows two functions', function() {
     const called = []
-    const func = compose(
+    const func = flow(
       (val) => {
         called.push('1')
         return val + 1
@@ -19,12 +19,12 @@ describe('compose', function() {
     )
     const result = func(3)
     expect(result).to.equal(6)
-    expect(called).to.deep.equal(['2', '1'])
+    expect(called).to.deep.equal(['1', '2'])
   })
 
-  it('composes array of two functions', function() {
+  it('flows array of two functions', function() {
     const called = []
-    const func = compose([
+    const func = flow([
       (val) => {
         called.push('1')
         return val + 1
@@ -36,12 +36,12 @@ describe('compose', function() {
     ])
     const result = func(3)
     expect(result).to.equal(6)
-    expect(called).to.deep.equal(['2', '1'])
+    expect(called).to.deep.equal(['1', '2'])
   })
 
-  it('composes Immutable.List of two functions', function() {
+  it('flows Immutable.List of two functions', function() {
     const called = []
-    const func = compose(Immutable.List([
+    const func = flow(Immutable.List([
       (val) => {
         called.push('1')
         return val + 1
@@ -53,6 +53,6 @@ describe('compose', function() {
     ]))
     const result = func(3)
     expect(result).to.equal(6)
-    expect(called).to.deep.equal(['2', '1'])
+    expect(called).to.deep.equal(['1', '2'])
   })
 })
