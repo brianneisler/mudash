@@ -1,7 +1,7 @@
 import castPath from '../util/castPath'
-import getKey from '../util/getKey'
-import toKey from '../util/toKey'
+import getKey from '../getKey'
 import isObject from '../isObject'
+import toKey from '../toKey'
 
 export default function baseDelete(data, path, deleteFunc, setFunc) {
   path = castPath(path)

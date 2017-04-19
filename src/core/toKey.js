@@ -1,8 +1,9 @@
-import _ from 'lodash'
-import { INFINITY } from '../constants'
+import { INFINITY } from './constants'
+import isSymbol from './isSymbol'
+
 
 export default function toKey(value) {
-  if (typeof value == 'string' || _.isSymbol(value)) {
+  if (typeof value == 'string' || isSymbol(value)) {
     return value
   }
   const result = (value + '')

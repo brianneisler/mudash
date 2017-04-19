@@ -1,7 +1,7 @@
-import getKey from '../util/getKey'
-import getSize from '../util/getSize'
 import withComparatorValue from '../with/withComparatorValue'
 import withEqValue from '../with/withEqValue'
+import count from '../count'
+import getKey from '../getKey'
 import map from '../map'
 import splice from '../splice'
 import baseFindIndex from './baseFindIndex'
@@ -10,7 +10,7 @@ import baseUnary from './baseUnary'
 export default function basePullAll(data, values, iteratee, comparator, fromRight = false) {
   let index     = -1
   let seen      = data
-  const length  = getSize(values)
+  const length  = count(values)
 
   if (iteratee) {
     seen = map(data, baseUnary(iteratee))
@@ -19,7 +19,7 @@ export default function basePullAll(data, values, iteratee, comparator, fromRigh
     const value       = getKey(values, index)
     const computed    = iteratee ? iteratee(value) : value
     const predicate   = comparator ? withComparatorValue(comparator, computed) : withEqValue(computed)
-    const fromIndex   = fromRight ? getSize(seen) : 0
+    const fromIndex   = fromRight ? count(seen) : 0
     const startIndex  = baseFindIndex(seen, predicate, fromIndex, fromRight)
 
     if (startIndex > -1) {

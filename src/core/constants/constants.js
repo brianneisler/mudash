@@ -6,8 +6,10 @@ const COMPARE_UNORDERED_FLAG = 2
 const HASH_UNDEFINED = '__lodash_hash_undefined__'
 const INFINITY = 1 / 0
 const LARGE_ARRAY_SIZE = 200
+const MAX_INTEGER = 1.7976931348623157e+308
 const MAX_MEMOIZE_SIZE = 500
 const MAX_SAFE_INTEGER = 9007199254740991
+const NAN = 0 / 0
 
 const CORE_ERROR_TEXT = 'Unsupported core-js use. Try https://npms.io/search?q=ponyfill.'
 const FUNC_ERROR_TEXT = 'Expected a function'
@@ -56,8 +58,10 @@ export {
   HASH_UNDEFINED,
   INFINITY,
   LARGE_ARRAY_SIZE,
+  MAX_INTEGER,
   MAX_MEMOIZE_SIZE,
   MAX_SAFE_INTEGER,
+  NAN,
 
   CORE_ERROR_TEXT,
   FUNC_ERROR_TEXT,

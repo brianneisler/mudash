@@ -1,4 +1,4 @@
-import toKey from '../util/toKey'
+import toKey from '../toKey'
 
 export default function baseGet(associative, path, getKeyFunc) {
   let data = associative

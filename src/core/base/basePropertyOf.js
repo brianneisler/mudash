@@ -1,4 +1,4 @@
-import getKey from '../util/getKey'
+import getKey from '../getKey'
 
 export default function basePropertyOf(data) {
   return function(key) {

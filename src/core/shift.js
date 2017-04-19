@@ -1,6 +1,6 @@
-import size from './size'
+import count from './count'
 import slice from './slice'
 
 export default function shift(data, number) {
-  return slice(data, number, size(data))
+  return slice(data, number, count(data))
 }

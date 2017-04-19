@@ -1,8 +1,8 @@
-import getKey from '../util/getKey'
-import getSize from '../util/getSize'
+import count from '../count'
+import getKey from '../getKey'
 
 export default function baseFindIndex(indexed, predicate, fromIndex, fromRight = false) {
-  const length = getSize(indexed)
+  const length = count(indexed)
   if (!length) {
     return -1
   }

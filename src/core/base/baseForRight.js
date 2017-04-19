@@ -1,9 +1,9 @@
-import getKey from '../util/getKey'
-import getSize from '../util/getSize'
+import count from '../count'
+import getKey from '../getKey'
 
 export default function baseForRight(iterable, iteratee, keysFunc) {
   const props = keysFunc(iterable)
-  let size = getSize(props)
+  let size = count(props)
 
   while (size--) {
     const key = getKey(props, size)

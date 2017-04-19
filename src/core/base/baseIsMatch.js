@@ -1,13 +1,13 @@
 import { Stack } from '../cache'
 import { COMPARE_PARTIAL_FLAG, COMPARE_UNORDERED_FLAG } from '../constants'
 import { _Object } from '../context'
-import getKey from '../util/getKey'
-import getSize from '../util/getSize'
-import hasKeyIn from '../util/hasKeyIn'
+import count from '../count'
+import getKey from '../getKey'
+import hasKeyIn from '../hasKeyIn'
 import baseIsEqual from './baseIsEqual'
 
 export default function baseIsMatch(object, source, matchData, customizer) {
-  let index = getSize(matchData)
+  let index = count(matchData)
   const length = index
   const noCustomizer = !customizer
   let data

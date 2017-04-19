@@ -1,15 +1,16 @@
-import _ from 'lodash'
+import count from '../count'
+import getKey from '../getKey'
+import isArrayLike from '../isArrayLike'
 import baseForOwnRight from './baseForOwnRight'
-import { getKey, getSize } from '../util'
 
 export default function baseEachRight(data, iteratee) {
   if (data == null) {
     return data
   }
-  if (!_.isArrayLike(data)) {
+  if (!isArrayLike(data)) {
     return baseForOwnRight(data, iteratee)
   }
-  let size = getSize(data)
+  let size = count(data)
 
   while (size--) {
     if (iteratee(getKey(data, size), size, data) === false) {

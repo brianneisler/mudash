@@ -167,7 +167,7 @@
   + [`isArguments()`](#isarguments) *&ast;Lo*
   + [`isArray()`](#isarray)
   + [`isArrayBuffer()`](#isarraybuffer) *&ast;Lo*
-  + [`isArrayLike()`](#isarraylike) *&ast;Lo*
+  + [`isArrayLike()`](#isarraylike)
   + [`isArrayLikeObject()`](#isarraylikeobject) *&ast;Lo*
   + [`isAssociative()`](#isassociative)
   + [`isBatchable()`](#isbatchable)
@@ -215,14 +215,14 @@
   + [`isKey()`](#iskey)
   + [`isKeyable()`](#iskeyable)
   + [`isKeyed()`](#iskeyed)
-  + [`isLength()`](#islength) *&ast;Lo*
+  + [`isLength()`](#islength)
   + [`isMap()`](#ismap) *&ast;Lo*
   + [`isMatch()`](#ismatch)
   + [`isMatchWith()`](#ismatchwith) *&ast;TODO*
   + [`isMutable()`](#ismutable)
   + [`isNaN()`](#isnan) *&ast;Lo*
   + [`isNative()`](#isnative) *&ast;Lo*
-  + [`isNil()`](#isnil) *&ast;Lo*
+  + [`isNil()`](#isnil)
   + [`isNull()`](#isnull) *&ast;Lo*
   + [`isNumber()`](#isnumber)
   + [`isObject()`](#isobject)
@@ -234,7 +234,7 @@
   + [`isSet()`](#isset) *&ast;Lo*
   + [`isShallowEqual()`](#isshallowequal)
   + [`isString()`](#isstring)
-  + [`isSymbol()`](#issymbol) *&ast;Lo*
+  + [`isSymbol()`](#issymbol)
   + [`isTypedArray()`](#istypedarray) *&ast;Lo*
   + [`isUndefined()`](#isundefined) *&ast;Lo*
   + [`isWeakMap()`](#isweakmap) *&ast;Lo*
@@ -245,7 +245,7 @@
   + [`lt()`](#lt) *&ast;Lo*
   + [`lte()`](#lte) *&ast;Lo*
   + [`toArray()`](#toarray)
-  + [`toFinite()`](#tofinite) *&ast;Lo*
+  + [`toFinite()`](#tofinite)
   + [`toIm()`](#toim)
   + [`toImIndexedSeq()`](#toimindexedseq)
   + [`toImIterable()`](#toimiterable)
@@ -271,11 +271,11 @@
   + [`toImSetSeq()`](#toimsetseq)
   + [`toImStack()`](#toimstack)
   + [`toIndexed()`](#toindexed)
-  + [`toInteger()`](#tointeger) *&ast;Lo*
+  + [`toInteger()`](#tointeger)
   + [`toIterable()`](#toiterable)
   + [`toLength()`](#tolength) *&ast;Lo*
   + [`toMutable()`](#tomutable)
-  + [`toNumber()`](#tonumber) *&ast;Lo*
+  + [`toNumber()`](#tonumber)
   + [`toObject()`](#toobject)
   + [`toPlainObject()`](#toplainobject) *&ast;Lo*
   + [`toSageInteger()`](#tosafeinteger) *&ast;Lo*
@@ -674,6 +674,19 @@ isArray(
 Returns `true` if value is an `Array`. Otherwise `false`.
 
 
+### `isArrayLike()`
+
+```js
+isArrayLike(
+  data: any
+): boolean
+```
+
+Returns `true` if value is array-like. Otherwise `false`.
+
+A value is considered array-like if it's not a function and has a `value.length` that's an integer greater than or equal to 0 and less than or equal to `Number.MAX_SAFE_INTEGER`.
+
+
 ### `isBoolean()`
 
 ```js
@@ -852,6 +865,28 @@ isImmutableStack(
 Returns `true` if data is of type [`Immutable.Stack`][Immutable.Stack]. Otherwise `false`.
 
 
+### `isLength()`
+
+```js
+isLength(
+  data: any
+): boolean
+```
+
+Returns `true` if value is a valid array-like length. Otherwise `false`.
+
+
+### `isNil()`
+
+```js
+isNil(
+  data: any
+): boolean
+```
+
+Returns `true` if value is `null` or `undefined`. Otherwise `false`.
+
+
 ### `isNumber()`
 
 ```js
@@ -883,6 +918,50 @@ isString(
 ```
 
 Returns `true` if value is classified as a `String` primitive or object. Otherwise `false`.
+
+
+### `isSymbol()`
+
+```js
+isSymbol(
+  data: any
+): boolean
+```
+
+Returns `true` if value is classified as a `Symbol` primitive or object. Otherwise `false`.
+
+
+### `toFinite()`
+
+```js
+toFinite(
+  data: any
+): number
+```
+
+Converts value to a finite number.
+
+
+### `toInteger()`
+
+```js
+toInteger(
+  data: any
+): number
+```
+
+Converts value to an integer.
+
+
+### `toNumber()`
+
+```js
+toNumber(
+  data: any
+): number
+```
+
+Converts value to a number.
 
 
 ## Object and Immutable.Map

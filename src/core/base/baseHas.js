@@ -1,5 +1,5 @@
-import getKey from '../util/getKey'
-import toKey from '../util/toKey'
+import getKey from '../getKey'
+import toKey from '../toKey'
 
 export default function baseHas(data, path, hasKeyFunc) {
   let result = false
@@ -14,8 +14,4 @@ export default function baseHas(data, path, hasKeyFunc) {
     data = getKey(data, key)
   }
   return result
-
-  // const dataLength = data ? getSize(data) : 0
-  // return !!length && _.isLength(length) && isIndex(key, length) &&
-  //   (_.isArray(object) || _.isString(object) || _.isArguments(object))
 }

@@ -1,14 +1,19 @@
-import _ from 'lodash'
+import { Stacked } from './protocols'
+import { withMutations } from './with'
 import concat from './concat'
-import isImmutable from './isImmutable'
+import isNil from './isNil'
+
+const pushValues = withMutations((data, values) => {
+  data.push(...values)
+  return data
+})
 
 export default function push(data, ...values) {
-  if (_.isNil(data)) {
+  if (isNil(data)) {
     data = []
   }
-
-  if (isImmutable(data)) {
-    return data.push(...values)
+  if (Stacked.is(data)) {
+    return pushValues(data, values)
   }
   return concat(data, values)
 }

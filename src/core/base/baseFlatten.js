@@ -1,14 +1,14 @@
 import mutationPush from '../mutations/mutationPush'
 import mutationPushAll from '../mutations/mutationPushAll'
-import getKey from '../util/getKey'
-import getSize from '../util/getSize'
 import withMutations from '../with/withMutations'
+import count from '../count'
+import getKey from '../getKey'
 import hintConvert from '../hintConvert'
 import isFlattenable from '../isFlattenable'
 
 const recurFlatten = (result, indexed, depth, predicate, isStrict) => {
   let index = -1
-  const length = getSize(indexed)
+  const length = count(indexed)
   while (++index < length) {
     const value = getKey(indexed, index)
     if (depth > 0 && predicate(value)) {

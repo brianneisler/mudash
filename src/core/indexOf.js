@@ -1,10 +1,10 @@
-import _ from 'lodash'
 import { baseIndexOf } from './base'
 import { nativeMax } from './native'
-import { getSize } from './util'
+import count from './count'
 import isIndexed from './isIndexed'
 import isOrdered from './isOrdered'
 import toIndexed from './toIndexed'
+import toInteger from './toInteger'
 
 export default function indexOf(data, value, fromIndex) {
   let indexed = data
@@ -14,8 +14,8 @@ export default function indexOf(data, value, fromIndex) {
     }
     indexed = toIndexed(data)
   }
-  const length = getSize(indexed)
-  let index = fromIndex == null ? 0 : _.toInteger(fromIndex)
+  const length = count(indexed)
+  let index = fromIndex == null ? 0 : toInteger(fromIndex)
   if (index < 0) {
     index = nativeMax(length + index, 0)
   }

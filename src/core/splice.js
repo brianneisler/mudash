@@ -1,10 +1,12 @@
 import concat from './concat'
-import size from './size'
+import count from './count'
 import slice from './slice'
+import toInteger from './toInteger'
 
 export default function splice(data, startIndex, removeNum, ...values) {
+  startIndex = toInteger(startIndex)
   if (startIndex < 0) {
-    startIndex = size(data) + startIndex
+    startIndex = count(data) + startIndex
   }
   if (!removeNum || removeNum < 0) {
     removeNum = 0

@@ -1,8 +1,18 @@
 import 'babel-polyfill'
 import _ from 'lodash'
-import { slice } from '../'
 import Immutable from 'immutable'
-import { clone, expectAllExactEqual, getType } from './util'
+import { slice } from '../'
+import { withHintSameType, withMultipleTypeInputs } from './recompose'
+import { immutableTest } from './tests'
+import { indexed } from './types'
+import { clone, compose, expectAllExactEqual, getType, runTests, setupTest } from './util'
+
+const enhance = compose(
+  withMultipleTypeInputs,
+  withHintSameType
+)
+
+const testSlice = enhance(immutableTest(({ data, start, end }) => slice(data, start, end)))
 
 describe('slice', function() {
   const inputs = [
@@ -31,6 +41,42 @@ describe('slice', function() {
 
   _.each(inputs, (input) => testSliceDefaultParamsReturnsExisting(input, clone(input)))
   _.each(inputs, (input) => testSliceStartingAt0ReturnsExisting(input, clone(input)))
+
+  const context = setupTest()
+  const tests = {
+    'slices start of 1 from indexed `data`': {
+      inputs: {
+        data: {
+          value: ['a', 'b', 'c'],
+          types: indexed()
+        },
+        start: {
+          value: 1
+        },
+        end: {
+          value: undefined
+        }
+      },
+      expected: ['b', 'c']
+    },
+    'slices start of 1 to end of 2 from indexed `data`': {
+      inputs: {
+        data: {
+          value: ['a', 'b', 'c'],
+          types: indexed()
+        },
+        start: {
+          value: 1
+        },
+        end: {
+          value: 2
+        }
+      },
+      expected: ['b']
+    }
+  }
+
+  runTests(tests, context, testSlice)
 })
 
 function testSliceDefaultParamsReturnsExisting(data, expected) {

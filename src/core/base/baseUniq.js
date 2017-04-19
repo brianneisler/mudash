@@ -1,15 +1,15 @@
 import Immutable from 'immutable'
 import cacheHas from '../cache/cacheHas'
 import mutationPush from '../mutations/mutationPush'
-import getKey from '../util/getKey'
-import getSize from '../util/getSize'
 import withMutations from '../with/withMutations'
+import count from '../count'
+import getKey from '../getKey'
+import hintConvert from '../hintConvert'
 import baseIncludes from './baseIncludes'
 import baseIncludesWith from './baseIncludesWith'
-import hintConvert from '../hintConvert'
 
 const findUniques = withMutations((result, indexed, seen, iteratee, comparator, includes) => {
-  const length = getSize(indexed)
+  const length = count(indexed)
   let index = -1
   while (++index < length) {
     let value = getKey(indexed, index)

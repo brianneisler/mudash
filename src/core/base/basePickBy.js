@@ -1,14 +1,15 @@
-import baseGet from './baseGet'
-import baseSet from './baseSet'
-import getSize from '../util/getSize'
-import getKey from '../util/getKey'
-import setKey from '../util/setKey'
 import castPath from '../util/castPath'
 import withMutations from '../with/withMutations'
-import { hintConvert, get } from '../'
+import count from '../count'
+import get from '../get'
+import getKey from '../getKey'
+import hintConvert from '../hintConvert'
+import setKey from '../setKey'
+import baseGet from './baseGet'
+import baseSet from './baseSet'
 
 const pickPaths = withMutations((result, data, paths, predicate) => {
-  const length = getSize(paths)
+  const length = count(paths)
   let index = -1
 
   while (++index < length) {

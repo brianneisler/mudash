@@ -161,7 +161,7 @@
   + [`isArguments()`](./API.md#isarguments) *&ast;Lo*
   + [`isArray()`](./API.md#isarray)
   + [`isArrayBuffer()`](./API.md#isarraybuffer) *&ast;Lo*
-  + [`isArrayLike()`](./API.md#isarraylike) *&ast;Lo*
+  + [`isArrayLike()`](./API.md#isarraylike)
   + [`isArrayLikeObject()`](./API.md#isarraylikeobject) *&ast;Lo*
   + [`isAssociative()`](./API.md#isassociative)
   + [`isBatchable()`](./API.md#isbatchable)
@@ -209,14 +209,14 @@
   + [`isKey()`](./API.md#iskey)
   + [`isKeyable()`](./API.md#iskeyable)
   + [`isKeyed()`](./API.md#iskeyed)
-  + [`isLength()`](./API.md#islength) *&ast;Lo*
+  + [`isLength()`](./API.md#islength)
   + [`isMap()`](./API.md#ismap) *&ast;Lo*
   + [`isMatch()`](./API.md#ismatch)
   + [`isMatchWith()`](./API.md#ismatchwith) *&ast;TODO*
   + [`isMutable()`](./API.md#ismutable)
   + [`isNaN()`](./API.md#isnan) *&ast;Lo*
   + [`isNative()`](./API.md#isnative) *&ast;Lo*
-  + [`isNil()`](./API.md#isnil) *&ast;Lo*
+  + [`isNil()`](./API.md#isnil)
   + [`isNull()`](./API.md#isnull) *&ast;Lo*
   + [`isNumber()`](./API.md#isnumber)
   + [`isObject()`](./API.md#isobject)
@@ -228,7 +228,7 @@
   + [`isSet()`](./API.md#isset) *&ast;Lo*
   + [`isShallowEqual()`](./API.md#isshallowequal)
   + [`isString()`](./API.md#isstring)
-  + [`isSymbol()`](./API.md#issymbol) *&ast;Lo*
+  + [`isSymbol()`](./API.md#issymbol)
   + [`isTypedArray()`](./API.md#istypedarray) *&ast;Lo*
   + [`isUndefined()`](./API.md#isundefined) *&ast;Lo*
   + [`isWeakMap()`](./API.md#isweakmap) *&ast;Lo*
@@ -239,7 +239,7 @@
   + [`lt()`](./API.md#lt) *&ast;Lo*
   + [`lte()`](./API.md#lte) *&ast;Lo*
   + [`toArray()`](./API.md#toarray)
-  + [`toFinite()`](./API.md#tofinite) *&ast;Lo*
+  + [`toFinite()`](./API.md#tofinite)
   + [`toIm()`](./API.md#toim)
   + [`toImIndexedSeq()`](./API.md#toimindexedseq)
   + [`toImIterable()`](./API.md#toimiterable)
@@ -265,11 +265,11 @@
   + [`toImSetSeq()`](./API.md#toimsetseq)
   + [`toImStack()`](./API.md#toimstack)
   + [`toIndexed()`](./API.md#toindexed)
-  + [`toInteger()`](./API.md#tointeger) *&ast;Lo*
+  + [`toInteger()`](./API.md#tointeger)
   + [`toIterable()`](./API.md#toiterable)
   + [`toLength()`](./API.md#tolength) *&ast;Lo*
   + [`toMutable()`](./API.md#tomutable)
-  + [`toNumber()`](./API.md#tonumber) *&ast;Lo*
+  + [`toNumber()`](./API.md#tonumber)
   + [`toObject()`](./API.md#toobject)
   + [`toPlainObject()`](./API.md#toplainobject) *&ast;Lo*
   + [`toSageInteger()`](./API.md#tosafeinteger) *&ast;Lo*

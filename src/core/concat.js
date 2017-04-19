@@ -1,8 +1,9 @@
-import _ from 'lodash'
-import isImmutable from './isImmutable'
+import Concatable from './protocols/Concatable'
+import hintConvert from './hintConvert'
 
 export default function concat(data, ...args) {
-  return isImmutable(data)
-    ? data.concat(...args)
-    : _.concat(data, ...args)
+  if (!Concatable.is(data)) {
+    data = hintConvert(data, [data])
+  }
+  return data.concat(...args)
 }

@@ -1,19 +1,21 @@
-import _ from 'lodash'
 import baseForOwn from './baseForOwn'
-import { getKey, getSize, isForEachable } from '../util'
+import count from '../count'
+import getKey from '../getKey'
+import isArrayLike from '../isArrayLike'
+import { isForEachable } from '../util'
 
 export default function baseEach(data, iteratee) {
   if (data == null) {
     return data
   }
-  if (!_.isArrayLike(data)) {
+  if (!isArrayLike(data)) {
     if (isForEachable(data)) {
       data.forEach(iteratee)
       return data
     }
     return baseForOwn(data, iteratee)
   }
-  const size = getSize(data)
+  const size = count(data)
   let index = -1
 
   while (++index < size) {

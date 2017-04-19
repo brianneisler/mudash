@@ -1,9 +1,9 @@
-import getKey from '../util/getKey'
-import size from '../size'
+import count from '../count'
+import getKey from '../getKey'
 
 export default function strictIndexOf(indexed, value, fromIndex) {
   let index = fromIndex - 1
-  const length = size(indexed)
+  const length = count(indexed)
 
   while (++index < length) {
     if (getKey(indexed, index) === value) {

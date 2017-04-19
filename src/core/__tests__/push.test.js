@@ -1,35 +1,69 @@
 import 'babel-polyfill'
-import { expect } from 'chai'
 import { push } from '../'
-import Immutable from 'immutable'
+import { withHintSameType, withMultipleTypeInputs } from './recompose'
+import { immutableTest } from './tests'
+import { indexed, indexedWithoutStack, stack } from './types'
+import { compose, runTests, setupTest } from './util'
+
+const enhance = compose(
+  withMultipleTypeInputs,
+  withHintSameType
+)
+
+const testPush = enhance(immutableTest(({ data, values }) => push(data, ...values)))
 
 describe('push', function() {
 
-  it('pushes to mutable array', function() {
-    const array = []
-    const result = push(array, 'test1')
-    expect(result).not.to.equal(array) //expect new array
-    expect(array).to.deep.equal([]) //do no modify array
-    expect(result).to.deep.equal([
-      'test1'
-    ])
-  })
+  const context = setupTest()
+  const tests = {
+    'pushes `values` to empty indexed `data`': {
+      inputs: {
+        data: {
+          value: [],
+          types: indexed()
+        },
+        values: {
+          value: ['a']
+        }
+      },
+      expected: ['a']
+    },
+    'pushes `value` to null data': {
+      inputs: {
+        data: {
+          value: null
+        },
+        values: {
+          value: ['b']
+        }
+      },
+      expected: ['b']
+    },
+    'pushes multiple `values` to indexed `data`': {
+      inputs: {
+        data: {
+          value: ['a'],
+          types: indexedWithoutStack()
+        },
+        values: {
+          value: [ 'b', 'c' ]
+        }
+      },
+      expected: [ 'a', 'b', 'c' ]
+    },
+    'pushes multiple `values` to front of `Stack`': {
+      inputs: {
+        data: {
+          value: ['a'],
+          types: stack()
+        },
+        values: {
+          value: [ 'b', 'c' ]
+        }
+      },
+      expected: [ 'b', 'c', 'a' ]
+    }
+  }
 
-  it('returns array if data is empty', function() {
-    const data = null
-    const result = push(data, 'test1')
-    expect(result).to.deep.equal([
-      'test1'
-    ])
-  })
-
-  it('pushes to immutable List', function() {
-    const data = Immutable.fromJS([])
-    const result = push(data, 'test1')
-    expect(result).not.to.equal(data) //expect new array
-    expect(Immutable.List.isList(result)).to.be.true
-    expect(result.toJS()).to.deep.equal([
-      'test1'
-    ])
-  })
+  runTests(tests, context, testPush)
 })

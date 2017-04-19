@@ -1,12 +1,12 @@
 import baseKeys from '../base/baseKeys'
-import getKey from './getKey'
-import getSize from './getSize'
+import count from '../count'
+import getKey from '../getKey'
+import setKey from '../setKey'
 import isStrictComparable from './isStrictComparable'
-import setKey from './setKey'
 
 export default function getMatchData(object) {
   let result = baseKeys(object)
-  let length = getSize(result)
+  let length = count(result)
 
   while (length--) {
     const key = getKey(result, length)

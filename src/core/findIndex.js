@@ -1,10 +1,11 @@
-import _ from 'lodash'
 import { baseFindIndex } from './base'
 import { nativeMax } from './native'
-import { getIteratee, getSize } from './util'
+import { getIteratee } from './util'
+import count from './count'
 import isIndexed from './isIndexed'
 import isOrdered from './isOrdered'
 import toIndexed from './toIndexed'
+import toInteger from './toInteger'
 
 export default function findIndex(data, predicate, fromIndex) {
   let indexed = data
@@ -14,8 +15,8 @@ export default function findIndex(data, predicate, fromIndex) {
     }
     indexed = toIndexed(data)
   }
-  const length = getSize(data)
-  let index = fromIndex == null ? 0 : _.toInteger(fromIndex)
+  const length = count(data)
+  let index = fromIndex == null ? 0 : toInteger(fromIndex)
   if (index < 0) {
     index = nativeMax(length + index, 0)
   }

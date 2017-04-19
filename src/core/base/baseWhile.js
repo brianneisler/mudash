@@ -1,4 +1,4 @@
-import getKey from '../util/getKey'
+import getKey from '../getKey'
 import size from '../size'
 import slice from '../slice'
 
